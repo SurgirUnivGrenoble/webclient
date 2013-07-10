@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="surgir">
+<head>
+  <meta charset="utf-8">
+  <title>Surgir POC</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <h1>Surgir Proof of Concept</h1>
+  
+  <div ng-controller="SearchController">
+    <form ng-submit="submitSearch()">
+      <input type="text" ng-model="searchInput">
+      <input type="submit" value="Search">
+    </form>
+
+It works: {{ searchInput }}
+
+    <h2>Jobs</h2>
+    <ul ng-repeat="job in jobs">
+      <li>{{ job }}<br />
+        <a href="" ng-click="checkJob(job)">Check</a>
+        <p>{{ jobs_status[job] | json }}</p>
+        <a href="" ng-click="getRecord(job)">Get Record</a>
+        <p>{{ jobs_record[job] }}</p>
+      </li>
+    </ul>
+    
+    <a href="" ng-click="checkAllJobs()">Check All Jobs</a>
+    <a href="" ng-click="getAllRecords()">Get All Records</a>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
