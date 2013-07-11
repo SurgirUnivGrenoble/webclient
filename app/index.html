@@ -7,15 +7,15 @@
 </head>
 <body>
   <h1>Surgir Proof of Concept</h1>
-    
+
   <div ng-controller="SearchController">
     Status <span ng-bind="status">starting...</span>
-    
+
     <h2>Collections</h2>
     <a href="" ng-click="getCollections()">Get Collections</a>
     <ul>
       <li ng-repeat="col in collections">
-        <a href="" ng-click="getCollectionNotice(col.id)">{{ col.name }}</a>
+         [{{ col.id }}] <a href="" ng-click="getCollectionNotice(col.id)">{{ col.name }}</a>
         <br />
         {{ collectionNotices[col.id] }}
       </li>
@@ -37,9 +37,31 @@
         <p>{{ jobs_record[job] }}</p>
       </li>
     </ul>
-    
+
     <a href="" ng-click="checkAllJobs()">Check All Jobs</a>
     <a href="" ng-click="getAllRecords()">Get All Records</a>
+
+
+    <hr />
+    <h2>Detailed notice by permalink</h2>
+
+    <form ng-submit="getNotice()">
+      <p>
+        <label for="notice_permalink">Permalink</label>
+        <input type="text" ng-model="notice.permalink" id="notice_permalink">
+      </p>
+      <p>
+        <label for="notice_col_id">Collection ID</label>
+        <input type="text" ng-model="notice.colId" id="notice_col_id">
+      </p>
+      <p>
+        <label for="notice_search_id">Search ID</label>
+        <input type="text" ng-model="notice.searchId" id="notice_search_id">
+      </p>
+      <input type="submit" value="Show">
+    </form>
+    {{ notice.details | json }}
+
   </div>
 
   <!-- In production use:

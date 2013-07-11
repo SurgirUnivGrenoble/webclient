@@ -60,4 +60,24 @@ angular.module('surgir.controllers', []).
         $scope.jobs_record[jobId] = data;
       });
     };
+
+    $scope.notice = {
+      permalink: '8596551373558225',
+      colId: '19',
+      searchId: '20046'
+    };
+
+    $scope.getNotice = function () {
+      // http://130.190.250.179/json/GetId?&log_action=consult&log_cxt=notice&idDoc=6265381373528771&idCollection=14&idSearch=20050
+      // http://130.190.250.179/json/GetId?&log_action=consult&log_cxt=notice&idDoc=oai:cairn.info:SPI_043_0156&idCollection=17&idSearch=20046
+      // http://130.190.250.179/json/GetId?&log_action=consult&log_cxt=notice&idDoc=8596551373558225&idCollection=19&idSearch=20046
+      var idDoc = escape($scope.notice.permalink);
+      var idCollection = escape($scope.notice.colId);
+      var idSearch = escape($scope.notice.searchId);
+      var request = libraryFindHost + '/json/GetId?&log_action=consult&log_cxt=notice&idDoc=' + idDoc + '&idCollection=' + idCollection + '&idSearch=' + idSearch
+      $http.get(request).success(function(data) {
+        $scope.notice.details = data.results;
+      });
+    }
+
   });
