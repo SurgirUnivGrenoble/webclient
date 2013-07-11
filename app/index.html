@@ -7,14 +7,26 @@
 </head>
 <body>
   <h1>Surgir Proof of Concept</h1>
-  
+    
   <div ng-controller="SearchController">
+    Status <span ng-bind="status">starting...</span>
+    
+    <h2>Collections</h2>
+    <a href="" ng-click="getCollections()">Get Collections</a>
+    <ul>
+      <li ng-repeat="col in collections">
+        <a href="" ng-click="getCollectionNotice(col.id)">{{ col.name }}</a>
+        <br />
+        {{ collectionNotices[col.id] }}
+      </li>
+    </ul>
+
+    <hr />
+    <h2>Search</h2>
     <form ng-submit="submitSearch()">
       <input type="text" ng-model="searchInput">
       <input type="submit" value="Search">
     </form>
-
-It works: {{ searchInput }}
 
     <h2>Jobs</h2>
     <ul ng-repeat="job in jobs">

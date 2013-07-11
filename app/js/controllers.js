@@ -4,12 +4,34 @@
 
 angular.module('surgir.controllers', []).
   controller('SearchController', function($scope, $http) {
+    $scope.status = 'Ready';
+
     $scope.searchInput = 'oregon';
     $scope.jobs_status = {};
     $scope.jobs_record = {};
 
     // var libraryFindHost = 'http://130.190.250.179';
     var libraryFindHost = '';
+
+    $scope.getCollections = function() {
+      var request = libraryFindHost + '/json/GetGroupMembers?name=Partout'
+      $http.get(request).success(function(data) {
+        var names = data.results.member_names;
+        var ids = data.results.member_ids;
+        $scope.collections = [];
+        $scope.collectionNotices = {};
+        for (var i=0; i<ids.length; i++) {
+          $scope.collections.push({id: ids[i].substr(1), name: names[i]});
+        }
+      });
+    }
+
+    $scope.getCollectionNotice = function(id) {
+      var request = libraryFindHost + '/account_json/GetCollectionDescription?col_id=' + id;
+      $http.get(request).success(function(data) {
+        $scope.collectionNotices[id] = data.results[0].collection;
+      });
+    }
 
     $scope.submitSearch = function() {
       if($scope.searchInput) {

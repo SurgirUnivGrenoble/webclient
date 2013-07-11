@@ -21,6 +21,10 @@ map '/json' do
   run LibraryFindProxy.new
 end
 
+map '/account_json' do
+  run LibraryFindProxy.new
+end
+
 use Rack::Static, :urls => ['/css', '/js', '/lib', '/img'], :root => 'app'
 
 map '/' do
