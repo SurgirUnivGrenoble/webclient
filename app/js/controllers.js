@@ -61,6 +61,28 @@ angular.module('surgir.controllers', []).
       });
     };
 
+    var concatJobIds = function(request) {
+      $scope.jobs.forEach(function(job) {
+        request = request + 'id[]=' + job + '&';
+      });
+      return request.slice(0, request.length - 1);
+    }
+
+    $scope.checkAllJobs = function() {
+      var jobReq = concatJobIds(libraryFindHost + '/json/CheckJobStatus?')
+      $http.get(jobReq).success(function(data) {
+        $scope.all_jobs_status = data;
+      });
+    };
+
+    $scope.getAllRecords = function() {
+      var jobReq = concatJobIds(libraryFindHost + '/json/GetJobRecord?')
+      jobReq = jobReq + '&stop_search=1&max=25&page=1&sort=relevance&page_size=10&notice_display=0&with_facette=1&log_action_txt=&log_cxt_txt=&log_cxt=search'
+      $http.get(jobReq).success(function(data) {
+        $scope.all_jobs_records = data;
+      });
+    }
+
     $scope.notice = {
       permalink: '8596551373558225',
       colId: '19',

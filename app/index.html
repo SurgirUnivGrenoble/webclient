@@ -38,9 +38,14 @@
       </li>
     </ul>
 
-    <a href="" ng-click="checkAllJobs()">Check All Jobs</a>
-    <a href="" ng-click="getAllRecords()">Get All Records</a>
-
+    <p>
+      <a href="" ng-click="checkAllJobs()">Check All Jobs</a>
+      {{ all_jobs_status }}
+    </p>
+    <p>
+      <a href="" ng-click="getAllRecords()">Get All Records</a>
+      {{ all_jobs_records }}
+    </p>
 
     <hr />
     <h2>Detailed notice by permalink</h2>
