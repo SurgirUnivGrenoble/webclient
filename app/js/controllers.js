@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('surgir.controllers', []).
+angular.module('surgir.controllers', ['surgir.libraryfind']).
   controller('StepsController', function($scope, $http) {
     $scope.status = 'Ready';
 
@@ -102,4 +102,17 @@ angular.module('surgir.controllers', []).
       });
     }
 
+  }).
+
+  controller('SearchController', function($scope, Collections, LibraryFind) {
+    $scope.status = 'Ready';
+    $scope.searchInput = 'oregon';
+
+    $scope.ids = Collections.ids;
+
+    $scope.submitSearch = function() {
+      if( $scope.searchInput ){
+        $scope.nbJobs = LibraryFind.search($scope.searchInput);
+      }
+    };
   });
