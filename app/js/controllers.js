@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('surgir.controllers', []).
-  controller('SearchController', function($scope, $http) {
+  controller('StepsController', function($scope, $http) {
     $scope.status = 'Ready';
 
     $scope.searchInput = 'oregon';
