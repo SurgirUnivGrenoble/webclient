@@ -106,13 +106,20 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
 
   controller('SearchController', function($scope, Collections, LibraryFind) {
     $scope.status = 'Ready';
+
     $scope.searchInput = 'oregon';
+    $scope.maxResults = 25;
+    $scope.nbPolls = 10;
+    $scope.pollInterval = 2000;
 
     $scope.ids = Collections.ids;
 
     $scope.submitSearch = function() {
       if( $scope.searchInput ){
-        $scope.results = LibraryFind.search($scope.searchInput);
+        $scope.results = LibraryFind.search($scope.searchInput,
+                                            $scope.maxResults,
+                                            $scope.nbPolls,
+                                            $scope.pollInterval);
       }
     };
   });

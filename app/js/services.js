@@ -31,22 +31,31 @@ angular.module('surgir.libraryfind', []).
 
       startTimestamp: 0,
 
-      _concatParams: function(collection, formalParam) {
+      _concatParams: function(collection, formalParam, includeFirstAmpersand) {
+        var firstAmpersand = includeFirstAmpersand || false;
         var paramString = '';
         collection.forEach(function(item) {
           paramString = paramString.concat('&', formalParam, '[]=', item)
         });
-        return paramString;
+        if( firstAmpersand ) {
+          return paramString;
+        } else {
+          return paramString.slice(1, paramString.length);
+        }
       },
 
-      search: function(queryInput) {
+      search: function(queryInput, maxResults, nbPolls, pollInterval) {
         var self = this;
         this.results = {};
         this.polls = 0;
         this.startTimestamp = new Date().getTime();
+
+        this.nbPolls = nbPolls;
+        this.pollInterval = pollInterval;
+
         var queryTerm = escape(queryInput);
-        var queryCols = this._concatParams(Collections.ids, 'cols');
-        var request = '/json/Search?query[string1]=' + queryTerm + queryCols + '&query[field_filter1]=keyword&query[start]=None&query[max]=25&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL&search_group=12&listCG_selected=None&log_cxt=search';
+        var queryCols = this._concatParams(Collections.ids, 'cols', true);
+        var request = '/json/Search?query[string1]=' + queryTerm + queryCols + '&query[field_filter1]=keyword&query[start]=None&query[max]=' + maxResults + '&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL&search_group=12&listCG_selected=None&log_cxt=search';
         return $http.get(request).success(function(data) {
           self.jobIds = data.results.jobs_id;
           console.log('Request done - Starting jobs polling');
@@ -58,34 +67,37 @@ angular.module('surgir.libraryfind', []).
 
       _checkJobs: function(jobIds, delay) {
         var self = this;
-        var reqDelay = delay || 2000;
-        var done = 0;
+        var reqDelay = delay || this.pollInterval;
         $timeout(function() {
-            var reqJobs = self._concatParams(jobIds, 'id');
-            var request = '/json/CheckJobStatus?' + reqJobs;
+            var request = '/json/CheckJobStatus?' + self._concatParams(jobIds, 'id');
             $http.get(request).success(function(data) {
-              data.results.forEach(function(result) {
-                if( !self.results.hasOwnProperty(result.job_id) ){
-                  self.results[result.job_id] = {
-                    name: result.target_name,
-                    hits: []
-                  }
-                }
-                self.results[result.job_id].hits.push(result)
-                if( ! result.status ) {
-                  done = done + 1;
-                }
-              });
-              console.log(self.polls + ': '
-                          + done + '/' + self.jobIds.length
-                          + ' (' + (new Date().getTime() - self.startTimestamp) + 'ms)');
+              self._displayJobResults(data.results);
             });
-            if( self.polls < 10 ){
+            if( self.polls < self.nbPolls ){
               self.polls += 1;
               self._checkJobs(jobIds);
             }
           },
           reqDelay);
+      },
+
+      _displayJobResults: function(results) {
+        var done = 0;
+        results.forEach(function(result) {
+          if( !this.results.hasOwnProperty(result.job_id) ){
+            this.results[result.job_id] = {
+              name: result.target_name,
+              hits: []
+            }
+          }
+          this.results[result.job_id].hits.push(result)
+          if( ! result.status ) {
+            done = done + 1;
+          }
+        }.bind(this));
+        console.log(this.polls + ': '
+                    + done + '/' + this.jobIds.length
+                    + ' (' + (new Date().getTime() - this.startTimestamp) + 'ms)');
       }
     }
   });
