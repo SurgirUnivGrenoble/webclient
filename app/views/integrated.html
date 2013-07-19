@@ -24,10 +24,11 @@ Status <span ng-bind="status">starting...</span>
 </form>
 
 <ul>
-  <li ng-repeat="result in results">
-    {{ result.name }}
+  <li ng-repeat="result in results | orderBy:'-rank'">
+    "{{ result.ptitle }}" '{{ result.title }}' by {{ result.author }} --- {{ result.vendor_name }} / {{ result.rank }}
+    <!-- {{ result.name }}
     <span ng-repeat="hit in result.hits">
       - {{ {0: '', 1: '?'}[hit.status] }}  {{ hit.hits }}/<strong>{{ hit.total_hits }}</strong>
-    </span>
+    </span> -->
   </li>
 </ul>

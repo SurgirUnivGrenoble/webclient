@@ -31,8 +31,8 @@ angular.module('surgir.libraryfind', []).
 
       startTimestamp: 0,
 
-      _concatParams: function(collection, formalParam, includeFirstAmpersand) {
-        var firstAmpersand = includeFirstAmpersand || false;
+      _concatParams: function(collection, formalParam, keepFirstAmpersand) {
+        var firstAmpersand = keepFirstAmpersand || false;
         var paramString = '';
         collection.forEach(function(item) {
           paramString = paramString.concat('&', formalParam, '[]=', item)
@@ -46,7 +46,7 @@ angular.module('surgir.libraryfind', []).
 
       search: function(queryInput, maxResults, nbPolls, pollInterval) {
         var self = this;
-        this.results = {};
+        this.results = [];
         this.polls = 0;
         this.startTimestamp = new Date().getTime();
 
@@ -71,11 +71,13 @@ angular.module('surgir.libraryfind', []).
         $timeout(function() {
             var request = '/json/CheckJobStatus?' + self._concatParams(jobIds, 'id');
             $http.get(request).success(function(data) {
-              self._displayJobResults(data.results);
-              // self._getRecords();
+              // self._displayJobResults(data.results);
               if( self.polls < self.nbPolls ){
                 self.polls += 1;
                 self._checkJobs(jobIds);
+                self._getRecords(0);
+              } else {
+                self._getRecords(1);
               }
             });
           },
@@ -99,6 +101,15 @@ angular.module('surgir.libraryfind', []).
         console.log(this.polls + ': '
                     + done + '/' + this.jobIds.length
                     + ' (' + (new Date().getTime() - this.startTimestamp) + 'ms)');
+      },
+
+      _getRecords: function(stopSearch) {
+        var self = this;
+        var request = '/json/GetJobRecord?' + this._concatParams(this.jobIds, 'id') + '&stop_search=' + stopSearch + '&max=100&page=1&sort=relevance&page_size=25&notice_display=0&with_facette=1&log_action_txt=&log_cxt_txt=&log_cxt=search';
+        $http.get(request).success(function(data) {
+          console.log(data.results)
+          self.results.push.apply(self.results, data.results.results)
+        });
       }
     }
   });
