@@ -72,11 +72,12 @@ angular.module('surgir.libraryfind', []).
             var request = '/json/CheckJobStatus?' + self._concatParams(jobIds, 'id');
             $http.get(request).success(function(data) {
               self._displayJobResults(data.results);
+              // self._getRecords();
+              if( self.polls < self.nbPolls ){
+                self.polls += 1;
+                self._checkJobs(jobIds);
+              }
             });
-            if( self.polls < self.nbPolls ){
-              self.polls += 1;
-              self._checkJobs(jobIds);
-            }
           },
           reqDelay);
       },
