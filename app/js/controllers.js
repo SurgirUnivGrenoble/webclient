@@ -112,7 +112,7 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
 
     $scope.submitSearch = function() {
       if( $scope.searchInput ){
-        $scope.nbJobs = LibraryFind.search($scope.searchInput);
+        $scope.results = LibraryFind.search($scope.searchInput);
       }
     };
   });

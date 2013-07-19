@@ -25,7 +25,11 @@ angular.module('surgir.libraryfind', []).
     return {
       jobIds: [],
 
-      firstTime: true,
+      polls: 0,
+
+      results: [],
+
+      startTimestamp: 0,
 
       _concatParams: function(collection, formalParam) {
         var paramString = '';
@@ -37,36 +41,47 @@ angular.module('surgir.libraryfind', []).
 
       search: function(queryInput) {
         var self = this;
+        this.results = {};
+        this.polls = 0;
+        this.startTimestamp = new Date().getTime();
         var queryTerm = escape(queryInput);
         var queryCols = this._concatParams(Collections.ids, 'cols');
         var request = '/json/Search?query[string1]=' + queryTerm + queryCols + '&query[field_filter1]=keyword&query[start]=None&query[max]=25&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL&search_group=12&listCG_selected=None&log_cxt=search';
         return $http.get(request).success(function(data) {
           self.jobIds = data.results.jobs_id;
-          self._checkJobs(self.jobIds, 0);
+          console.log('Request done - Starting jobs polling');
+          self._checkJobs(self.jobIds, 1);
         }).then(function(answer) {
-          return answer.data.results.jobs_id;
+          return self.results;
         });
       },
 
       _checkJobs: function(jobIds, delay) {
         var self = this;
-        var reqDelay = delay | 5000;
+        var reqDelay = delay || 2000;
         var done = 0;
         $timeout(function() {
             var reqJobs = self._concatParams(jobIds, 'id');
             var request = '/json/CheckJobStatus?' + reqJobs;
             $http.get(request).success(function(data) {
               data.results.forEach(function(result) {
+                if( !self.results.hasOwnProperty(result.job_id) ){
+                  self.results[result.job_id] = {
+                    name: result.target_name,
+                    hits: []
+                  }
+                }
+                self.results[result.job_id].hits.push(result)
                 if( ! result.status ) {
                   done = done + 1;
                 }
-                // console.log(result.target_name + ' ' + result.status + ' ' + result.total_hits);
               });
-              console.log(done + '/' + self.jobIds.length);
-              console.log('######################');
+              console.log(self.polls + ': '
+                          + done + '/' + self.jobIds.length
+                          + ' (' + (new Date().getTime() - self.startTimestamp) + 'ms)');
             });
-            if( self.firstTime ){
-              self.firstTime = false;
+            if( self.polls < 10 ){
+              self.polls += 1;
               self._checkJobs(jobIds);
             }
           },

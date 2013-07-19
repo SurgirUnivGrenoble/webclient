@@ -6,4 +6,11 @@ Status <span ng-bind="status">starting...</span>
   <input type="submit" value="Search">
 </form>
 
-{{ nbJobs }}
+<ul>
+  <li ng-repeat="result in results">
+    {{ result.name }}
+    <span ng-repeat="hit in result.hits">
+      - {{ {0: '', 1: '?'}[hit.status] }}  {{ hit.hits }}/<strong>{{ hit.total_hits }}</strong>
+    </span>
+  </li>
+</ul>
