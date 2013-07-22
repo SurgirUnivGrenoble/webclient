@@ -131,7 +131,7 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
           displayNotices: $scope.displayNotices,
           displayFacettes: $scope.displayFacettes
         };
-        $scope.results = LibraryFind.search($scope.searchInput, params);
+        $scope.response = LibraryFind.search($scope.searchInput, params);
       }
     };
   });

@@ -46,12 +46,27 @@ Status <span ng-bind="status">starting...</span>
   </table>
 </form>
 
+<h3>Results: {{ response.results.length }} / {{ response.hits }}</h3>
 <ul>
-  <li ng-repeat="result in results | orderBy:'-rank'">
+  <li ng-repeat="result in response.results | orderBy:'-rank'">
     "{{ result.ptitle }}" by {{ result.author }} --- {{ result.vendor_name }} / {{ result.rank }}
     <!-- {{ result.name }}
     <span ng-repeat="hit in result.hits">
       - {{ {0: '', 1: '?'}[hit.status] }}  {{ hit.hits }}/<strong>{{ hit.total_hits }}</strong>
     </span> -->
+  </li>
+</ul>
+
+<hr>
+<ul>
+  <li ng-repeat="facette in response.facette">
+    {{ facette.name }} = {{ facette.data.length }}: {{ facette.data[0][1]}} x {{ facette.data[0][0] }}
+  </li>
+</ul>
+
+<hr>
+<ul>
+  <li ng-repeat="base in response.totalhits">
+    {{ base.target_name }} / {{ base.hits }} / {{ base.total_hits }}
   </li>
 </ul>

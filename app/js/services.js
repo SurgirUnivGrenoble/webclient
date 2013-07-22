@@ -26,7 +26,10 @@ angular.module('surgir.libraryfind', []).
     return {
       jobIds: [],
 
-      results: [],
+      response: {
+        hits: 0,
+        results: []
+      },
 
       startTimestamp: 0,
 
@@ -43,21 +46,24 @@ angular.module('surgir.libraryfind', []).
         }
       },
 
+      _elaspedTime: function() {
+        return new Date().getTime() - this.startTimestamp;
+      },
+
       search: function(queryInput, params) {
         var self = this;
-        this.results = [];
         this.startTimestamp = new Date().getTime();
         angular.extend(this, params);
 
         var queryTerm = escape(queryInput);
         var queryCols = this._concatParams(Collections.ids, 'cols', true);
-        var request = '/json/Search?query[string1]=' + queryTerm + queryCols + '&query[field_filter1]=keyword&query[start]=None&query[max]=' + this.maxResults + '&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL&search_group=12&listCG_selected=None&log_cxt=search';
+        var request = '/json/Search?query[string1]=' + queryTerm + queryCols + '&query[max]=' + this.maxResults + '&query[field_filter1]=keyword&query[start]=None&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL&search_group=12&listCG_selected=None&log_cxt=search';
         return $http.get(request).success(function(data) {
           self.jobIds = data.results.jobs_id;
-          console.log('Request done - Starting jobs polling');
+          console.log('Request done - Starting jobs polling ' + self._elaspedTime() + 'ms');
           self._checkJobs(self.jobIds, 0, 1);
         }).then(function(answer) {
-          return self.results;
+          return self.response;
         });
       },
 
@@ -94,9 +100,9 @@ angular.module('surgir.libraryfind', []).
             done = done + 1;
           }
         }.bind(this));
-        console.log(pollNb + ': '
+        console.log('Poll ' + pollNb + ' - done: '
                     + done + '/' + this.jobIds.length
-                    + ' (' + (new Date().getTime() - this.startTimestamp) + 'ms)');
+                    + ' (' + this._elaspedTime() + 'ms)');
       },
 
       _getRecords: function(stopSearch) {
@@ -109,9 +115,10 @@ angular.module('surgir.libraryfind', []).
                       + '&with_facette=' + this.displayFacettes
                       + '&page=1&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search';
         $http.get(request).success(function(data) {
-          console.log(data.results)
-          self.results.length = 0;
-          self.results.push.apply(self.results, data.results.results)
+          console.log(data.results);
+          angular.extend(self.response, data.results);
+          // self.results.length = 0;
+          // self.results.push.apply(self.results, data.results.results)
         });
       }
     }
