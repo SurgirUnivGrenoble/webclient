@@ -109,6 +109,7 @@ angular.module('surgir.libraryfind', []).
         var request = '/json/GetJobRecord?' + this._concatParams(this.jobIds, 'id') + '&stop_search=' + stopSearch + '&max=100&page=1&sort=relevance&page_size=25&notice_display=0&with_facette=1&log_action_txt=&log_cxt_txt=&log_cxt=search';
         $http.get(request).success(function(data) {
           console.log(data.results)
+          self.results.length = 0;
           self.results.push.apply(self.results, data.results.results)
         });
       }
