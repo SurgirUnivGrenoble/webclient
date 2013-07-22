@@ -7,9 +7,10 @@ angular.module('surgir.libraryfind', []).
   factory('Collections', function($http) {
     var collections = {
       ids: [],
-      fetch: function() {
+      fetch: function(groupName) {
         var self = this;
-        $http.get('/json/GetGroupMembers?name=Partout').success(function(data) {
+        self.ids.length = 0;
+        $http.get('/json/GetGroupMembers?name=' + groupName).success(function(data) {
           var rawIds = data.results.member_ids;
           for (var i=0; i<rawIds.length; i++) {
             self.ids.push(rawIds[i].substr(1));
@@ -18,7 +19,7 @@ angular.module('surgir.libraryfind', []).
         return this;
       }
     };
-    return collections.fetch();
+    return collections;
   }).
 
   factory('LibraryFind', function($http, $timeout, Collections) {
