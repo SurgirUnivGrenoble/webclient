@@ -14,23 +14,41 @@ Status <span ng-bind="status">starting...</span>
   <h3>Parameters</h3>
   <table>
     <tr>
-      <td>Max results:</td>
+      <td>Max Results:</td>
       <td><input type="text" ng-model="maxResults"></td>
     </tr>
     <tr>
-      <td>Number of polls:</td>
+      <td>Number of Polls:</td>
       <td><input type="text" ng-model="nbPolls"></td>
     </tr>
     <tr>
-      <td>Polling interval (ms):</td>
+      <td>Polling Interval (ms):</td>
       <td><input type="text" ng-model="pollInterval"></td>
+    </tr>
+    <tr>
+      <td>Page Size:</td>
+      <td><input type="text" ng-model="pageSize"></td>
+    </tr>
+    <tr>
+      <td>Retrieve Notices:</td>
+      <td>
+        <input type="radio" ng-model="displayNotices" value="1">Yes
+        <input type="radio" ng-model="displayNotices" value="0">No
+      </td>
+    </tr>
+    <tr>
+      <td>Retrieve Facettes:</td>
+      <td>
+        <input type="radio" ng-model="displayFacettes" value="1">Yes
+        <input type="radio" ng-model="displayFacettes" value="0">No
+      </td>
     </tr>
   </table>
 </form>
 
 <ul>
   <li ng-repeat="result in results | orderBy:'-rank'">
-    "{{ result.ptitle }}" '{{ result.title }}' by {{ result.author }} --- {{ result.vendor_name }} / {{ result.rank }}
+    "{{ result.ptitle }}" by {{ result.author }} --- {{ result.vendor_name }} / {{ result.rank }}
     <!-- {{ result.name }}
     <span ng-repeat="hit in result.hits">
       - {{ {0: '', 1: '?'}[hit.status] }}  {{ hit.hits }}/<strong>{{ hit.total_hits }}</strong>

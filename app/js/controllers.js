@@ -110,8 +110,11 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
     $scope.group = 'Partout'
     $scope.searchInput = 'oregon';
     $scope.maxResults = 25;
-    $scope.nbPolls = 10;
-    $scope.pollInterval = 2000;
+    $scope.nbPolls = 5;
+    $scope.pollInterval = 1000;
+    $scope.pageSize = 25;
+    $scope.displayNotices = 0;
+    $scope.displayFacettes = 1;
 
     $scope.ids = Collections.ids;
 
@@ -120,10 +123,15 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
 
     $scope.submitSearch = function() {
       if( $scope.searchInput ){
-        $scope.results = LibraryFind.search($scope.searchInput,
-                                            $scope.maxResults,
-                                            $scope.nbPolls,
-                                            $scope.pollInterval);
+        var params = {
+          maxResults: $scope.maxResults,
+          nbPolls: $scope.nbPolls,
+          pollInterval: $scope.pollInterval,
+          pageSize: $scope.pageSize,
+          displayNotices: $scope.displayNotices,
+          displayFacettes: $scope.displayFacettes
+        };
+        $scope.results = LibraryFind.search($scope.searchInput, params);
       }
     };
   });
