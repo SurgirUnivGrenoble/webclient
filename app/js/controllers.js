@@ -113,7 +113,6 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
     $scope.nbPolls = 5;
     $scope.pollInterval = 1000;
     $scope.pageSize = 25;
-    $scope.displayNotices = 0;
     $scope.displayFacettes = 1;
 
     $scope.ids = Collections.ids;
@@ -128,10 +127,13 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
           nbPolls: $scope.nbPolls,
           pollInterval: $scope.pollInterval,
           pageSize: $scope.pageSize,
-          displayNotices: $scope.displayNotices,
           displayFacettes: $scope.displayFacettes
         };
         $scope.response = LibraryFind.search($scope.searchInput, params);
       }
+    };
+
+    $scope.getNotice = function(index) {
+      $scope.notice = LibraryFind.getRecordNotice(index + 1);
     };
   });

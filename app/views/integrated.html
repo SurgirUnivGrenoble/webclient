@@ -30,13 +30,6 @@ Status <span ng-bind="status">starting...</span>
       <td><input type="text" ng-model="pageSize"></td>
     </tr>
     <tr>
-      <td>Retrieve Notices:</td>
-      <td>
-        <input type="radio" ng-model="displayNotices" value="1">Yes
-        <input type="radio" ng-model="displayNotices" value="0">No
-      </td>
-    </tr>
-    <tr>
       <td>Retrieve Facettes:</td>
       <td>
         <input type="radio" ng-model="displayFacettes" value="1">Yes
@@ -48,7 +41,8 @@ Status <span ng-bind="status">starting...</span>
 
 <h3>Results: {{ response.results.length }} / {{ response.hits }}</h3>
 <ul>
-  <li ng-repeat="result in response.results | orderBy:'-rank'">
+  <li ng-repeat="result in response.results">
+    <a href="" ng-click="getNotice($index)">GET</a>
     "{{ result.ptitle }}" by {{ result.author }} --- {{ result.vendor_name }} / {{ result.rank }}
     <!-- {{ result.name }}
     <span ng-repeat="hit in result.hits">
@@ -58,15 +52,29 @@ Status <span ng-bind="status">starting...</span>
 </ul>
 
 <hr>
-<ul>
-  <li ng-repeat="facette in response.facette">
-    {{ facette.name }} = {{ facette.data.length }}: {{ facette.data[0][1]}} x {{ facette.data[0][0] }}
-  </li>
-</ul>
+<h3>Notice</h3>
+<h4>{{ notice.ptitle }}</h4> by {{ notice.author }}
+<p>Published by {{ notice.publisher }} in {{ notice.date }}</p>
+<p>Abstract: {{ notice.abstract }}</p>
+<p>Subjects: {{ notice.subject }}</p>
+<p>Type: {{ notice.material_type }} - lang: {{ notice.lang }}</p>
+<p>Collection: {{ notice.vendor_name}}</p>
+<p>ID: {{ notice.id }}</p>
+<p>Source: {{ notice.source }}</p>
+<p>URL: {{ notice.direct_url }}</p>
 
 <hr>
+<h4>Facettes</h4>
+<div ng-repeat="facette in response.facette">
+  {{ facette.name }}:
+  <select ng-model="facette_filter" ng-options="val[0] for val in facette.data"></select>
+  <!-- {{ facette.name }} = {{ facette.data.length }}: {{ facette.data[0][1]}} x {{ facette.data[0][0] }} -->
+</div>
+
+<hr>
+<h4>Bases</h4>
 <ul>
   <li ng-repeat="base in response.totalhits">
-    {{ base.target_name }} / {{ base.hits }} / {{ base.total_hits }}
+    {{ base.target_name }} : {{ base.hits }} / {{ base.total_hits }}
   </li>
 </ul>
