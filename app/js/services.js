@@ -26,6 +26,8 @@ angular.module('surgir.libraryfind', []).
     return {
       jobIds: [],
 
+      pastDoneJobs: 0,
+
       response: {
         hits: 0,
         results: []
@@ -52,6 +54,7 @@ angular.module('surgir.libraryfind', []).
 
       search: function(queryInput, params) {
         var self = this;
+        this.pastDoneJobs = 0;
         this.startTimestamp = new Date().getTime();
         angular.extend(this, params);
 
@@ -74,10 +77,14 @@ angular.module('surgir.libraryfind', []).
             var request = '/json/CheckJobStatus?' + self._concatParams(jobIds, 'id');
             $http.get(request).success(function(data) {
               pollNb += 1;
-              self._displayJobResults(data.results, pollNb);
+              var doneJobs = self._getDoneJobs(data.results);
+              self._logPoll(doneJobs, pollNb);
               if( pollNb < self.nbPolls ){
                 self._checkJobs(jobIds, pollNb);
-                self._getRecords(0);
+                if( self.pastDoneJobs < doneJobs ){
+                  self.pastDoneJobs = doneJobs;
+                  self._getRecords(0);
+                }
               } else {
                 self._getRecords(1);
               }
@@ -86,20 +93,15 @@ angular.module('surgir.libraryfind', []).
           reqDelay);
       },
 
-      _displayJobResults: function(results, pollNb) {
+      _getDoneJobs: function(results) {
         var done = 0;
-        results.forEach(function(result) {
-          // if( !this.results.hasOwnProperty(result.job_id) ){
-          //   this.results[result.job_id] = {
-          //     name: result.target_name,
-          //     hits: []
-          //   }
-          // }
-          // this.results[result.job_id].hits.push(result)
-          if( ! result.status ) {
-            done = done + 1;
-          }
-        }.bind(this));
+        for( var i=0 ; i < results.length ; i++) {
+          if( ! results[i].status ) { done += 1 }
+        }
+        return done;
+      },
+
+      _logPoll: function(done, pollNb) {
         console.log('Poll ' + pollNb + ' - done: '
                     + done + '/' + this.jobIds.length
                     + ' (' + this._elaspedTime() + 'ms)');
@@ -115,7 +117,11 @@ angular.module('surgir.libraryfind', []).
                       + '&with_facette=' + this.displayFacettes
                       + '&page=1&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search';
         $http.get(request).success(function(data) {
-          console.log('New results (stop_search=' + stopSearch + ')')
+          if( stopSearch ) {
+            console.log('Final results')
+          } else {
+            console.log('New results')
+          }
           console.log(data.results);
           angular.extend(self.response, data.results);
           // self.results.length = 0;
