@@ -12,4 +12,14 @@ describe('Surgir Client', function() {
     expect(element('h1').text()).toEqual('Surgir');
   });
 
+  describe('Home', function() {
+    describe('when querying some terms', function() {
+      it('should go the results view', function() {
+        input('searchInput').enter('some terms');
+        element('[type=submit]').click()
+        expect(browser().location().url()).toBe('/results');
+      });
+    });
+  });
+
 });
