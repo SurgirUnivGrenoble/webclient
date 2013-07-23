@@ -59,7 +59,7 @@ Status <span ng-bind="status">starting...</span>
 <p>Subjects: {{ notice.subject }}</p>
 <p>Type: {{ notice.material_type }} - lang: {{ notice.lang }}</p>
 <p>Collection: {{ notice.vendor_name}}</p>
-<p>ID: {{ notice.id }}</p>
+<p>ID: <a href="" ng-click="getPermalinkNotice(notice)">{{ notice.id }}</a></p>
 <p>Source: {{ notice.source }}</p>
 <p>URL: {{ notice.direct_url }}</p>
 

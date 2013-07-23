@@ -136,4 +136,9 @@ angular.module('surgir.controllers', ['surgir.libraryfind']).
     $scope.getNotice = function(index) {
       $scope.notice = LibraryFind.getRecordNotice(index + 1);
     };
+
+    $scope.getPermalinkNotice = function(notice) {
+      $scope.notice = {}
+      $scope.notice = LibraryFind.getPermalinkNotice(notice.id)
+    }
   });
