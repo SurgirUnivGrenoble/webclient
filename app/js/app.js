@@ -5,5 +5,7 @@ angular.module('surgir', ['surgir.search']).
     $routeProvider.
       when('/', {templateUrl: 'views/home.html'}).
       when('/results', {templateUrl: 'views/results.html'}).
-      otherwise({redirectTo: '/'})
+      when('/results/:resultId', {templateUrl: 'views/notice.html'}).
+      when('/notice/:permalink', {templateUrl: 'views/notice.html'}).
+      otherwise({redirectTo: '/'});
   }]);
