@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('surgir.search', ['surgir.config']).
-  factory('Collections',
+angular.module('surgir.search').factory('Collections',
   ['$http', 'CollectionGroupConfig', function($http, CollectionGroup) {
     return {
       ids: [],
