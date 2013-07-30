@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Run gjslint on javascript files in project and tests.
+
+echo '\n***\n*** Checking app\n***'
+gjslint -r app/js
+status=$?
+
+echo '\n***\n*** Checking end2end tests\n***'
+gjslint -r test/e2e
+status=`expr $status + $?`
+
+echo '\n***\n*** Checking unit tests\n***'
+gjslint -r test/unit
+status=`expr $status + $?`
+
+exit $status

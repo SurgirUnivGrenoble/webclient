@@ -7,9 +7,9 @@ angular.module('surgir.search').factory('params',
         var firstAmpersand = keepFirstAmpersand || false;
         var paramString = '';
         collection.forEach(function(item) {
-          paramString = paramString.concat('&', formalParam, '[]=', item)
+          paramString = paramString.concat('&', formalParam, '[]=', item);
         });
-        if( firstAmpersand ) {
+        if (firstAmpersand) {
           return paramString;
         } else {
           return paramString.slice(1, paramString.length);
