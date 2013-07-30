@@ -3,8 +3,6 @@
 angular.module('surgir.search').factory('SearchDirector',
   ['$http', '$timeout', 'Collections', function($http, $timeout, Collections) {
     return {
-      pastDoneJobs: 0,
-
       startTimestamp: 0,
 
       _elaspedTime: function() {
@@ -13,7 +11,6 @@ angular.module('surgir.search').factory('SearchDirector',
 
       search: function(queryInput, params) {
         var self = this;
-        this.pastDoneJobs = 0;
         this.startTimestamp = new Date().getTime();
         angular.extend(this, params);
 
@@ -50,14 +47,6 @@ angular.module('surgir.search').factory('SearchDirector',
             });
           },
           reqDelay);
-      },
-
-      _getDoneJobs: function(results) {
-        var done = 0;
-        for( var i=0 ; i < results.length ; i++) {
-          if( ! results[i].status ) { done += 1 }
-        }
-        return done;
       },
 
       _logPoll: function(done, pollNb) {
