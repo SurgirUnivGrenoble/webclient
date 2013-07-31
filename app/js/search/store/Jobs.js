@@ -15,7 +15,7 @@ angular.module('surgir.search').factory('Jobs',
         return params.concat(this.ids, 'id', keepAmpersand);
       },
 
-      checkNewlyDone: function(jobStatus) {
+      checkDone: function(jobStatus) {
         var newlyDone = this._checkDoneStatus(jobStatus);
         if (newlyDone > this.done) {
           this.done = newlyDone;
@@ -25,8 +25,8 @@ angular.module('surgir.search').factory('Jobs',
         }
       },
 
-      notAllDone: function() {
-        return this.done < this.ids.length;
+      allDone: function() {
+        return this.done == this.ids.length;
       },
 
       _checkDoneStatus: function(jobStatus) {

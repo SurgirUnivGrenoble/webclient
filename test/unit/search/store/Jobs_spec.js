@@ -33,7 +33,7 @@ describe('surgir.search', function() {
 
       it('resets done jobs', function() {
         subject.reset([123, 456, 789]);
-        subject.checkNewlyDone([{status: 0}]);
+        subject.checkDone([{status: 0}]);
         expect(subject.done).toEqual(1);
 
         subject.reset([1, 2, 3]);
@@ -54,35 +54,35 @@ describe('surgir.search', function() {
         });
       });
 
-      describe('#checkNewlyDone', function() {
+      describe('#checkDone', function() {
         it('is false when no job are done', function() {
-          expect(subject.checkNewlyDone([{status: 1}])).toBe(false);
+          expect(subject.checkDone([{status: 1}])).toBe(false);
         });
 
-        it('is true if more jobs are marked as done since previous call',
+        it('is true if more jobs are done since previous call',
         function() {
           var newlyDone =
-                subject.checkNewlyDone([{status: 0}, {status: 1}, {status: 0}]);
+                subject.checkDone([{status: 0}, {status: 1}, {status: 0}]);
           expect(newlyDone).toBe(true);
         });
 
         it('is false otherwise', function() {
-          subject.checkNewlyDone([{status: 0}, {status: 1}, {status: 0}]);
+          subject.checkDone([{status: 0}, {status: 1}, {status: 0}]);
           var newlyDone =
-                subject.checkNewlyDone([{status: 0}, {status: 1}, {status: 0}]);
+                subject.checkDone([{status: 0}, {status: 1}, {status: 0}]);
           expect(newlyDone).toBe(false);
         });
       });
 
-      describe('#notAllDone', function() {
-        it('is true when there are less done jobs than job ids', function() {
-          subject.checkNewlyDone([{status: 0}, {status: 1}, {status: 0}]);
-          expect(subject.notAllDone()).toBe(true);
+      describe('#allDone', function() {
+        it('is true when done jobs equal the number of jobs', function() {
+          subject.checkDone([{status: 0}, {status: 0}, {status: 0}]);
+          expect(subject.allDone()).toBe(true);
         });
 
-        it('is false when done jobs equal the number of jobs', function() {
-          subject.checkNewlyDone([{status: 0}, {status: 0}, {status: 0}]);
-          expect(subject.notAllDone()).toBe(false);
+        it('is false otherwise', function() {
+          subject.checkDone([{status: 0}, {status: 1}, {status: 0}]);
+          expect(subject.allDone()).toBe(false);
         });
       });
     });

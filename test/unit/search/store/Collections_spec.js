@@ -21,6 +21,14 @@ describe('surgir.search', function() {
         expect(collections.ids).toEqual(['1', '31']);
       });
     });
+
+    describe('#asParamString', function() {
+      it('returns collection ids as a parameter string', function() {
+        collections.ids = ['1', '31'];
+        expect(collections.asParamString()).toEqual('cols[]=1&cols[]=31');
+        expect(collections.asParamString(true)).toEqual('&cols[]=1&cols[]=31');
+      });
+    });
   });
 
 });

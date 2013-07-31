@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('surgir.search').factory('Collections',
-  ['$http', function($http) {
+  ['$http', 'params', function($http, params) {
     return {
       ids: [],
 
@@ -14,6 +14,10 @@ angular.module('surgir.search').factory('Collections',
               this.ids.push(rawIds[i].substr(1));
             }
           }.bind(this));
+      },
+
+      asParamString: function(keepAmpersand) {
+        return params.concat(this.ids, 'cols', keepAmpersand);
       }
     };
   }]);
