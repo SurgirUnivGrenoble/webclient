@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('surgir.search').factory('Collections',
-  ['$http', 'params', function($http, params) {
+  ['$http', 'Params', function($http, params) {
     return {
       ids: [],
 

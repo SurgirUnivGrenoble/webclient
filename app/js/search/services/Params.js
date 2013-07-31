@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir.search').factory('params',
+angular.module('surgir.search').factory('Params',
   [function() {
     return {
       concat: function(collection, formalParam, keepFirstAmpersand) {

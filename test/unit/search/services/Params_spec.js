@@ -1,12 +1,12 @@
 describe('surgir.search', function() {
   beforeEach(module('surgir.search'));
 
-  describe('params', function() {
+  describe('Params', function() {
     var subject;
 
     beforeEach(
       inject(function($injector) {
-        subject = $injector.get('params');
+        subject = $injector.get('Params');
       })
     );
 

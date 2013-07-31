@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('surgir.search').factory('Jobs',
-  ['params', function(params) {
+  ['Params', function(params) {
     return {
       ids: [],
       done: 0,
