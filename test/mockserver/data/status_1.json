@@ -1,0 +1,24 @@
+{
+  "results": [{
+    "hits": 14,
+    "record_id": 686815,
+    "timestamp": "1372865869.85518",
+    "target_name": "Odyss\u00e9e - biblioth\u00e8ques UPMF-Stendhal",
+    "thread_id": 21298,
+    "total_hits": 14,
+    "job_id": 1321154,
+    "status": 0,
+    "error": ""
+  }, {
+    "hits": 25,
+    "record_id": 686816,
+    "timestamp": "1372865869.82509",
+    "target_name": "Rugbis - biblioth\u00e8ques UJF-INP",
+    "thread_id": 21299,
+    "total_hits": 55,
+    "job_id": 1321155,
+    "status": 0,
+    "error": ""
+  }],
+  "error": 0
+}

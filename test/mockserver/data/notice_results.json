@@ -1,0 +1,456 @@
+{
+  "message": "",
+  "results": {
+    "previous": false,
+    "totalhits": [{
+      "status": 0,
+      "url": "http://www.sciencedirect.com",
+      "hits": 25,
+      "job_id": "1359776",
+      "target_name": "Science Direct",
+      "id": 43,
+      "total_hits": 137641
+    }, {
+      "status": 0,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= bth",
+      "hits": 25,
+      "job_id": "1359741",
+      "target_name": "Business Source Complete",
+      "id": 19,
+      "total_hits": 130817
+    }, {
+      "status": 0,
+      "url": "http://onlinelibrary.wiley.com",
+      "hits": 25,
+      "job_id": "1359778",
+      "target_name": "Wiley",
+      "id": 25,
+      "total_hits": 90566
+    }, {
+      "status": 0,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= pcl",
+      "hits": 25,
+      "job_id": "1359766",
+      "target_name": "Pascal",
+      "id": 21,
+      "total_hits": 52732
+    }, {
+      "status": 0,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb=sih",
+      "hits": 25,
+      "job_id": "1359772",
+      "target_name": "SocINDEX",
+      "id": 14,
+      "total_hits": 21030
+    }, {
+      "status": 0,
+      "url": "",
+      "hits": 25,
+      "job_id": "1359789",
+      "target_name": "Web of science",
+      "id": 59,
+      "total_hits": 15825
+    }, {
+      "status": 0,
+      "url": "http://ovidsp.ovid.com/ovidweb.cgi?T=JS&MODE=ovid&PAGE=main&NEWS=n&DBC=y&D=ccall98",
+      "hits": 25,
+      "job_id": "1359746",
+      "target_name": "Current Contents",
+      "id": 38,
+      "total_hits": 11493
+    }, {
+      "status": 0,
+      "url": "http://www.ndltd.org/serviceproviders/scirus-etd-search",
+      "hits": 25,
+      "job_id": "1359759",
+      "target_name": "NDLTD (Networked Digital Library of Theses and Dissertations Union Catalog)",
+      "id": 36,
+      "total_hits": 4603
+    }, {
+      "status": 0,
+      "url": "http://www.hti.umich.edu/",
+      "hits": 25,
+      "job_id": "1359756",
+      "target_name": "Humanities Text Initiative",
+      "id": 34,
+      "total_hits": 3550
+    }, {
+      "status": 0,
+      "url": "http://www.hathitrust.org/",
+      "hits": 25,
+      "job_id": "1359784",
+      "target_name": "Hathi Trust",
+      "id": 53,
+      "total_hits": 3047
+    }, {
+      "status": 0,
+      "url": "http://gateway.ovid.com/ovidweb.cgi?T=JS&MODE=ovid&PAGE=main&NEWS=n&DBC=y&D=insz",
+      "hits": 25,
+      "job_id": "1359782",
+      "target_name": "Inspec",
+      "id": 16,
+      "total_hits": 1679
+    }, {
+      "status": 0,
+      "url": "http://www.sudoc.abes.fr",
+      "hits": 25,
+      "job_id": "1359774",
+      "target_name": "Sudoc",
+      "id": 26,
+      "total_hits": 1567
+    }, {
+      "status": 0,
+      "url": "http://search.driver.research-infrastructures.eu/",
+      "hits": 25,
+      "job_id": "1359747",
+      "target_name": "Driver (Digital Repository Infrastructure Vision for European Research)",
+      "id": 40,
+      "total_hits": 625
+    }, {
+      "status": 0,
+      "url": "http://repec.org/",
+      "hits": 25,
+      "job_id": "1359768",
+      "target_name": "Repec",
+      "id": 35,
+      "total_hits": 328
+    }, {
+      "status": 0,
+      "url": "http://www.ncbi.nlm.nih.gov/pubmed/",
+      "hits": 25,
+      "job_id": "1359765",
+      "target_name": "PubMed",
+      "id": 28,
+      "total_hits": 325
+    }, {
+      "status": 0,
+      "url": "http://www.doaj.org/doaj?func=searchArticles",
+      "hits": 25,
+      "job_id": "1359748",
+      "target_name": "DOAJ Articles (Directory of Open Access Journals)",
+      "id": 30,
+      "total_hits": 110
+    }, {
+      "status": 0,
+      "url": "http://www.gutenberg.org/",
+      "hits": 25,
+      "job_id": "1359787",
+      "target_name": "Project Gutenberg",
+      "id": 50,
+      "total_hits": 30
+    }, {
+      "status": 0,
+      "url": "http://springerlink.com",
+      "hits": 25,
+      "job_id": "1359771",
+      "target_name": "Springer",
+      "id": 24,
+      "total_hits": 25
+    }, {
+      "status": 0,
+      "url": "gallica.bnf.fr/?lang=FR",
+      "hits": 21,
+      "job_id": "1359754",
+      "target_name": "Gallica",
+      "id": 6,
+      "total_hits": 21
+    }, {
+      "status": 0,
+      "url": "http://hal.archives-ouvertes.fr/index.php?halsid=s6etg2bpq58b7govrfq0q80da0&action_todo=search&s_type=simple",
+      "hits": 20,
+      "job_id": "1359757",
+      "target_name": "Hal (Hyper articles en ligne)",
+      "id": 8,
+      "total_hits": 20
+    }, {
+      "status": 0,
+      "url": "http://rugbis.grenet.fr",
+      "hits": 15,
+      "job_id": "1359744",
+      "target_name": "Rugbis - bibliothèques UJF-INP",
+      "id": 31,
+      "total_hits": 15
+    }, {
+      "status": 0,
+      "url": "http://penelope.upmf-grenoble.fr/cgi-bin/abnetclop?ACC=101",
+      "hits": 14,
+      "job_id": "1359760",
+      "target_name": "Odyssée - bibliothèques UPMF-Stendhal",
+      "id": 1,
+      "total_hits": 14
+    }, {
+      "status": 0,
+      "url": "http://www.rechercheisidore.fr/",
+      "hits": 7,
+      "job_id": "1359785",
+      "target_name": "Isidore",
+      "id": 49,
+      "total_hits": 7
+    }, {
+      "status": 0,
+      "url": "http://www.persee.fr/web/guest/home",
+      "hits": 6,
+      "job_id": "1359761",
+      "target_name": "Persée",
+      "id": 22,
+      "total_hits": 6
+    }, {
+      "status": 0,
+      "url": "http://www.doaj.org/doaj?func=findJournals",
+      "hits": 5,
+      "job_id": "1359750",
+      "target_name": "DOAJ Revues (Directory of Open Access Journals)",
+      "id": 5,
+      "total_hits": 5
+    }, {
+      "status": 0,
+      "url": "http://www.scielo.org/php/index.php",
+      "hits": 4,
+      "job_id": "1359770",
+      "target_name": "Scielo",
+      "id": 12,
+      "total_hits": 4
+    }, {
+      "status": 0,
+      "url": "http://doc.rero.ch/",
+      "hits": 4,
+      "job_id": "1359767",
+      "target_name": "Rero Doc",
+      "id": 33,
+      "total_hits": 4
+    }, {
+      "status": 0,
+      "url": "http://www.revues.org/",
+      "hits": 1,
+      "job_id": "1359769",
+      "target_name": "Revues.org",
+      "id": 10,
+      "total_hits": 1
+    }, {
+      "status": 0,
+      "url": "http://www.cairn.info/accueil.php?PG=INIT",
+      "hits": 1,
+      "job_id": "1359742",
+      "target_name": "CAIRN",
+      "id": 17,
+      "total_hits": 1
+    }, {
+      "status": 0,
+      "url": "http://www.erudit.org/recherche/",
+      "hits": 0,
+      "job_id": "1359743",
+      "target_name": "Erudit",
+      "id": 32,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://unr-ra.scholarvox.com/",
+      "hits": -1,
+      "job_id": "1359788",
+      "target_name": "Cyberlibris/scholarvox",
+      "id": 48,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://www.classiques-garnier.com/numerique-bases/index.php?module=Login&action=Login&sid=e1ed7251f0e4c61b351d2e463d32f57e",
+      "hits": -1,
+      "job_id": "1359779",
+      "target_name": "Classiques Garnier numériques",
+      "id": 46,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://spire.sciences-po.fr/spire/",
+      "hits": 0,
+      "job_id": "1359780",
+      "target_name": "Spire (Sciences po institutional repository)",
+      "id": 51,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://www.annee-philologique.com/aph/",
+      "hits": -1,
+      "job_id": "1359781",
+      "target_name": "Année Philologique",
+      "id": 55,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://www.oecd-ilibrary.org/?site=fr",
+      "hits": -1,
+      "job_id": "1359786",
+      "target_name": "SourceOCDE",
+      "id": 54,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= lfh",
+      "hits": -1,
+      "job_id": "1359783",
+      "target_name": "LRC (Literary Reference Center)",
+      "id": 3,
+      "total_hits": 0
+    }, {
+      "status": -3,
+      "url": "http://highwire.stanford.edu/",
+      "hits": 0,
+      "job_id": "1359755",
+      "target_name": "HighWire",
+      "id": 23,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://www.classiques-garnier.com/numerique-bases/index.php?module=Login&action=Login&sid=e1ed7251f0e4c61b351d2e463d32f57e",
+      "hits": 0,
+      "job_id": "1359745",
+      "target_name": "Classiques Garnier numériques non public",
+      "id": 27,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= mzh",
+      "hits": -1,
+      "job_id": "1359758",
+      "target_name": "MLA (Modern Language Association International Bibliography)",
+      "id": 4,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://www.openarchives.it/pleiadi/",
+      "hits": 0,
+      "job_id": "1359762",
+      "target_name": "Pleiadi",
+      "id": 44,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= psyh",
+      "hits": -1,
+      "job_id": "1359763",
+      "target_name": "PsycINFO",
+      "id": 11,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= pdh",
+      "hits": -1,
+      "job_id": "1359764",
+      "target_name": "PsycARTICLES",
+      "id": 9,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= fcs",
+      "hits": -1,
+      "job_id": "1359753",
+      "target_name": "Francis",
+      "id": 20,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= eric",
+      "hits": -1,
+      "job_id": "1359752",
+      "target_name": "Eric (Education Resource Information Center)",
+      "id": 2,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb= ecn",
+      "hits": -1,
+      "job_id": "1359751",
+      "target_name": "Econlit",
+      "id": 18,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://spire.sciences-po.fr/spire/",
+      "hits": 0,
+      "job_id": "1359773",
+      "target_name": "Spire (Sciences po institutional repository)",
+      "id": 37,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://dumas.ccsd.cnrs.fr/",
+      "hits": 0,
+      "job_id": "1359749",
+      "target_name": "Dumas (Dépôt Universitaire de Mémoires Après Soutenance)",
+      "id": 42,
+      "total_hits": 0
+    }, {
+      "status": -2,
+      "url": "http://online.sagepub.com/",
+      "hits": -1,
+      "job_id": "1359775",
+      "target_name": "SAGE",
+      "id": 41,
+      "total_hits": 0
+    }, {
+      "status": 0,
+      "url": "http://tel.archives-ouvertes.fr",
+      "hits": 0,
+      "job_id": "1359777",
+      "target_name": "Tel (Thèses en ligne)",
+      "id": 13,
+      "total_hits": 0
+    }],
+    "page": null,
+    "current": {
+      "number": "",
+      "hits": "",
+      "date_end_new": "",
+      "format": "",
+      "ptitle": "Oregon school laws",
+      "category": "",
+      "coverage": "",
+      "isbn": "",
+      "title": "Oregon school laws",
+      "author": "Oregon.",
+      "date_indexed": "",
+      "theme": "",
+      "vendor_url": "http://www.hathitrust.org/",
+      "rights": "",
+      "indice": "",
+      "relation": "",
+      "abstract": "v.",
+      "notice": null,
+      "id": "oai:quod.lib.umich.edu:MIU01-010308521;53;19453",
+      "contributor": "",
+      "availability": "",
+      "rank": "",
+      "date": "",
+      "subject": "Educational law and legislation--Oregon.",
+      "end": "",
+      "page": "",
+      "start": "",
+      "volume": "",
+      "publisher": "Salem",
+      "vendor_name": "Hathi Trust",
+      "holdings": "",
+      "lang": "English",
+      "openurl": "",
+      "issn": "",
+      "direct_url": "http://hdl.handle.net/2027/uc1.b2982335-_-http://hdl.handle.net/2027/uc1.b2982336-_-http://hdl.handle.net/2027/uc1.b2982337-_-http://hdl.handle.net/2027/uc1.b2982338-_-http://hdl.handle.net/2027/uc1.b2982339-_-http://hdl.handle.net/2027/uc1.b2982340-_-http://hdl.handle.net/2027/uc1.b2982341-_-http://hdl.handle.net/2027/uc1.b2982342-_-http://hdl.handle.net/2027/uc1.b2982343-_-http://hdl.handle.net/2027/uc1.b2982344",
+      "issue": "",
+      "examplaires": [],
+      "static_url": "",
+      "actions_allowed": true,
+      "link": "",
+      "thumbnail_url": "",
+      "doi": "",
+      "identifier": "",
+      "material_type": "Livre",
+      "is_available": true,
+      "oclc_num": "",
+      "source": "1901 : http://hdl.handle.net/2027/uc1.b2982335; 1903 : http://hdl.handle.net/2027/uc1.b2982336; 1907 : http://hdl.handle.net/2027/uc1.b2982337; 1909 : http://hdl.handle.net/2027/uc1.b2982338; 1911 : http://hdl.handle.net/2027/uc1.b2982339; 1913 : http://hdl.handle.net/2027/uc1.b2982340; 1915 : http://hdl.handle.net/2027/uc1.b2982341; 1917 : http://hdl.handle.net/2027/uc1.b2982342; 1919 : http://hdl.handle.net/2027/uc1.b2982343; 1921 : http://hdl.handle.net/2027/uc1.b2982344",
+      "callnum": "",
+      "raw_citation": "",
+      "atitle": ""
+    },
+    "next": true,
+    "hits": 548,
+    "facette": null
+  },
+  "error": 0
+}

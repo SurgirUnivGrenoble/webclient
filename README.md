@@ -6,7 +6,7 @@ Install/Deploy
 
 Require Ruby 2 (or a Ruby manager), RubyGems, Bundler.
 
-```bundle install
+```bundle install [--deployment]
 ```
 
 This should install requirements for the basic Rack app, which serves the client application and works as a proxy to a LibraryFind instance.
@@ -23,14 +23,16 @@ It launches the application on `http://localhost:9292`. Port can be configured w
 Test
 ----
 
-Require [Karma](http://karma-runner.github.io/0.8/index.html) (install with npm). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
+Require [Karma](http://karma-runner.github.io/0.8/index.html) (install with npm, see `config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
 
 Unit tests: run `scripts/test.sh` (require Chrome or another navigator)
 
 End2end tests:
 
-- launch webserver with `scripts/web-server.js` (require node.js)
-- run `scripts/e2e-test.sh` or open a browser at `http://localhost:8000/test/e2e/runner.html`
+There is a small test server serving the application and mock data in `test/mockserver`. This is useful for integration tests as well as for manual tests, when a VPN connection to the LibraryFind instance is not desired. It runs on `http://localhost:9293` (and not 9292).
+
+- `cd test/mockserver && rackup`
+- run `scripts/e2e-test.sh` or open a browser at `http://localhost:9293/test`
 
 Technical Notes
 ---------------
@@ -52,8 +54,9 @@ Controllers:
 
 Services:
 
-- SearchService: initiates and drives a search request (in particular the jobs polling process)
-- Collections: retrieve ids for all collections, from the 'Partout' group
-- Jobs: memoize jobs id for a search
-- Records: a service which retrieves search results as a list of records
-- Notice: a service which retrieves the details of one record, from a search or by permalink
+- SearchDirector: initiate and drive a search request (in particular the jobs polling process)
+- Collections: retrieve collections ids, from the group defined in config
+- Jobs: store jobs id for a search
+- Results: store search results
+- RecordRetriever: retrieve search results or search record after jobs are done
+- Notice: a service which retrieves a record by permalink
