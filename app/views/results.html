@@ -1,15 +1,14 @@
 <section class="results">
   <header>
-    <h2>Résultats</h2>
+    <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
   </header>
   <ul class="results-list">
-    <li>
-      <a href="#/results/1">
-        <h3>Standart Brothers Ltd. employees</h3>
-        <strong>Adam Curry</strong>
-      </a>
+    <li ng-repeat="result in response.results">
+      <h3><a href="#/results/{{$index}}">{{ result.ptitle }}</a></h3>
+      par <strong>{{ result.author }}</strong> --- {{ result.vendor_name }} / {{ result.rank }}
     </li>
   </ul>
+
 </section>
 <nav class="filters">
   <h3>Filtrer les résultats</h3>
