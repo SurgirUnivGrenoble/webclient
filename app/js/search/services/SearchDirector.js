@@ -27,12 +27,10 @@ angular.module('surgir.search').factory('SearchDirector',
               var newlyDoneJobs = Jobs.checkDone(data.results);
               if (this._stopPolling(pollNb + 1)) {
                 Records.fetchFinalResults();
-                // self._getRecords(1);
               } else {
                 this._pollJobs(request, pollNb + 1, search.pollingInterval);
                 if (newlyDoneJobs) {
                   Records.fetchPartialResults();
-                  // self._getRecords(0);
                 }
               }
             }.bind(this));
