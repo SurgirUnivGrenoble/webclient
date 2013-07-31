@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('surgir.search').factory('Collections',
-  ['$http', 'CollectionGroupConfig', function($http, CollectionGroup) {
+  ['$http', function($http) {
     return {
       ids: [],
+
       fetch: function(groupName) {
         this.ids.length = 0;
         $http.get('/json/GetGroupMembers?name=' + groupName).
@@ -13,7 +14,6 @@ angular.module('surgir.search').factory('Collections',
               this.ids.push(rawIds[i].substr(1));
             }
           }.bind(this));
-        return this;
       }
-    }.fetch(CollectionGroup);
+    };
   }]);

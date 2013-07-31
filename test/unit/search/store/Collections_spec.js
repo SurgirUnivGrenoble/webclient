@@ -6,16 +6,18 @@ describe('surgir.search', function() {
 
     beforeEach(
       inject(function($injector, _$httpBackend_) {
-        _$httpBackend_.
+        collections = $injector.get('Collections');
+        $httpBackend = _$httpBackend_;
+        $httpBackend.
           whenGET('/json/GetGroupMembers?name=Bibliotheques_de_Grenoble').
           respond({'results': {'member_ids': ['c1', 'c31']}});
-        collections = $injector.get('Collections');
-        _$httpBackend_.flush();
       })
     );
 
-    describe('#ids', function() {
-      it('should contain the number ids of the group collections', function() {
+    describe('#fetch', function() {
+      it('should retrieve and update the ids of group collections', function() {
+        collections.fetch('Bibliotheques_de_Grenoble');
+        $httpBackend.flush();
         expect(collections.ids).toEqual(['1', '31']);
       });
     });

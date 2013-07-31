@@ -8,4 +8,8 @@ angular.module('surgir', ['surgir.search']).
       when('/results/:resultId', {templateUrl: 'views/notice.html'}).
       when('/notice/:permalink', {templateUrl: 'views/notice.html'}).
       otherwise({redirectTo: '/'});
+  }]).
+  run(['Collections', 'CollectionGroupConfig',
+  function(Collections, CollectionGroup) {
+    Collections.fetch(CollectionGroup);
   }]);
