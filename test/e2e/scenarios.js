@@ -8,11 +8,13 @@ describe('Surgir Client', function() {
     browser().navigateTo('../../app/index.html');
   });
 
-  it('should display the main title', function() {
-    expect(element('h1').text()).toEqual('Surgir');
-  });
-
   describe('Home', function() {
+    describe('initially', function() {
+      it('should display the main title', function() {
+        expect(element('h1').text()).toEqual('Surgir');
+      });
+    });
+
     describe('when querying some terms', function() {
       it('should go the results list', function() {
         input('searchInput').enter('some terms');
@@ -24,7 +26,8 @@ describe('Surgir Client', function() {
 
   describe('Results Workflow', function() {
     beforeEach(function() {
-      browser().navigateTo('#/results');
+      input('searchInput').enter('some terms');
+      element('[type=submit]').click();
     });
 
     describe('Results List', function() {
@@ -38,10 +41,12 @@ describe('Surgir Client', function() {
 
     describe('Notice', function() {
       describe('when selecting the permalink', function() {
+        var uid = 'notice/oai:quod.lib.umich.edu:MIU01-010308521';
         it('should follow the permalink to the detailed notice', function() {
           element("[href$='results/1']").click();
-          element("[href$='notice/oai:quod.lib.umich.edu:MIU01-010308521;53;19453']").click();
-          expect(browser().location().url()).toBe('/notice/oai:quod.lib.umich.edu:MIU01-010308521' + encodeURIComponent(';53;19453'));
+          element("[href$='" + uid + ";53;19453']").click();
+          expect(browser().location().url()).toBe('/' + uid +
+                                              encodeURIComponent(';53;19453'));
         });
       });
     });

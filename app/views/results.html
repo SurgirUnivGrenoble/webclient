@@ -4,7 +4,7 @@
   </header>
   <ul class="results-list">
     <li ng-repeat="result in response.results">
-      <h3><a href="#/results/{{$index}}">{{ result.ptitle }}</a></h3>
+      <h3><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
       par <strong>{{ result.author }}</strong> --- {{ result.vendor_name }} / {{ result.rank }}
     </li>
   </ul>
