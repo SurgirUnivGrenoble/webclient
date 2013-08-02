@@ -1,10 +1,13 @@
 <section class="notice">
   <aside>
     <nav><a href="#/results">Retour</a></nav>
-    Notice détaillée</aside>
-  <header>
-    <h2>Standart Brothers Ltd. employees</h2>
-    <strong>Adam Curry</strong>
-  </header>
-  <a href="#/notice/oai:quod.lib.umich.edu:MIU01-010308521;53;19453">Permalien</a>
+    Notice détaillée
+  </aside>
+  <article>
+    <h1 class="notice__title">{{ notice.ptitle }}</h1>
+    <div class="notice__author">{{ notice.author | replace }}</div>
+    <div class="notice__publisher">Édition : {{ notice.publisher }}{{ notice.date | lfYear }}</div>
+    <div class="notice__collection">Résultat de : {{ notice.vendor_name }}</div>
+    <a href="#/notice/{{ notice.id }}">Permalien</a>
+  </article>
 </section>

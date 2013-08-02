@@ -6,7 +6,8 @@ angular.module('surgir', ['surgir.search']).
       when('/', {templateUrl: 'views/home.html'}).
       when('/results', {templateUrl: 'views/results.html',
                         controller: 'ResultsController'}).
-      when('/results/:resultId', {templateUrl: 'views/notice.html'}).
+      when('/results/:resultId', {templateUrl: 'views/notice.html',
+                        controller: 'RecordController'}).
       when('/notice/:permalink', {templateUrl: 'views/notice.html'}).
       otherwise({redirectTo: '/'});
   }]).

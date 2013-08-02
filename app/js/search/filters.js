@@ -3,12 +3,20 @@
 angular.module('surgir.search').
   filter('replace', function() {
     return function(text) {
-      return text.replace(/;/g, ' - ');
+      if (text) {
+        return text.replace(/;/g, ' - ');
+      } else {
+        return '';
+      }
     }
   }).
 
   filter('lfYear', function() {
     return function(timestamp) {
-      return timestamp.slice(0, 4);
+      if (timestamp) {
+        return timestamp.slice(0, 4);
+      } else {
+        return '';
+      }
     }
   });
