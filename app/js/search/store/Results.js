@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('surgir.search').factory('Results', [function() {
+angular.module('surgir.search').factory('Results',
+['Facets', function(Facets) {
   return {
     response: {
       hits: 0,
@@ -9,6 +10,7 @@ angular.module('surgir.search').factory('Results', [function() {
 
     store: function(results) {
       angular.extend(this.response, results);
+      Facets.extract(results);
     }
   };
 }]);

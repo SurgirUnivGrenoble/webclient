@@ -12,6 +12,14 @@
   </ul>
 
 </section>
-<nav class="filters">
+<nav class="facets">
   <h3>Filtrer les résultats</h3>
+  <div ng-repeat="facet in facets" class="facet">
+    <h4>{{ facet.frenchName }}</h4>
+    <ul class="facet__value">
+      <li ng-repeat="filter in facet.data | limitTo:5">
+        <a href="">{{ filter[0] }}</a> ({{ filter[1] }})
+      </li>
+    </ul>
+  </div>
 </nav>

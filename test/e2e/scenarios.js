@@ -37,6 +37,14 @@ describe('Surgir Client', function() {
           expect(browser().location().url()).toBe('/results/1');
         });
       });
+
+      it('should display the initial number of results', function() {
+        expect(repeater('.result').count()).toBe(10);
+      });
+
+      it('should display facets for filtering results', function() {
+        expect(repeater('.facet').count()).toBe(6);
+      });
     });
 
     describe('Notice', function() {
