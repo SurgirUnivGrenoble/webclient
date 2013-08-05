@@ -13,7 +13,7 @@ describe('surgir.search', function() {
     beforeEach(module(function($provide) {
       $provide.value('SearchParams', mockParams);
       $provide.value('Jobs', {
-        asParamString: function() { return 'id[]=123&id[]=456'; },
+        asParamString: function() { return 'id[]=123&id[]=456'; }
       });
       $provide.value('Results', { store: function() {} });
     }));
