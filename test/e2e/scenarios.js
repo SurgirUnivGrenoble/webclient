@@ -38,6 +38,16 @@ describe('Surgir Client', function() {
         });
       });
 
+      describe('when selecting a facet', function() {
+        it('should update results and facets with the selected facet value ',
+        function() {
+          element(".facet a:contains('Rugbis')").click();
+          expect(repeater('.facet').count()).toBe(6);
+          expect(element(".facet a:contains('Science Direct')").text()).
+            toEqual('Science Direct');
+        });
+      });
+
       it('should display the initial number of results', function() {
         expect(repeater('.result').count()).toBe(10);
       });

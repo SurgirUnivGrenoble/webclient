@@ -2,12 +2,16 @@ describe('surgir.search', function() {
   beforeEach(module('surgir.search'));
 
   describe('RecordRetriever', function() {
-    var service, $httpBackend, mockParams;
+    var service, $httpBackend, mockParams, mockFacets;
 
     mockParams = {
       maxResults: 25,
       pageSize: 10,
       retrieveFacettes: 1
+    };
+
+    mockFacets = {
+      asParamString: function() { return ''; }
     };
 
     beforeEach(module(function($provide) {
@@ -16,6 +20,7 @@ describe('surgir.search', function() {
         asParamString: function() { return 'id[]=123&id[]=456'; }
       });
       $provide.value('Results', { store: function() {} });
+      $provide.value('Facets', mockFacets);
     }));
 
     beforeEach(inject(function($injector, _$httpBackend_) {
@@ -49,6 +54,22 @@ describe('surgir.search', function() {
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.fetchFinalResults();
+        $httpBackend.flush();
+      });
+    });
+
+    describe('#filterResults', function() {
+      it('send a search request with defined filters to the server',
+      function() {
+        spyOn(mockFacets, 'asParamString').
+          andReturn('&filter[]=date--2013&log_action=facette');
+        $httpBackend.expectGET(
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '&max=25&page_size=10&filter[]=date--2013&log_action=facette' +
+          '&with_facette=1&notice_display=0&page=1' +
+          '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
+          respond({});
+        service.filterResults();
         $httpBackend.flush();
       });
     });

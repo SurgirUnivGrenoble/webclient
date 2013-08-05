@@ -19,6 +19,39 @@ describe('surgir.search', function() {
         expect(facets.frenchNames['subject']).toEqual('Sujets');
       });
     });
+
+    describe('#addFilter', function() {
+      it('registers the given facet and value as a filter', function() {
+        facets.addFilter('vendor_name', 'Science Direct');
+        facets.addFilter('date', '2013');
+        expect(facets.selectedFilters).
+          toEqual(['vendor_name--Science%20Direct', 'date--2013']);
+      });
+    });
+
+    describe('#resetFilters', function() {
+      it('resets all filters', function() {
+        facets.addFilter('vendor_name', 'Science Direct');
+        facets.addFilter('date', '2013');
+        facets.resetFilters();
+        expect(facets.selectedFilters).toEqual([]);
+      });
+    });
+
+    describe('#asParamString', function() {
+      it('returns selected filters encoded as a parameter string', function() {
+        facets.addFilter('vendor_name', 'Science Direct');
+        facets.addFilter('date', '2013');
+        expect(facets.asParamString()).toEqual(
+          '&filter[]=vendor_name--Science%20Direct&filter[]=date--2013' +
+          '&log_action=facette');
+      });
+
+      it('returns an empty string when no filters are set', function() {
+        expect(facets.asParamString()).toEqual('');
+      });
+    });
+
   });
 
 });
