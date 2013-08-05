@@ -20,6 +20,7 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
       this.filters.push.apply(this.filters, results.facette);
       this.filters.forEach(function(filter) {
         filter.frenchName = this.frenchNames[filter.name];
+        filter.empty = filter.data.length == 0;
       }.bind(this));
       return this.filters;
     },
@@ -28,16 +29,20 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
       this.selectedFilters.push(facet + '--' + escape(value));
     },
 
+    filtersSelected: function() {
+      return this.selectedFilters.length > 0;
+    },
+
     resetFilters: function() {
       this.selectedFilters.length = 0;
     },
 
     asParamString: function() {
-      if (this.selectedFilters.length == 0) {
-        return '';
-      } else {
+      if (this.filtersSelected()) {
         return params.concat(this.selectedFilters, 'filter', true) +
               '&log_action=facette';
+      } else {
+        return '';
       }
     }
   };

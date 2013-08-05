@@ -6,6 +6,8 @@ angular.module('surgir.search').controller('ResultsController',
     $scope.response = Results.response;
     $scope.facets = Facets.filters;
 
+    $scope.filtered = Facets.filtersSelected.bind(Facets);
+
     $scope.addFilter = function(facet, value) {
       Facets.addFilter(facet, value);
       RecordRetriever.filterResults();
