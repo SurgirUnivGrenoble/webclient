@@ -18,7 +18,8 @@ describe('surgir.search', function() {
         'totalhits': [],
         'hits': 15,
         'results': [],
-        'facette': []
+        'facette': [],
+        'page': []
       };
     }));
 
@@ -55,6 +56,23 @@ describe('surgir.search', function() {
         results.concat({results: [4, 5, 6]});
         results.concat({results: [7, 8, 9]});
         expect(results.pageIndex).toBe(3);
+      });
+    });
+
+    describe('#noMoreResults', function() {
+      it('is true when there are no results', function() {
+        expect(results.noMoreResults()).toBeTruthy();
+      });
+
+      it('is true when all results pages have been retrieved', function() {
+        results.store({page: [1, 2]});
+        results.concat({results: [4, 5, 6]});
+        expect(results.noMoreResults()).toBeTruthy();
+      });
+
+      it('is false otherwise', function() {
+        results.store({page: [1, 2]});
+        expect(results.noMoreResults()).toBeFalsy();
       });
     });
   });

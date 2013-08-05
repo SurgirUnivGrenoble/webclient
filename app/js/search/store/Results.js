@@ -5,7 +5,8 @@ angular.module('surgir.search').factory('Results',
   return {
     response: {
       hits: 0,
-      results: []
+      results: [],
+      page: []
     },
 
     pageIndex: 1,
@@ -19,6 +20,11 @@ angular.module('surgir.search').factory('Results',
     concat: function(results) {
       Array.prototype.push.apply(this.response.results, results.results);
       this.pageIndex += 1;
+    },
+
+    noMoreResults: function() {
+      var pages = this.response.page;
+      return pages.length == 0 || this.pageIndex == pages[pages.length - 1];
     }
   };
 }]);

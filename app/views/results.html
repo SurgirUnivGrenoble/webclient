@@ -10,7 +10,8 @@
       <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
     </li>
   </ul>
-  <a href="" ng-click="showMoreResults()" class="more_results_action">Plus de résultats</a>
+  <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+  <span ng-show="noMoreResults()">Plus de résultats</span>
 </section>
 
 <nav class="facets">

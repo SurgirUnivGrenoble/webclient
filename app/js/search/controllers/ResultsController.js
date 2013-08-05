@@ -11,6 +11,8 @@ angular.module('surgir.search').controller('ResultsController',
       RecordRetriever.fetchMoreResults();
     };
 
+    $scope.noMoreResults = Results.noMoreResults.bind(Results);
+
     $scope.filtered = Facets.filtersSelected.bind(Facets);
 
     $scope.addFilter = function(facet, value) {
