@@ -5,29 +5,42 @@ angular.module('surgir.search').factory('RecordRetriever',
   function($http, search, Jobs, Results, Facets) {
     return {
       fetchPartialResults: function() {
-        this._fetchRecords(0, '');
+        this._fetchNewRecords(0);
       },
 
       fetchFinalResults: function() {
-        this._fetchRecords(1, '');
+        this._fetchNewRecords(1);
       },
 
       filterResults: function() {
-        this._fetchRecords(0, Facets.asParamString());
+        this._fetchNewRecords(0, Facets.asParamString());
       },
 
-      _fetchRecords: function(stopSearch, facetsParam) {
+      _fetchNewRecords: function(stopSearch, facetsParam, pageIndex) {
+        this._fetchRecords(stopSearch, facetsParam, pageIndex).
+          success(function(data) {
+            Results.store(data.results);
+          });
+      },
+
+      fetchMoreResults: function() {
+        this._fetchRecords(0, Facets.asParamString(), Results.pageIndex + 1).
+          success(function(data) {
+            Results.concat(data.results);
+          });
+      },
+
+      _fetchRecords: function(stopSearch, facetsParam, pageIndex) {
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&stop_search=' + stopSearch +
                       '&max=' + search.maxResults +
+                      '&page=' + (pageIndex || 1) +
                       '&page_size=' + search.pageSize +
-                      facetsParam +
+                      (facetsParam || '') +
                       '&with_facette=' + search.retrieveFacettes +
-                      '&notice_display=0&page=1&sort=relevance' +
+                      '&notice_display=0&sort=relevance' +
                       '&log_action_txt=&log_cxt_txt=&log_cxt=search';
-        $http.get(request).success(function(data) {
-          Results.store(data.results);
-        });
+        return $http.get(request);
       },
 
       getRecordNotice: function(pageIndex) {

@@ -2,12 +2,17 @@ describe('surgir.search', function() {
   beforeEach(module('surgir.search'));
 
   describe('RecordRetriever', function() {
-    var service, $httpBackend, mockParams, mockFacets;
+    var service, $httpBackend, mockParams, mockResults, mockFacets;
 
     mockParams = {
       maxResults: 25,
       pageSize: 10,
       retrieveFacettes: 1
+    };
+
+    mockResults = {
+      store: function() {},
+      concat: function() {}
     };
 
     mockFacets = {
@@ -19,7 +24,7 @@ describe('surgir.search', function() {
       $provide.value('Jobs', {
         asParamString: function() { return 'id[]=123&id[]=456'; }
       });
-      $provide.value('Results', { store: function() {} });
+      $provide.value('Results', mockResults);
       $provide.value('Facets', mockFacets);
     }));
 
@@ -38,7 +43,7 @@ describe('surgir.search', function() {
       it('send a search request to the server', function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
-          '&max=25&page_size=10&with_facette=1&notice_display=0&page=1' +
+          '&max=25&page=1&page_size=10&with_facette=1&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.fetchPartialResults();
@@ -50,7 +55,7 @@ describe('surgir.search', function() {
       it('send a search request to the server', function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
-          '&max=25&page_size=10&with_facette=1&notice_display=0&page=1' +
+          '&max=25&page=1&page_size=10&with_facette=1&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.fetchFinalResults();
@@ -65,11 +70,54 @@ describe('surgir.search', function() {
           andReturn('&filter[]=date--2013&log_action=facette');
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
-          '&max=25&page_size=10&filter[]=date--2013&log_action=facette' +
-          '&with_facette=1&notice_display=0&page=1' +
+          '&max=25&page=1&page_size=10&filter[]=date--2013&log_action=facette' +
+          '&with_facette=1&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.filterResults();
+        $httpBackend.flush();
+      });
+    });
+
+    describe('#fetchMoreResults', function() {
+      beforeEach(function() {
+        mockResults.pageIndex = 2;
+      });
+
+      it('sends a search request to fetch the next results by page index',
+      function() {
+        $httpBackend.expectGET(
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '&max=25&page=3&page_size=10&with_facette=1&notice_display=0' +
+          '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
+          respond({});
+        service.fetchMoreResults();
+        $httpBackend.flush();
+      });
+
+      it('tells the Results service to add the new results',
+      function() {
+        spyOn(mockResults, 'concat');
+        $httpBackend.whenGET(
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '&max=25&page=3&page_size=10&with_facette=1&notice_display=0' +
+          '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
+          respond({results: 'something'});
+        service.fetchMoreResults();
+        $httpBackend.flush();
+        expect(mockResults.concat).toHaveBeenCalledWith('something');
+      });
+
+      it('sends a filtering request if filters are set', function() {
+        spyOn(mockFacets, 'asParamString').
+          andReturn('&filter[]=date--2013&log_action=facette');
+        $httpBackend.expectGET(
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '&max=25&page=3&page_size=10&filter[]=date--2013&log_action=facette' +
+          '&with_facette=1&notice_display=0' +
+          '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
+          respond({});
+        service.fetchMoreResults();
         $httpBackend.flush();
       });
     });

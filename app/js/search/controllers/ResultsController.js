@@ -7,6 +7,10 @@ angular.module('surgir.search').controller('ResultsController',
     $scope.response = Results.response;
     $scope.facets = Facets.filters;
 
+    $scope.showMoreResults = function() {
+      RecordRetriever.fetchMoreResults();
+    };
+
     $scope.filtered = Facets.filtersSelected.bind(Facets);
 
     $scope.addFilter = function(facet, value) {
