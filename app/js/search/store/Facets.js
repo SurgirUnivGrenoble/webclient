@@ -21,6 +21,7 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
       this.filters.forEach(function(filter) {
         filter.frenchName = this.frenchNames[filter.name];
         filter.empty = filter.data.length == 0;
+        filter.limit = 5;
       }.bind(this));
       return this.filters;
     },

@@ -18,4 +18,12 @@ angular.module('surgir.search').controller('ResultsController',
       Facets.resetFilters();
       RecordRetriever.filterResults();
     };
+
+    $scope.moreFilterValues = function(facet) {
+      facet.limit = Math.min(facet.limit + 5, facet.data.length);
+    };
+
+    $scope.lessFilterValues = function(facet) {
+      facet.limit = Math.max(facet.limit - 5, 0);
+    };
   }]);

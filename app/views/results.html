@@ -16,9 +16,13 @@
   <h3>Filtrer les résultats</h3>
   <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
   <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
-    <h4>{{ facet.frenchName }}</h4>
-    <ul class="facet__value">
-      <li ng-repeat="filter in facet.data | limitTo:5">
+    <h4>
+      {{ facet.frenchName }}
+      <a href="" ng-click="moreFilterValues(facet)">+</a>
+      <a href="" ng-click="lessFilterValues(facet)">-</a>
+    </h4>
+    <ul>
+      <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
         <a href="" ng-click="addFilter(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
       </li>
     </ul>

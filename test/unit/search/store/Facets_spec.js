@@ -50,6 +50,10 @@ describe('surgir.search', function() {
         expect(firstFacet.empty).toBeFalsy();
         expect(emptyFacet.empty).toBeTruthy();
       });
+
+      it('sets the initial limit to 5 values per facet', function() {
+        expect(firstFacet.limit).toBe(5);
+      });
     });
 
     describe('#addFilter', function() {
