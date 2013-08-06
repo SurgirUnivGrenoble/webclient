@@ -16,7 +16,7 @@ describe('Surgir Client', function() {
     });
 
     describe('when querying some terms', function() {
-      it('should go the results list', function() {
+      it('should go to the results list', function() {
         input('searchInput').enter('some terms');
         element('[type=submit]').click();
         expect(browser().location().url()).toBe('/results');
