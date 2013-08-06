@@ -1,34 +1,14 @@
 'use strict';
 
 angular.module('surgir.search').controller('ResultsController',
-  ['$scope', '$rootScope', 'RecordRetriever', 'Results', 'Facets',
-  function($scope, $rootScope, RecordRetriever, Results, Facets) {
+  ['$scope', '$rootScope', 'RecordRetriever', 'Results',
+  function($scope, $rootScope, RecordRetriever, Results) {
     $rootScope.hideSearchBox = false;
     $scope.response = Results.response;
-    $scope.facets = Facets.filters;
 
     $scope.showMoreResults =
       RecordRetriever.fetchMoreResults.bind(RecordRetriever);
 
     $scope.noMoreResults = Results.noMoreResults.bind(Results);
 
-    $scope.filtered = Facets.filtersSelected.bind(Facets);
-
-    $scope.addFilter = function(facet, value) {
-      Facets.addFilter(facet, value);
-      RecordRetriever.filterResults();
-    };
-
-    $scope.resetFilters = function() {
-      Facets.resetFilters();
-      RecordRetriever.filterResults();
-    };
-
-    $scope.moreFilterValues = function(facet) {
-      facet.limit = Math.min(facet.limit + 5, facet.data.length);
-    };
-
-    $scope.lessFilterValues = function(facet) {
-      facet.limit = Math.max(facet.limit - 5, 0);
-    };
   }]);

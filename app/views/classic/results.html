@@ -14,7 +14,7 @@
   <span ng-show="noMoreResults()">Plus de résultats</span>
 </section>
 
-<nav class="facets">
+<nav class="facets" ng-controller="FiltersController">
   <h3>Filtrer les résultats</h3>
   <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
   <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
@@ -25,7 +25,7 @@
     </h4>
     <ul>
       <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
-        <a href="" ng-click="addFilter(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
+        <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
       </li>
     </ul>
   </div>

@@ -14,6 +14,7 @@
   <span ng-show="noMoreResults()">Plus de résultats</span>
 </section>
 
-<nav>
+<nav class="facets" ng-controller="FiltersController">
   <a href="#/filters">Filtrer ces résultats</a>
+  <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
 </nav>
