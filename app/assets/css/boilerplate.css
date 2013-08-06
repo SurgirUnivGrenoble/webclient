@@ -181,7 +181,19 @@ button, input { line-height: normal; }
  * 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
  */
 
-button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { 
+  cursor: pointer; 
+  -webkit-appearance: none; 
+  *overflow: visible;
+  background: rgb(46, 204, 113);
+  -webkit-appearance: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
 
 /*
  * Consistent box sizing and appearance
@@ -202,12 +214,53 @@ button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
  * 2. Allow only vertical resizing
  */
 
-textarea { overflow: auto; vertical-align: top; resize: vertical; }
+textarea { 
+  overflow: auto; 
+  vertical-align: top; 
+  resize: vertical; 
+}
 
 /* Colors for form validity */
-input:valid, textarea:valid {  }
-input:invalid, textarea:invalid { background-color: #f0dddd; }
-
+input:valid, textarea:valid {
+  border: none;
+  background: rgb(236, 240, 241);
+  color: #e74c3c;
+  font-family: "Open sans", helvetica, sans-serif;
+  font-size: 0.95em;
+  text-indent: 6px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border .25s linear, color .25s linear;
+  -moz-transition: border .25s linear, color .25s linear;
+  -o-transition: border .25s linear, color .25s linear;
+  transition: border .25s linear, color .25s linear;
+  -webkit-backface-visibility: hidden;
+ }
+input:invalid, textarea:invalid { 
+  border: 2px solid #e74c3c;
+  background-color: white;
+  color: #e74c3c;
+  font-family: "Open sans", helvetica, sans-serif;
+  font-size: 0.95em;
+  text-indent: 6px;
+  -webkit-appearance: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border .25s linear, color .25s linear;
+  -moz-transition: border .25s linear, color .25s linear;
+  -o-transition: border .25s linear, color .25s linear;
+  transition: border .25s linear, color .25s linear;
+  -webkit-backface-visibility: hidden;
+}
 
 /* =============================================================================
    Tables
