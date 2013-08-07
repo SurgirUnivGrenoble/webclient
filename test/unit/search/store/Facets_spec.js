@@ -22,22 +22,30 @@ describe('surgir.search', function() {
     });
 
     describe('#extract', function() {
-      var firstFacet, emptyFacet;
+      var firstFacet;
 
       beforeEach(function() {
-        service.extract({facette: [{
-          'name': 'lang',
-          'data': [['English', 27], ['Francais', 8], ['Non determinee', 4]]
-        }, {
-          'name': 'subject',
-          'data': []
-        }]});
+        service.extract({
+          facette: [{
+            name: 'lang',
+            data: [['English', 27], ['Francais', 8], ['Non determinee', 4]]
+          }, {
+            name: 'subject',
+            data: []
+          }, {
+            name: 'vendor_name',
+            data: [['Rugbis', 5]]
+          }],
+          totalhits: [{
+            target_name: 'Rugbis',
+            total_hits: 55
+          }]
+        });
         firstFacet = service.facets[0];
-        emptyFacet = service.facets[1];
       });
 
       it('extracts facets from results', function() {
-        expect(service.facets.length).toEqual(2);
+        expect(service.facets.length).toEqual(3);
         expect(firstFacet.name).toEqual('lang');
         expect(firstFacet.data).
           toEqual([['English', 27], ['Francais', 8], ['Non determinee', 4]]);
@@ -48,12 +56,19 @@ describe('surgir.search', function() {
       });
 
       it('sets empty flag for each facet', function() {
-        expect(firstFacet.empty).toBeFalsy();
+        var emptyFacet = service.facets[1];
         expect(emptyFacet.empty).toBeTruthy();
+        expect(firstFacet.empty).toBeFalsy();
       });
 
       it('sets the initial limit to 5 values per facet', function() {
         expect(firstFacet.limit).toBe(5);
+      });
+
+      it('extracts the number of total hits for the vendor facet', function() {
+        var vendorFacet = service.facets[2];
+        expect(vendorFacet.name).toEqual('vendor_name');
+        expect(vendorFacet.data).toEqual([['Rugbis', '5/55']]);
       });
     });
 

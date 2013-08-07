@@ -22,8 +22,24 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
         facet.frenchName = this.frenchNames[facet.name];
         facet.empty = facet.data.length == 0;
         facet.limit = 5;
+        if (facet.name == 'vendor_name') {
+          this._extractTotalHits(facet.data, results.totalhits);
+        }
       }.bind(this));
       return this.facets;
+    },
+
+    _extractTotalHits: function(vendorData, totalHits) {
+      var vendorName;
+      vendorData.forEach(function(vendor) {
+        vendorName = vendor[0];
+        var vendorHits = totalHits.filter(function(hits) {
+          return hits.target_name == vendorName;
+        });
+        if (vendorHits.length > 0) {
+          vendor[1] = vendor[1] + '/' + vendorHits[0].total_hits;
+        }
+      });
     },
 
     addFilter: function(facet, value) {
