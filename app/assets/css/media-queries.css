@@ -1,0 +1,54 @@
+/* ==|== media queries ======================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  /* Style adjustments for viewports 480px and over go here */
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  /* Style adjustments for viewports 480px and over go here */
+  .form-search {
+    height: 58px;
+    margin: 1px auto 0 8.604540023894861%;
+    padding: 7px;
+    width: 82.58279569892473%;
+  }
+  input.search-query {
+    height: 37px;
+    margin: 0;
+  }
+  button.btn {
+    height: 37px;
+    margin: 0 0 0 6.65625px;
+    padding-top: 0;
+    min-width: 98px;
+  }
+  .search-icon img {
+    margin: 10px auto 0;
+    padding-left: 22px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  /* Style adjustments for viewports 768px and over go here */
+  .form-search {
+    height: 58px;
+    margin: 1px auto 0 8.786578546009151%;
+    width: 82.50295477510028%;
+  }
+  input.search-query {
+    height: 37px;
+    margin: 0 0 0 0.33431222225109797%;
+    width: 81.43245514882763%;
+  }
+  button.btn {
+    height: 37px;
+    margin: 0 0 0 1.732477455235323%;
+  }
+  .search-icon img {
+    margin: -4px auto 0;
+  }
+}
