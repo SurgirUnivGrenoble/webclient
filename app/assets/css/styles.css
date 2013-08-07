@@ -66,3 +66,48 @@ header h2 {
   width: 57.11663935647252%;
   word-wrap: break-word;
 }
+
+h2 {
+  color: rgb(30, 42, 90);
+  float: left;
+  font-family: 'Merriweather', serif;
+  font-size: 1.50em;
+  font-weight: 400;
+  height: auto;
+  line-height: 1.2em;
+  margin: 1px 0 10px;
+  min-height: 26px;
+  min-width: 1.25em;
+  text-align: left;
+  width: 97.50236047151505%;
+  word-wrap: break-word;
+}
+
+p, ul li {
+  clear: both;
+  color: rgb(52, 73, 94);
+  float: left;
+  font-size: 1.13em;
+  line-height: 1.72em;
+  margin: 0;
+  min-height: 0;
+  min-width: 0.5em;
+  text-align: left;
+  width: 99.63112926115794%;
+  word-wrap: break-word;
+}
+
+section.content-row.ng-scope {
+  clear: both;
+  float: left;
+  height: 319px;
+  margin: 20px 20px 20px 0;
+  width: 101.50677710843374%;
+}
+.column-left {
+  float: left;
+  height: 319px;
+  margin: 0 0 0 9.27373887240356%;
+  padding: 10px;
+  width: 46.53689759036144%;
+}
