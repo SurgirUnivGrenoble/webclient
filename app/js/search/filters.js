@@ -19,4 +19,10 @@ angular.module('surgir.search').
         return '';
       }
     }
+  }).
+
+  filter('facetLabel', function() {
+    return function(facetValue) {
+      return facetValue[0] + ' (' + facetValue[1] + ')';
+    }
   });

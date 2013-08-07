@@ -2,9 +2,9 @@
 
 angular.module('surgir.search').factory('Facets', ['Params', function(params) {
   return {
-    filters: [],
+    facets: [],
 
-    selectedFilters: [],
+    selectedFilters: {},
 
     frenchNames: {
      date: 'Dates',
@@ -16,31 +16,46 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
     },
 
     extract: function(results) {
-      this.filters.length = 0;
-      this.filters.push.apply(this.filters, results.facette);
-      this.filters.forEach(function(filter) {
-        filter.frenchName = this.frenchNames[filter.name];
-        filter.empty = filter.data.length == 0;
-        filter.limit = 5;
+      this.facets.length = 0;
+      this.facets.push.apply(this.facets, results.facette);
+      this.facets.forEach(function(facet) {
+        facet.frenchName = this.frenchNames[facet.name];
+        facet.empty = facet.data.length == 0;
+        facet.limit = 5;
       }.bind(this));
-      return this.filters;
+      return this.facets;
     },
 
     addFilter: function(facet, value) {
-      this.selectedFilters.push(facet + '--' + escape(value));
+      this.selectedFilters[facet] = value;
+    },
+
+    removeFilter: function(facet) {
+      delete this.selectedFilters[facet];
+    },
+
+    filterKeys: function() {
+      return Object.keys(this.selectedFilters);
     },
 
     filtersSelected: function() {
-      return this.selectedFilters.length > 0;
+      return this.filterKeys().length > 0;
     },
 
     resetFilters: function() {
-      this.selectedFilters.length = 0;
+      this.filterKeys().forEach(function(filter) {
+        this.removeFilter(filter);
+      }.bind(this));
     },
 
     asParamString: function() {
       if (this.filtersSelected()) {
-        return params.concat(this.selectedFilters, 'filter', true) +
+        var filterParams = [];
+        this.filterKeys().forEach(function(filter) {
+          filterParams.push(filter + '--' +
+                            escape(this.selectedFilters[filter]));
+        }.bind(this));
+        return params.concat(filterParams, 'filter', true) +
               '&log_action=facette';
       } else {
         return '';

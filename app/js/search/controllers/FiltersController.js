@@ -4,21 +4,28 @@ angular.module('surgir.search').controller('FiltersController',
   ['$scope', '$rootScope', '$location', 'RecordRetriever', 'Facets',
   function($scope, $rootScope, $location, RecordRetriever, Facets) {
     $rootScope.hideSearchBox = false;
-    $scope.facets = Facets.filters;
-    $scope.filtered = Facets.filtersSelected.bind(Facets);
+    $scope.facets = Facets.facets;
+    $scope.selectedFilters = Facets.selectedFilters;
 
-    $scope.applyFilters = function() {
-      RecordRetriever.filterResults();
-      $location.path('/results');
-    };
+    $scope.filtered = Facets.filtersSelected.bind(Facets);
 
     $scope.addFilterAndRefresh = function(facet, value) {
       Facets.addFilter(facet, value);
       RecordRetriever.filterResults();
     };
 
-    $scope.addFilter = function(facet, value) {
-      Facets.addFilter(facet, value);
+    $scope.setFilter = function(facet) {
+      var value = $scope.selectedFilters[facet];
+      if (value) {
+        Facets.addFilter(facet, value);
+      } else {
+        Facets.removeFilter(facet);
+      }
+    };
+
+    $scope.applyFilters = function() {
+      RecordRetriever.filterResults();
+      $location.path('/results');
     };
 
     $scope.resetFilters = function() {
