@@ -6,6 +6,7 @@
   <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
   <link rel="stylesheet" href="assets/css/normalize-2.0.1.css" type="text/css">
   <link rel="stylesheet" href="assets/css/foundation.css" type="text/css" />
+  <link rel="stylesheet" href="assets/css/font-awesome.css" type="text/css" />
   <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
@@ -21,11 +22,20 @@
       </div>
     </header>
 
-    <form class="row" ng-submit="submitSearch()" ng-controller="SearchController" ng-hide="hideSearchBox">
-      <input type="text" class="" ng-model="searchInput" placeholder="Rechercher" required>
-      <button type="submit" class="" value="Rechercher">
-      </button>
-    </form>
+    <div class="row">
+      <form ng-submit="submitSearch()" ng-controller="SearchController" ng-hide="hideSearchBox">
+        <div class="large-10 large-centered columns">
+          <div class="row">
+            <div class="large-10 columns">
+              <input type="search" ng-model="searchInput" placeholder="Rechercher">
+            </div>
+            <div class="large-2 columns button_wrapper">
+              <button type="submit"><i class="icon-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
 
     <div ng-view></div>
   </div>

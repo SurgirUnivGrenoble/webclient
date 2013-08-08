@@ -12,6 +12,7 @@ h1, h2 {
 
 .home_banner {
   padding-top: 112px;
+  margin-bottom: 20px;
   width: 100%;
 }
 .big-logo {
@@ -32,6 +33,7 @@ h1, h2 {
   color: rgb(94, 109, 129);
   font-family: 'Open Sans', sans-serif;
   font-size: 21px;
+  font-weight: 400;
   text-transform: uppercase;
   text-align: center;
   text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
@@ -63,7 +65,7 @@ input[type="search"] {
   font-size: 0.875em;
   margin: 0 0 1em 0;
   padding: 0.5em;
-  height: 2.3125em;
+  height: 42px;
   width: 100%;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -74,4 +76,26 @@ input[type="search"] {
   -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out; 
+}
+.button_wrapper {
+  padding-left: 0;
+}
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  background-color: #2ecc71;
+  color: white;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  width: 80%;
+}
+button:hover, button:focus, .button:hover, .button:focus {
+  background-color: #25a25a; 
 }
