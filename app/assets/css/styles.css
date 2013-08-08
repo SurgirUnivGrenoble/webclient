@@ -1,113 +1,77 @@
-body {
-  background: white;
-  font-family: 'Open Sans', helvetica, sans-serif;
-  color: #34495e;
+.wrapper {
+  width: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
 }
 
-.container {
-  height: auto;
-  margin: 0 auto;
-  min-height: 100%;
-  min-width: 0;
-  width: 100%;
-}
-
-header {
-  float: left;
-  height: 249px;
-  margin: 0;
-  width: 100%;
-}
-
-.logo {
-  float: left;
-  height: 241px;
-  margin: 0 0 0 10.919427710843372%;
-  width: 25.48195495849302%;
-}
-.logo img {
-  background-size: contain;
-  float: right;
-  height: 59px;
-  margin: 122px 10px 0 58.506802721088434%;
-}
-
-header h1 {
+h1, h2 {
   color: rgb(30, 42, 90);
-  float: left;
   font-family: 'Merriweather', serif;
-  font-size: 6em;
-  font-weight: 500;
-  height: auto;
-  letter-spacing: 0.02em;
-  line-height: 1em;
-  margin: -22px 0 0 0.12194088855421686%;
-  min-height: 104px;
-  padding: 122px 0 0;
-  text-align: left;
-  width: 57.11663935647252%;
-  word-wrap: break-word;
 }
 
-header h2 {
+.home_banner {
+  padding-top: 112px;
+  width: 100%;
+}
+.big-logo {
+  background-image: url('../img/logo.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-top: 15px;
+}
+.big-banner_title {
+  font-size: 100px;
+  font-weight: 600;
+  line-height: 1;
+  margin: 15px 0 10px;
+  text-align: center;
+  text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
+}
+.big-banner_subtitle {
   color: rgb(94, 109, 129);
-  float: left;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.15em;
-  font-weight: 400;
-  height: auto;
-  line-height: 1.25em;
-  margin: 197px 0 auto -56.96611445783133%;
-  min-height: 40px;
-  min-width: 0.5em;
-  padding: 10px 10px 10px 15px;
-  text-align: left;
+  font-size: 21px;
   text-transform: uppercase;
-  width: 57.11663935647252%;
-  word-wrap: break-word;
+  text-align: center;
+  text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
 }
 
-h2 {
-  color: rgb(30, 42, 90);
-  float: left;
-  font-family: 'Merriweather', serif;
+.normal-title {
   font-size: 1.50em;
   font-weight: 400;
-  height: auto;
-  line-height: 1.2em;
   margin: 1px 0 10px;
-  min-height: 26px;
-  min-width: 1.25em;
-  text-align: left;
-  width: 97.50236047151505%;
-  word-wrap: break-word;
+  line-height: 1.2em;
 }
-
-p, ul li {
+/*p, ul li {
   clear: both;
   color: rgb(52, 73, 94);
   float: left;
   font-size: 1.13em;
   line-height: 1.72em;
   margin: 0;
-  min-height: 0;
-  min-width: 0.5em;
   text-align: left;
-  width: 99.63112926115794%;
-  word-wrap: break-word;
-}
+}*/
 
-section.content-row.ng-scope {
-  clear: both;
-  float: left;
-  height: 319px;
-  margin: 20px 20px 20px 0;
-  width: 101.50677710843374%;
-}
-.column-left {
-  float: left;
-  height: 319px;
-  margin: 0 0 0 9.27373887240356%;
-  padding: 10px;
-  width: 46.53689759036144%;
+/* We use this to get basic styling on all basic form elements */
+input[type="search"] {
+  background-color: rgb(236, 240, 241);
+  font-family: inherit;
+  border: none;
+  color: #34495e;
+  display: block;
+  font-size: 0.875em;
+  margin: 0 0 1em 0;
+  padding: 0.5em;
+  height: 2.3125em;
+  width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out; 
 }
