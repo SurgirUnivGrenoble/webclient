@@ -10,6 +10,12 @@ h1, h2 {
   font-family: 'Merriweather', serif;
 }
 
+p, ul li {
+  color: rgb(52, 73, 94);
+  font-size: 1.13em;
+  line-height: 1.72em;
+}
+
 .home_banner {
   padding-top: 112px;
   margin-bottom: 20px;
@@ -45,15 +51,6 @@ h1, h2 {
   margin: 1px 0 10px;
   line-height: 1.2em;
 }
-/*p, ul li {
-  clear: both;
-  color: rgb(52, 73, 94);
-  float: left;
-  font-size: 1.13em;
-  line-height: 1.72em;
-  margin: 0;
-  text-align: left;
-}*/
 
 /* We use this to get basic styling on all basic form elements */
 input[type="search"] {
