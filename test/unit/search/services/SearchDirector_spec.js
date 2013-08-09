@@ -30,6 +30,7 @@ describe('surgir.search', function() {
       });
       $provide.value('Jobs', mockJobs);
       $provide.value('RecordRetriever', mockRecordRetriever);
+      $provide.value('InProgress', { start: function() {} });
     }));
 
     beforeEach(inject(function($injector, _$httpBackend_, _$timeout_) {

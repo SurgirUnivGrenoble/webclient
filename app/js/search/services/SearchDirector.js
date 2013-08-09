@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('surgir.search').factory('SearchDirector',
-['$http', '$timeout', 'SearchParams', 'Collections', 'Jobs', 'RecordRetriever',
-  function($http, $timeout, search, Collections, Jobs, Records) {
+['$http', '$timeout',
+ 'SearchParams', 'Collections', 'Jobs', 'RecordRetriever', 'InProgress',
+  function($http, $timeout, search, Collections, Jobs, Records, InProgress) {
     return {
       search: function(queryInput) {
         var queryTerm = escape(queryInput);
@@ -14,6 +15,7 @@ angular.module('surgir.search').factory('SearchDirector',
                       '&filter=&sort_value=None&query[mod]=new_search&' +
                       'tab_template=ALL&search_group=12&listCG_selected=None' +
                       '&log_cxt=search';
+        InProgress.start();
         $http.get(request).success(function(data) {
           Jobs.reset(data.results.jobs_id);
           var request = '/json/CheckJobStatus?' + Jobs.asParamString();

@@ -26,6 +26,10 @@ describe('surgir.search', function() {
       });
       $provide.value('Results', mockResults);
       $provide.value('Facets', mockFacets);
+      $provide.value('InProgress', {
+        start: function() {},
+        done: function() {}
+      });
     }));
 
     beforeEach(inject(function($injector, _$httpBackend_) {

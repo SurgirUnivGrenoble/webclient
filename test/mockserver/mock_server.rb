@@ -16,14 +16,17 @@ get '/json/GetGroupMembers' do
 end
 
 get '/json/Search' do
+  sleep 0.5
   send_file dataPath('jobs.json')
 end
 
 get '/json/CheckJobStatus' do
+  sleep 0.5
   send_file dataPath('status_1.json')
 end
 
 get '/json/GetJobRecord' do
+  sleep 0.5
   if params[:notice_display]=='1'
     send_file dataPath('notice_results.json')
   else

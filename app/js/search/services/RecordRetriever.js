@@ -1,11 +1,15 @@
 'use strict';
 
 angular.module('surgir.search').factory('RecordRetriever',
-  ['$http', 'SearchParams', 'Jobs', 'Results', 'Facets',
-  function($http, search, Jobs, Results, Facets) {
+  ['$http', 'SearchParams', 'Jobs', 'Results', 'Facets', 'InProgress',
+  function($http, search, Jobs, Results, Facets, InProgress) {
     return {
       fetchPartialResults: function() {
-        this._fetchNewRecords(0);
+        this._fetchRecords(0).
+          success(function(data) {
+            InProgress.done();
+            Results.store(data.results);
+          });
       },
 
       fetchFinalResults: function() {
@@ -19,6 +23,7 @@ angular.module('surgir.search').factory('RecordRetriever',
       _fetchNewRecords: function(stopSearch, facetsParam, pageIndex) {
         this._fetchRecords(stopSearch, facetsParam, pageIndex).
           success(function(data) {
+            InProgress.done();
             Results.store(data.results);
           });
       },
@@ -26,11 +31,13 @@ angular.module('surgir.search').factory('RecordRetriever',
       fetchMoreResults: function() {
         this._fetchRecords(0, Facets.asParamString(), Results.pageIndex + 1).
           success(function(data) {
+            InProgress.done();
             Results.concat(data.results);
           });
       },
 
       _fetchRecords: function(stopSearch, facetsParam, pageIndex) {
+        InProgress.start();
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&stop_search=' + stopSearch +
                       '&max=' + search.maxResults +

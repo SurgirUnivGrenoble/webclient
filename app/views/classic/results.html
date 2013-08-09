@@ -1,20 +1,23 @@
 <section class="results">
-  <header>
-    <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
-  </header>
-  <ul class="results-list">
-    <li ng-repeat="result in response.results" class="result">
-      <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
-      <div class="result__author">{{ result.author | replace }}</div>
-      <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
-      <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
-    </li>
-  </ul>
-  <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
-  <span ng-show="noMoreResults()">Plus de résultats</span>
+  <div ng-show="hasResults()">
+    <header>
+      <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
+    </header>
+    <ul class="results-list">
+      <li ng-repeat="result in response.results" class="result">
+        <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
+        <div class="result__author">{{ result.author | replace }}</div>
+        <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
+        <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
+      </li>
+    </ul>
+    <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+  </div>
 </section>
 
-<nav class="facets" ng-controller="FiltersController">
+<img src="assets/img/ajax-loader.gif" ng-show="loading()" />
+
+<nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
   <h3>Filtrer les résultats</h3>
   <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
   <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
