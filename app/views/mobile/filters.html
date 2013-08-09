@@ -1,0 +1,14 @@
+<nav class="facets">
+  <h3>Filtrer les résultats</h3>
+  <a href="" ng-click="applyFilters()">Appliquer les filtres</a>
+  <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
+    <h4>
+      {{ facet.frenchName }}
+    </h4>
+    <select ng-model="selectedFilters[facet.name]"
+            ng-options="filter[0] as (filter | facetLabel) for filter in facet.data"
+            ng-change="setFilter(facet.name)">
+      <option value=""></option>
+    </select>
+  </div>
+</nav>
