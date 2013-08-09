@@ -145,7 +145,7 @@ input[type="search"] {
   box-sizing: border-box;
   -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out; 
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
 }
 .button_wrapper {
   padding-left: 0;
@@ -167,5 +167,5 @@ button {
   width: 80%;
 }
 button:hover, button:focus, .button:hover, .button:focus {
-  background-color: #25a25a; 
+  background-color: #25a25a;
 }

@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('surgir.search').controller('FiltersController',
-  ['$scope', '$rootScope', '$location', 'RecordRetriever', 'Facets',
-  function($scope, $rootScope, $location, RecordRetriever, Facets) {
-    $rootScope.hideSearchBox = false;
+  ['$scope', '$location', 'RecordRetriever', 'Facets',
+  function($scope, $location, RecordRetriever, Facets) {
     $scope.facets = Facets.facets;
     $scope.selectedFilters = Facets.selectedFilters;
 
