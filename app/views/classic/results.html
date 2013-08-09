@@ -1,35 +1,40 @@
-<section class="results">
-  <div ng-show="hasResults()">
-    <header>
-      <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
-    </header>
-    <ul class="results-list">
-      <li ng-repeat="result in response.results" class="result">
-        <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
-        <div class="result__author">{{ result.author | replace }}</div>
-        <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
-        <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
-      </li>
-    </ul>
-    <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+<div class="row">
+  <div class="large-8 push-4 columns">
+    <section class="results">
+      <div ng-show="hasResults()">
+        <header>
+          <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
+        </header>
+        <ul class="results-list">
+          <li ng-repeat="result in response.results" class="result">
+            <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
+            <div class="result__author">{{ result.author | replace }}</div>
+            <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
+            <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
+          </li>
+        </ul>
+        <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+      </div>
+    </section>
+    <img src="assets/img/ajax-loader.gif" ng-show="loading()" />
   </div>
-</section>
 
-<img src="assets/img/ajax-loader.gif" ng-show="loading()" />
-
-<nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
-  <h3>Filtrer les résultats</h3>
-  <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
-  <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
-    <h4>
-      {{ facet.frenchName }}
-      <a href="" ng-click="moreFilterValues(facet)">+</a>
-      <a href="" ng-click="lessFilterValues(facet)">-</a>
-    </h4>
-    <ul>
-      <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
-        <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
-      </li>
-    </ul>
+  <div class="large-4 pull-8 columns">
+    <nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
+      <h3>Filtrer les résultats</h3>
+      <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
+      <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
+        <h4>
+          {{ facet.frenchName }}
+          <a href="" ng-click="moreFilterValues(facet)">+</a>
+          <a href="" ng-click="lessFilterValues(facet)">-</a>
+        </h4>
+        <ul>
+          <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
+            <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
