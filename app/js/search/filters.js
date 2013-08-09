@@ -21,6 +21,16 @@ angular.module('surgir.search').
     }
   }).
 
+  filter('yearPublisher', ['lfYearFilter', function(lfYear) {
+    return function(publisher, timestamp) {
+      if (timestamp) {
+        return publisher + ', ' + lfYear(timestamp);
+      } else {
+        return publisher;
+      }
+    }
+  }]).
+
   filter('facetLabel', function() {
     return function(facetValue) {
       return facetValue[0] + ' (' + facetValue[1] + ')';

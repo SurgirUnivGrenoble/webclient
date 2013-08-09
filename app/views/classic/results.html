@@ -1,22 +1,37 @@
 <div class="row">
   <div class="large-8 push-4 columns">
-    <section class="results">
+    <section class="results row">
       <div ng-show="hasResults()">
         <header>
-          <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
+          <h2>Résultats {{ response.results.length }} sur {{ response.hits }}</h2>
         </header>
-        <ul class="results-list">
-          <li ng-repeat="result in response.results" class="result">
-            <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
-            <div class="result__author">{{ result.author | replace }}</div>
-            <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
-            <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
-          </li>
-        </ul>
-        <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+        <div class="results-list">
+          <div ng-repeat="result in response.results" class="result row">
+            <div class="large-2 columns">
+              <img src="http://placekitten.com/g/64/64">
+            </div>
+            <div class="large-10 columns">
+              <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
+              <div class="result__author">{{ result.author | replace }}</div>
+              <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
+              <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
+              <div class="result__subject" ng-show="result.subject"><span class="field_label">Dans :</span> {{ result.subject | replace }}</div>
+              <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-3 large-centered columns">
+            <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
+          </div>
+        </div>
       </div>
     </section>
-    <img src="assets/img/ajax-loader.gif" ng-show="loading()" />
+    <div class="row">
+      <div class="large-1 large-offset-2 columns">
+        <img src="assets/img/ajax-loader.gif" ng-show="loading()" />
+      </div>
+    </div>
   </div>
 
   <div class="large-4 pull-8 columns">
