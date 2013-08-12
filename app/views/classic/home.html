@@ -8,11 +8,11 @@
 </header>
 
 <div class="row">
-  <form ng-submit="submitSearch()" ng-controller="SearchController">
+  <form ng-submit="goToSearch()">
     <div class="large-10 large-centered columns">
       <div class="row">
         <div class="large-10 columns">
-          <input type="search" ng-model="searchInput" placeholder="Rechercher">
+          <input type="search" ui-event="{ focus: 'goToSearch()' }" placeholder="Rechercher">
         </div>
         <div class="large-2 columns button_wrapper">
           <button type="submit"><i class="icon-search"></i></button>

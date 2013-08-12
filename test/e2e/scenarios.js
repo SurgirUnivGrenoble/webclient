@@ -4,20 +4,19 @@
 
 describe('Surgir Client', function() {
 
-  beforeEach(function() {
-    browser().navigateTo('../../app/index.html');
-  });
-
   describe('Home', function() {
+    beforeEach(function() {
+      browser().navigateTo('/');
+    });
+
     describe('initially', function() {
-      it('should display the main title', function() {
-        expect(element('h1').text()).toEqual('Surgir');
+      it('should display the home page', function() {
+        expect(element('[role=banner]').text()).toMatch('Surgir');
       });
     });
 
-    describe('when querying some terms', function() {
-      it('should go to the results list', function() {
-        input('searchInput').enter('some terms');
+    describe('when focusing on the search function', function() {
+      it('should redirect to the search-ready/results page', function() {
         element('[type=submit]').click();
         expect(browser().location().url()).toBe('/results');
       });
@@ -26,8 +25,19 @@ describe('Surgir Client', function() {
 
   describe('Results Workflow', function() {
     beforeEach(function() {
+      browser().navigateTo('/#/results');
       input('searchInput').enter('some terms');
       element('[type=submit]').click();
+    });
+
+    describe('after querying some terms', function() {
+      it('should display the initial number of results', function() {
+        expect(repeater('.result').count()).toBe(10);
+      });
+
+      it('should display facets for filtering results', function() {
+        expect(repeater('.facet').count()).toBe(6);
+      });
     });
 
     describe('Results List', function() {
@@ -54,14 +64,6 @@ describe('Surgir Client', function() {
           expect(element(".facet a:contains('Science Direct')").text()).
             toEqual('Science Direct');
         });
-      });
-
-      it('should display the initial number of results', function() {
-        expect(repeater('.result').count()).toBe(10);
-      });
-
-      it('should display facets for filtering results', function() {
-        expect(repeater('.facet').count()).toBe(6);
       });
     });
 

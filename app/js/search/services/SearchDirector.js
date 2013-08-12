@@ -5,7 +5,10 @@ angular.module('surgir.search').factory('SearchDirector',
  'SearchParams', 'Collections', 'Jobs', 'RecordRetriever', 'InProgress',
   function($http, $timeout, search, Collections, Jobs, Records, InProgress) {
     return {
+      queryInput: '',
+
       search: function(queryInput) {
+        this.queryInput = queryInput;
         var queryTerm = escape(queryInput);
         var request = '/json/Search?query[string1]=' +
                       queryTerm +

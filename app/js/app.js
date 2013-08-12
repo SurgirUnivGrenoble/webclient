@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir', ['surgir.search']);
+angular.module('surgir', ['ui.event', 'surgir.search']);
 
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
@@ -18,7 +18,8 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
 } else {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-      when('/', {templateUrl: 'views/classic/home.html'}).
+      when('/', {templateUrl: 'views/classic/home.html',
+                 controller: 'HomeController'}).
       when('/results', {templateUrl: 'views/classic/results.html',
                         controller: 'ResultsController'}).
       when('/results/:resultId', {templateUrl: 'views/classic/notice.html',
