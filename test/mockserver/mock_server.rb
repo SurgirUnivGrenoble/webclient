@@ -50,6 +50,10 @@ get '/test' do
   redirect to('/test/e2e/runner.html')
 end
 
+get '/test_mobile' do
+  redirect to('/test/e2e/mobile_runner.html')
+end
+
 private
 
 def appPath(filename)
