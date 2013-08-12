@@ -5,7 +5,8 @@ angular.module('surgir', ['ui.event', 'surgir.search']);
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-      when('/', {templateUrl: 'views/mobile/home.html'}).
+      when('/', {templateUrl: 'views/mobile/home.html',
+                 controller: 'HomeController'}).
       when('/results', {templateUrl: 'views/mobile/results.html',
                         controller: 'ResultsController'}).
       when('/filters', {templateUrl: 'views/mobile/filters.html',
