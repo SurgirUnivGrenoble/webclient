@@ -23,13 +23,13 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
         facet.empty = facet.data.length == 0;
         facet.limit = 5;
         if (facet.name == 'vendor_name') {
-          this._extractTotalHits(facet.data, results.totalhits);
+          this._processVendorData(facet.data, results.totalhits);
         }
       }.bind(this));
       return this.facets;
     },
 
-    _extractTotalHits: function(vendorData, totalHits) {
+    _processVendorData: function(vendorData, totalHits) {
       var vendorName;
       vendorData.forEach(function(vendor) {
         vendorName = vendor[0];
@@ -38,7 +38,13 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
         });
         if (vendorHits.length > 0) {
           vendor[1] = vendor[1] + '/' + vendorHits[0].total_hits;
+          vendor.push(vendorHits[0].total_hits);
+        } else {
+          vendor.push(vendor[1]);
         }
+      });
+      vendorData.sort(function(a, b) {
+        return b[2] - a[2];
       });
     },
 

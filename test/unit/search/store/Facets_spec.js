@@ -34,9 +34,12 @@ describe('surgir.search', function() {
             data: []
           }, {
             name: 'vendor_name',
-            data: [['Rugbis', 5]]
+            data: [['Odyssée', 18], ['Rugbis', 5]]
           }],
           totalhits: [{
+            target_name: 'Odyssée',
+            total_hits: 20
+          }, {
             target_name: 'Rugbis',
             total_hits: 55
           }]
@@ -65,10 +68,23 @@ describe('surgir.search', function() {
         expect(firstFacet.limit).toBe(5);
       });
 
-      it('extracts the number of total hits for the vendor facet', function() {
-        var vendorFacet = service.facets[2];
-        expect(vendorFacet.name).toEqual('vendor_name');
-        expect(vendorFacet.data).toEqual([['Rugbis', '5/55']]);
+      describe('on the vendor facet,', function() {
+        it('orders vendors by descending number of total hits', function() {
+          var vendorFacet = service.facets[2];
+          expect(vendorFacet.name).toEqual('vendor_name');
+          expect(vendorFacet.data).toEqual([
+            ['Rugbis', '5/55', 55],
+            ['Odyssée', '18/20', 20]
+          ]);
+        });
+
+        it('appends total hits to each vendor hits',
+        function() {
+          var vendorFacet = service.facets[2];
+          expect(vendorFacet.data[0][1]).toEqual('5/55');
+          expect(vendorFacet.data[1][1]).toEqual('18/20');
+        });
+
       });
     });
 
