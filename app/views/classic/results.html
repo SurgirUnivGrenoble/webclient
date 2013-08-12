@@ -10,7 +10,9 @@
         <div class="results-list">
           <div ng-repeat="result in response.results" class="result row">
             <div class="large-2 columns">
-              <img src="http://placekitten.com/g/64/64">
+              <div class="result__material-icon">
+                <img src="http://placekitten.com/g/64/64">
+              </div>
             </div>
             <div class="large-10 columns">
               <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
