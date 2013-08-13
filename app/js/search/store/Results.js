@@ -23,7 +23,7 @@ angular.module('surgir.search').factory('Results',
     },
 
     noMoreResults: function() {
-      var pages = this.response.page;
+      var pages = this.response.page || [];
       return pages.length == 0 || this.pageIndex == pages[pages.length - 1];
     }
   };

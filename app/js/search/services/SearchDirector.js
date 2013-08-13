@@ -29,7 +29,7 @@ angular.module('surgir.search').factory('SearchDirector',
       _pollJobs: function(request, pollNb, delay) {
         $timeout(function() {
             $http.get(request).success(function(data) {
-              var newlyDoneJobs = Jobs.checkDone(data.results);
+              var newlyDoneJobs = Jobs.checkDone(data.results || []);
               if (this._stopPolling(pollNb + 1)) {
                 Records.fetchFinalResults();
               } else {
