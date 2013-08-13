@@ -4,11 +4,15 @@ require 'json'
 set :public_folder, File.dirname(__FILE__) + '/../..'
 
 get '/' do
+  redirect to('/dev')
+end
+
+get '/dev' do
   redirect to('/app/index.html')
 end
 
-get '/app/*' do |path|
-  send_file appPath(path)
+get '/prod' do
+  redirect to('/dist/index.html')
 end
 
 get '/json/GetGroupMembers' do
