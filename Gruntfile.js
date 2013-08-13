@@ -9,11 +9,21 @@ module.exports = function(grunt) {
 
     copy: {
       index: { src: 'app/index.prod.html', dest: 'dist/index.html' },
-      assets: {
-        files: [{expand: true, cwd: 'app/', src: ['assets/**'], dest: 'dist/'}]
+      assets: {expand: true, cwd: 'app/', src: ['assets/**'], dest: 'dist/'},
+      views: {expand: true, cwd: 'app/', src: ['views/**'], dest: 'dist/'}
+    },
+
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'app/assets/css/',
+        src: ['styles.css'],
+        dest: 'dist/assets/css/',
+        ext: '.min.css'
       },
-      views: {
-        files: [{expand: true, cwd: 'app/', src: ['views/**'], dest: 'dist/'}]
+      concat: {
+        src: ['dist/assets/css/normalize-2.0.1.min.css', 'dist/assets/css/foundation.min.css', 'dist/assets/css/font-awesome.min.css', 'dist/assets/css/styles.min.css'],
+        dest: 'dist/assets/css/<%= pkg.name %>.min.css'
       }
     },
 
@@ -27,16 +37,6 @@ module.exports = function(grunt) {
           'dist/js/<%= pkg.name %>.min.js': ['app/lib/**/*.js', 'app/js/**/*.js']
         }
       }
-    },
-
-    cssmin: {
-      minify: {
-        expand: true,
-        cwd: 'dist/assets/css/',
-        src: ['*.css', '!*.min.css'],
-        dest: 'dist/assets/css/',
-        ext: '.min.css'
-      }
     }
   });
 
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['copy', 'uglify']);
-  grunt.registerTask('release', ['clean', 'copy', 'uglify']);
+  grunt.registerTask('default', ['copy', 'cssmin', 'uglify']);
+  grunt.registerTask('release', ['clean', 'copy', 'cssmin', 'uglify']);
 
 };
