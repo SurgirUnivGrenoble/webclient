@@ -129,9 +129,13 @@ ul, li {
 }
 
 .search_banner {
-  padding-top: 20px;
   margin-bottom: 20px;
-  width: 100%;
+  background: -webkit-linear-gradient(rgba(255,255,255,0.95) 0px,rgba(255,255,255,0.85) 95px);
+  background: linear-gradient(rgba(255,255,255,0.95) 0px,rgba(255,255,255,0.85) 95px);
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border-bottom: 1px solid #fff;
 }
 
 .bottom_banner {
@@ -194,6 +198,6 @@ button:hover, button:focus, .button:hover, .button:focus {
   background-color: #25a25a;
 }
 button.small {
-  width: 54%;
+  width: 44%;
   margin-top: 16px;
 }
