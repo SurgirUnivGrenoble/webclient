@@ -164,6 +164,10 @@ input[type="search"] {
   -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
 }
+input.small-search-query {
+  height: 30px;
+}
+
 .button_wrapper {
   padding-left: 0;
 }
@@ -181,8 +185,11 @@ button {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  width: 80%;
+  width: 75%;
 }
 button:hover, button:focus, .button:hover, .button:focus {
   background-color: #25a25a;
+}
+button.small {
+  width: 65%;
 }
