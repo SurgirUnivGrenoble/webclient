@@ -1,8 +1,7 @@
 <header class="row search_banner" role="banner">
-  <div class="small-11 small-centered columns">
   
     <div class="row">
-      <div class="large-2 columns">
+      <div class="large-2 large-offset-1 columns">
         <div class="small-logo">
           <a href="/">
             <h1 class="small-banner_title">Surgir</h1>
@@ -10,21 +9,23 @@
         </div>
       </div>
       
-      <div class="large-10 columns">
-        <form ng-submit="submitSearch()" ng-controller="SearchController">
-          <div class="large-8 columns">
-            <div class="row">
-              <div class="large-9 columns">
-                <input class="small-search-query" type="search" ng-model="searchInput" placeholder="Rechercher" autofocus>
-              </div>
-              <div class="large-3 columns button_wrapper">
-                <button class="small" type="submit"><i class="icon-search"></i></button>
+      <div class="large-9 columns">
+        <div class="row">
+          <form ng-submit="submitSearch()" ng-controller="SearchController">
+        
+            <div class="large-9 columns">
+              <div class="row">
+                <div class="large-9 columns">
+                  <input class="small-search-query" type="search" ng-model="searchInput" placeholder="Rechercher" autofocus>
+                </div>
+                <div class="large-3 columns button_wrapper">
+                  <button class="small" type="submit"><i class="icon-search"></i></button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       
     </div>
-  </div>
 </header>

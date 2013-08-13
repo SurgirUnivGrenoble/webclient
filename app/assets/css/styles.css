@@ -70,15 +70,17 @@ ul, li {
   text-align: center;
   text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
 }
+.small-logo, .small-banner_title {
+  margin-left: 26px;
+}
 .small-logo {
   background-image: url('../img/small-logo.png');
   background-repeat: no-repeat;
   background-position: left center;
 }
 .small-banner_title {
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 500;
-  padding: 2px 0 0 22px;
 }
 .normal-title {
   font-weight: 400;
@@ -166,6 +168,7 @@ input[type="search"] {
 }
 input.small-search-query {
   height: 30px;
+  margin-top: 16px;
 }
 
 .button_wrapper {
@@ -191,5 +194,6 @@ button:hover, button:focus, .button:hover, .button:focus {
   background-color: #25a25a;
 }
 button.small {
-  width: 65%;
+  width: 54%;
+  margin-top: 16px;
 }
