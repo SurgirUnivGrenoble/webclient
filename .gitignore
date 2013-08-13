@@ -6,6 +6,8 @@
 coverage
 InstalledFiles
 lib/bundler/man
+dist
+node_modules
 pkg
 rdoc
 spec/reports
