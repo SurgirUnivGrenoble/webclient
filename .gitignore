@@ -3,6 +3,7 @@
 *.rbc
 .bundle
 .config
+libpeerconnection.log
 coverage
 InstalledFiles
 lib/bundler/man
