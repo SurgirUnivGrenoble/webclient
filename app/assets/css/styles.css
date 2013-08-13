@@ -26,6 +26,7 @@ h1, h2, h3 {
   font-family: 'Merriweather', serif;
   font-weight: 700;
   text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
+  text-rendering: optimizeLegibility;
 }
 h1 {
   font-size: 64px;
@@ -68,6 +69,16 @@ ul, li {
   text-transform: uppercase;
   text-align: center;
   text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
+}
+.small-logo {
+  background-image: url('../img/small-logo.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+.small-banner_title {
+  font-size: 27px;
+  font-weight: 500;
+  padding: 2px 0 0 22px;
 }
 .normal-title {
   font-weight: 400;
@@ -113,6 +124,12 @@ ul, li {
 }
 .home_partners-logos ul li {
   text-align: center;
+}
+
+.search_banner {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .bottom_banner {
