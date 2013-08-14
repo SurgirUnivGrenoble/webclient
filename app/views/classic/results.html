@@ -5,13 +5,13 @@
     <section class="results row">
       <div ng-show="hasResults()">
         <header>
-          <h2>Résultats {{ response.results.length }} sur {{ response.hits }}</h2>
+          <h3 class="normal-title">Résultats {{ response.results.length }} sur {{ response.hits }}</h3>
         </header>
         <div class="results-list">
           <div ng-repeat="result in response.results" class="result row">
             <div class="large-2 columns">
               <div class="result__material-icon">
-                <img src="http://placekitten.com/g/64/64">
+                <img src="http://placekitten.com/g/190/190">
               </div>
             </div>
             <div class="large-10 columns">
@@ -40,7 +40,7 @@
 
   <div class="large-4 pull-8 columns">
     <nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
-      <h3>Filtrer les résultats</h3>
+      <h3 class="normal-title">Filtrer les résultats</h3>
       <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
       <div ng-repeat="facet in facets" class="facet" ng-hide="facet.empty">
         <h4>
