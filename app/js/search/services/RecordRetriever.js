@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('surgir.search').factory('RecordRetriever',
-  ['$http', 'SearchParams', 'Jobs', 'Results', 'Facets', 'InProgress',
-  function($http, search, Jobs, Results, Facets, InProgress) {
+['$http', 'SearchParams', 'Jobs', 'Results', 'Filters', 'InProgress',
+  function($http, search, Jobs, Results, Filters, InProgress) {
     return {
       startNewSearch: function() {
         InProgress.start();
@@ -17,7 +17,7 @@ angular.module('surgir.search').factory('RecordRetriever',
       },
 
       filterResults: function() {
-        this._fetchNewRecords(true, 0, Facets.asParamString());
+        this._fetchNewRecords(true, 0, Filters.asParamString());
       },
 
       _fetchNewRecords: function(done, stopSearch, filtersParam, pageIndex) {
@@ -29,21 +29,21 @@ angular.module('surgir.search').factory('RecordRetriever',
       },
 
       fetchMoreResults: function() {
-        this._fetchRecords(0, Facets.asParamString(), Results.pageIndex + 1).
+        this._fetchRecords(0, Filters.asParamString(), Results.pageIndex + 1).
           success(function(data) {
             InProgress.done();
             Results.concat(data.results);
           });
       },
 
-      _fetchRecords: function(stopSearch, facetsParam, pageIndex) {
+      _fetchRecords: function(stopSearch, filtersParam, pageIndex) {
         InProgress.start();
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&stop_search=' + stopSearch +
                       '&max=' + search.maxResults +
                       '&page=' + (pageIndex || 1) +
                       '&page_size=' + search.pageSize +
-                      (facetsParam || '') +
+                      (filtersParam || '') +
                       '&with_facette=' + search.retrieveFacettes +
                       '&notice_display=0&sort=relevance' +
                       '&log_action_txt=&log_cxt_txt=&log_cxt=search';

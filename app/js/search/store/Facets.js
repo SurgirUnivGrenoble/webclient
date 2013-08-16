@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('surgir.search').factory('Facets', ['Params', function(params) {
+angular.module('surgir.search').factory('Facets', [function() {
   return {
     facets: [],
-
-    selectedFilters: {},
 
     frenchNames: {
      date: 'Dates',
@@ -46,42 +44,6 @@ angular.module('surgir.search').factory('Facets', ['Params', function(params) {
       vendorData.sort(function(a, b) {
         return b[2] - a[2];
       });
-    },
-
-    addFilter: function(facet, value) {
-      this.selectedFilters[facet] = value;
-    },
-
-    removeFilter: function(facet) {
-      delete this.selectedFilters[facet];
-    },
-
-    filterKeys: function() {
-      return Object.keys(this.selectedFilters);
-    },
-
-    filtersSelected: function() {
-      return this.filterKeys().length > 0;
-    },
-
-    resetFilters: function() {
-      this.filterKeys().forEach(function(filter) {
-        this.removeFilter(filter);
-      }.bind(this));
-    },
-
-    asParamString: function() {
-      if (this.filtersSelected()) {
-        var filterParams = [];
-        this.filterKeys().forEach(function(filter) {
-          filterParams.push(filter + '--' +
-                            escape(this.selectedFilters[filter]));
-        }.bind(this));
-        return params.concat(filterParams, 'filter', true) +
-              '&log_action=facette';
-      } else {
-        return '';
-      }
     }
   };
 }]);

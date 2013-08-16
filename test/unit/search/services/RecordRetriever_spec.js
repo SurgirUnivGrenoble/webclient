@@ -2,7 +2,7 @@ describe('surgir.search', function() {
   beforeEach(module('surgir.search'));
 
   describe('RecordRetriever', function() {
-    var service, $httpBackend, mockParams, mockResults, mockFacets;
+    var service, $httpBackend, mockParams, mockResults, mockFilters;
 
     mockParams = {
       maxResults: 25,
@@ -15,7 +15,7 @@ describe('surgir.search', function() {
       concat: function() {}
     };
 
-    mockFacets = {
+    mockFilters = {
       asParamString: function() { return ''; }
     };
 
@@ -25,7 +25,7 @@ describe('surgir.search', function() {
         asParamString: function() { return 'id[]=123&id[]=456'; }
       });
       $provide.value('Results', mockResults);
-      $provide.value('Facets', mockFacets);
+      $provide.value('Filters', mockFilters);
       $provide.value('InProgress', {
         start: function() {},
         done: function() {}
@@ -70,7 +70,7 @@ describe('surgir.search', function() {
     describe('#filterResults', function() {
       it('send a search request with defined filters to the server',
       function() {
-        spyOn(mockFacets, 'asParamString').
+        spyOn(mockFilters, 'asParamString').
           andReturn('&filter[]=date--2013&log_action=facette');
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
@@ -113,7 +113,7 @@ describe('surgir.search', function() {
       });
 
       it('sends a filtering request if filters are set', function() {
-        spyOn(mockFacets, 'asParamString').
+        spyOn(mockFilters, 'asParamString').
           andReturn('&filter[]=date--2013&log_action=facette');
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
