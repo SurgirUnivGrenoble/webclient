@@ -13,8 +13,12 @@ angular.module('surgir.search').factory('Facets', [function() {
      subject: 'Sujets'
     },
 
-    extract: function(results) {
+    reset: function() {
       this.facets.length = 0;
+    },
+
+    extract: function(results) {
+      this.reset();
       this.facets.push.apply(this.facets, results.facette);
       this.facets.forEach(function(facet) {
         facet.frenchName = this.frenchNames[facet.name];

@@ -12,11 +12,13 @@ describe('surgir.search', function() {
 
     mockResults = {
       store: function() {},
-      concat: function() {}
+      concat: function() {},
+      reset: function() {}
     };
 
     mockFilters = {
-      asParamString: function() { return ''; }
+      asParamString: function() { return ''; },
+      reset: function() {}
     };
 
     beforeEach(module(function($provide) {
@@ -41,6 +43,20 @@ describe('surgir.search', function() {
     afterEach(function() {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
+    });
+
+    describe('#startNewSearch', function() {
+      it('resets results', function() {
+        spyOn(mockResults, 'reset');
+        service.startNewSearch();
+        expect(mockResults.reset).toHaveBeenCalled();
+      });
+
+      it('resets filters', function() {
+        spyOn(mockFilters, 'reset');
+        service.startNewSearch();
+        expect(mockFilters.reset).toHaveBeenCalled();
+      });
     });
 
     describe('#fetchPartialResults', function() {

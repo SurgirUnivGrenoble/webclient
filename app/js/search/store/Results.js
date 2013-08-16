@@ -1,15 +1,16 @@
 'use strict';
 
-angular.module('surgir.search').factory('Results',
-['Facets', function(Facets) {
-  return {
-    response: {
-      hits: 0,
-      results: [],
-      page: []
-    },
-
+angular.module('surgir.search').factory('Results', ['Facets', function(Facets) {
+  var Results = {
+    response: {},
     pageIndex: 1,
+
+    reset: function() {
+      this.response.hits = 0;
+      this.response.results = [];
+      this.response.page = [];
+      Facets.reset();
+    },
 
     store: function(results) {
       angular.extend(this.response, results);
@@ -27,4 +28,6 @@ angular.module('surgir.search').factory('Results',
       return pages.length == 0 || this.pageIndex == pages[pages.length - 1];
     }
   };
+  Results.reset();
+  return Results;
 }]);

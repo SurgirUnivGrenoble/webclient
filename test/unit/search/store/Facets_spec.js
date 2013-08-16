@@ -88,6 +88,18 @@ describe('surgir.search', function() {
       });
     });
 
+    describe('#reset', function() {
+      it('resets facets', function() {
+        service.extract({
+          facette: [{
+            name: 'lang',
+            data: [['English', 27], ['Francais', 8], ['Non determinee', 4]]
+          }]
+        });
+        service.reset();
+        expect(service.facets.length).toBe(0);
+      });
+    });
   });
 
 });

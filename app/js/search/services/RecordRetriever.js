@@ -6,6 +6,8 @@ angular.module('surgir.search').factory('RecordRetriever',
     return {
       startNewSearch: function() {
         InProgress.start();
+        Results.reset();
+        Filters.reset();
       },
 
       fetchPartialResults: function() {
@@ -17,6 +19,7 @@ angular.module('surgir.search').factory('RecordRetriever',
       },
 
       filterResults: function() {
+        Results.reset();
         this._fetchNewRecords(true, 0, Filters.asParamString());
       },
 

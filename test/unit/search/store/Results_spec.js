@@ -5,7 +5,8 @@ describe('surgir.search', function() {
     var results, response;
 
     var mockFacets = {
-      extract: function(response) {}
+      extract: function(response) {},
+      reset: function() {}
     };
 
     beforeEach(module(function($provide) {
@@ -56,6 +57,24 @@ describe('surgir.search', function() {
         results.concat({results: [4, 5, 6]});
         results.concat({results: [7, 8, 9]});
         expect(results.pageIndex).toBe(3);
+      });
+    });
+
+    describe('#reset', function() {
+      it('resets results', function() {
+        results.store({results: [1, 2, 3]});
+        results.reset();
+        expect(results.response).toEqual({
+          hits: 0,
+          results: [],
+          page: []
+        });
+      });
+
+      it('resets facets', function() {
+        spyOn(mockFacets, 'reset');
+        results.reset();
+        expect(mockFacets.reset).toHaveBeenCalled();
       });
     });
 
