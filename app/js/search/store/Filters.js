@@ -4,11 +4,11 @@ angular.module('surgir.search').factory('Filters', ['Params', function(params) {
   return {
     selection: {},
 
-    addFilter: function(facet, value) {
+    add: function(facet, value) {
       this.selection[facet] = value;
     },
 
-    removeFilter: function(facet) {
+    remove: function(facet) {
       delete this.selection[facet];
     },
 
@@ -16,18 +16,18 @@ angular.module('surgir.search').factory('Filters', ['Params', function(params) {
       return Object.keys(this.selection);
     },
 
-    filtersSelected: function() {
+    hasSelection: function() {
       return this.filterKeys().length > 0;
     },
 
-    resetFilters: function() {
+    reset: function() {
       this.filterKeys().forEach(function(filter) {
-        this.removeFilter(filter);
+        this.remove(filter);
       }.bind(this));
     },
 
     asParamString: function() {
-      if (this.filtersSelected()) {
+      if (this.hasSelection()) {
         var filterParams = [];
         this.filterKeys().forEach(function(filter) {
           filterParams.push(filter + '--' + escape(this.selection[filter]));

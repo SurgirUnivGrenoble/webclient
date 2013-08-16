@@ -8,55 +8,55 @@ describe('surgir.search', function() {
       service = $injector.get('Filters');
     }));
 
-    describe('#addFilter', function() {
+    describe('#add', function() {
       it('registers the given facet and value as a filter', function() {
-        service.addFilter('vendor_name', 'Science Direct');
-        service.addFilter('date', '2013');
+        service.add('vendor_name', 'Science Direct');
+        service.add('date', '2013');
         expect(service.selection).toEqual({vendor_name: 'Science Direct',
                                            date: '2013'});
       });
     });
 
-    describe('#removeFilter', function() {
+    describe('#remove', function() {
       it('removes the given facet as filter', function() {
-        service.addFilter('vendor_name', 'Science Direct');
-        service.addFilter('date', '2013');
-        service.removeFilter('date');
+        service.add('vendor_name', 'Science Direct');
+        service.add('date', '2013');
+        service.remove('date');
         expect(service.selection).toEqual({vendor_name: 'Science Direct'});
       });
     });
 
-    describe('#filtersSelected', function() {
+    describe('#hasSelection', function() {
       it('is true when some filters are selected', function() {
-        service.addFilter('date', '2013');
-        expect(service.filtersSelected()).toBe(true);
+        service.add('date', '2013');
+        expect(service.hasSelection()).toBe(true);
       });
       it('is false otherwise', function() {
-        expect(service.filtersSelected()).toBe(false);
+        expect(service.hasSelection()).toBe(false);
       });
     });
 
     describe('#filterKeys', function() {
       it('returns the collection of currently set filters', function() {
-        service.addFilter('vendor_name', 'Science Direct');
-        service.addFilter('date', '2013');
+        service.add('vendor_name', 'Science Direct');
+        service.add('date', '2013');
         expect(service.filterKeys()).toEqual(['vendor_name', 'date']);
       });
     });
 
-    describe('#resetFilters', function() {
+    describe('#reset', function() {
       it('resets all filters', function() {
-        service.addFilter('vendor_name', 'Science Direct');
-        service.addFilter('date', '2013');
-        service.resetFilters();
+        service.add('vendor_name', 'Science Direct');
+        service.add('date', '2013');
+        service.reset();
         expect(service.selection).toEqual({});
       });
     });
 
     describe('#asParamString', function() {
       it('returns selected filters encoded as a parameter string', function() {
-        service.addFilter('vendor_name', 'Science Direct');
-        service.addFilter('date', '2013');
+        service.add('vendor_name', 'Science Direct');
+        service.add('date', '2013');
         expect(service.asParamString()).toEqual(
           '&filter[]=vendor_name--Science%20Direct&filter[]=date--2013' +
           '&log_action=facette');

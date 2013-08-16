@@ -6,19 +6,19 @@ angular.module('surgir.search').controller('FiltersController',
     $scope.facets = Facets.facets;
     $scope.selectedFilters = Filters.selection;
 
-    $scope.filtered = Filters.filtersSelected.bind(Filters);
+    $scope.filtered = Filters.hasSelection.bind(Filters);
 
     $scope.addFilterAndRefresh = function(facet, value) {
-      Filters.addFilter(facet, value);
+      Filters.add(facet, value);
       RecordRetriever.filterResults();
     };
 
     $scope.setFilter = function(facet) {
       var value = $scope.selectedFilters[facet];
       if (value) {
-        Filters.addFilter(facet, value);
+        Filters.add(facet, value);
       } else {
-        Filters.removeFilter(facet);
+        Filters.remove(facet);
       }
     };
 
@@ -28,7 +28,7 @@ angular.module('surgir.search').controller('FiltersController',
     };
 
     $scope.resetFilters = function() {
-      Filters.resetFilters();
+      Filters.reset();
       RecordRetriever.filterResults();
     };
 
