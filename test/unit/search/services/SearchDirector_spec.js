@@ -20,7 +20,8 @@ describe('surgir.search', function() {
 
     mockRecordRetriever = {
       fetchFinalResults: function() {},
-      fetchPartialResults: function() {}
+      fetchPartialResults: function() {},
+      startNewSearch: function() {}
     };
 
     beforeEach(module(function($provide) {
@@ -30,7 +31,6 @@ describe('surgir.search', function() {
       });
       $provide.value('Jobs', mockJobs);
       $provide.value('RecordRetriever', mockRecordRetriever);
-      $provide.value('InProgress', { start: function() {} });
     }));
 
     beforeEach(inject(function($injector, _$httpBackend_, _$timeout_) {

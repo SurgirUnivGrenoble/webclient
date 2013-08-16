@@ -4,26 +4,26 @@ angular.module('surgir.search').factory('RecordRetriever',
   ['$http', 'SearchParams', 'Jobs', 'Results', 'Facets', 'InProgress',
   function($http, search, Jobs, Results, Facets, InProgress) {
     return {
+      startNewSearch: function() {
+        InProgress.start();
+      },
+
       fetchPartialResults: function() {
-        this._fetchRecords(0).
-          success(function(data) {
-            InProgress.done();
-            Results.store(data.results);
-          });
+        this._fetchNewRecords(false, 0);
       },
 
       fetchFinalResults: function() {
-        this._fetchNewRecords(1);
+        this._fetchNewRecords(true, 1);
       },
 
       filterResults: function() {
-        this._fetchNewRecords(0, Facets.asParamString());
+        this._fetchNewRecords(true, 0, Facets.asParamString());
       },
 
-      _fetchNewRecords: function(stopSearch, facetsParam, pageIndex) {
-        this._fetchRecords(stopSearch, facetsParam, pageIndex).
+      _fetchNewRecords: function(done, stopSearch, filtersParam, pageIndex) {
+        this._fetchRecords(stopSearch, filtersParam, pageIndex).
           success(function(data) {
-            InProgress.done();
+            if (done) { InProgress.done(); }
             Results.store(data.results);
           });
       },
