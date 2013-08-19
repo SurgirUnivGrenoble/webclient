@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir', ['ui.event', 'surgir.search']);
+angular.module('surgir', ['ui.event', 'surgir.search', 'surgir.permalink']);
 
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
@@ -12,8 +12,9 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
       when('/filters', {templateUrl: 'views/mobile/filters.html',
                         controller: 'FiltersController'}).
       when('/results/:resultId', {templateUrl: 'views/mobile/notice.html',
-                        controller: 'RecordController'}).
-      when('/notice/:permalink', {templateUrl: 'views/mobile/notice.html'}).
+                                  controller: 'RecordController'}).
+      when('/notice/:permalink', {templateUrl: 'views/mobile/notice.html',
+                                  controller: 'NoticeController'}).
       otherwise({redirectTo: '/'});
   }]);
 } else {
@@ -24,8 +25,9 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
       when('/results', {templateUrl: 'views/classic/results.html',
                         controller: 'ResultsController'}).
       when('/results/:resultId', {templateUrl: 'views/classic/notice.html',
-                        controller: 'RecordController'}).
-      when('/notice/:permalink', {templateUrl: 'views/classic/notice.html'}).
+                                  controller: 'RecordController'}).
+      when('/notice/:permalink', {templateUrl: 'views/classic/notice.html',
+                                  controller: 'NoticeController'}).
       otherwise({redirectTo: '/'});
   }]);
 }

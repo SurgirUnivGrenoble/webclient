@@ -43,7 +43,7 @@ get '/json/GetJobRecord' do
 end
 
 get '/json/GetId' do
-  send_file dataPath('notice.json')
+  send_file dataPath('notice_id.json')
 end
 
 get '/account_json/GetCollectionDescription' do

@@ -69,7 +69,7 @@ Services:
 
 - `SearchDirector`: initiate and drive a search request (in particular the jobs polling process)
 - `RecordRetriever`: retrieve search results or search record after jobs are done
-- `PermalinkNotice`: a service which retrieves a record by permalink
+- `Permalink`: a service which retrieves a notice by permalink
 - `Collections`: retrieve collections ids, from the group defined in config
 - `Jobs`: store jobs id for a search
 - `Results`: store search results
