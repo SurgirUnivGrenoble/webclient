@@ -519,7 +519,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position'])
           if (inputValue === modelCtrl.$viewValue) {
             if (matches.length > 0) {
 
-              scope.activeIdx = 0;
+              scope.activeIdx = -1;
               scope.matches.length = 0;
 
               //transform labels
@@ -625,6 +625,11 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position'])
 
         //typeahead is open and an "interesting" key was pressed
         if (scope.matches.length === 0 || HOT_KEYS.indexOf(evt.which) === -1) {
+          return;
+        }
+
+        //dont override input, just proceed if user validates input without a selection
+        if (scope.activeIdx === -1 && (evt.which === 13 || evt.which === 9)) {
           return;
         }
 
