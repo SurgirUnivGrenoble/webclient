@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('surgir', ['ui.event', 'surgir.search', 'surgir.permalink']);
+angular.module('surgir',
+  ['ui.event', 'ui.bootstrap', 'surgir.search', 'surgir.permalink']);
 
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {

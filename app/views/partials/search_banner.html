@@ -15,7 +15,9 @@
             <div class="large-10 columns">
               <div class="row">
                 <div class="large-9 columns">
-                  <input class="small-search-query" type="search" ng-model="searchInput" placeholder="Rechercher" autofocus>
+                  <input class="small-search-query" type="search" placeholder="Rechercher" autofocus
+                          ng-model="searchInput" typeahead="item for item in suggestions($viewValue)"
+                          typeahead-min-length="3" typeahead-wait-ms="300">
                 </div>
                 <div class="large-3 columns button_wrapper">
                   <button class="small" type="submit"><i class="icon-search"></i></button>
