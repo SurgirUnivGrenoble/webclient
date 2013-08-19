@@ -46,6 +46,10 @@ get '/json/GetId' do
   send_file dataPath('notice_id.json')
 end
 
+get '/json/AutoComplete' do
+  send_file dataPath('autocomplete.json')
+end
+
 get '/account_json/GetCollectionDescription' do
   send_file dataPath('collection.json')
 end
