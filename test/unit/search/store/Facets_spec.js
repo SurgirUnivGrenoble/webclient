@@ -22,13 +22,15 @@ describe('surgir.search', function() {
     });
 
     describe('#extract', function() {
-      var firstFacet;
+      var firstFacet, secondFacet, lang;
+      lang = [['en', 27], ['fr', 8], ['na', 4],
+              ['de', 1], ['es', 1], ['it', 1]];
 
       beforeEach(function() {
         service.extract({
           facette: [{
             name: 'lang',
-            data: [['English', 27], ['Francais', 8], ['Non determinee', 4]]
+            data: lang
           }, {
             name: 'subject',
             data: []
@@ -45,23 +47,24 @@ describe('surgir.search', function() {
           }]
         });
         firstFacet = service.facets[0];
+        secondFacet = service.facets[1];
       });
 
-      it('extracts facets from results', function() {
-        expect(service.facets.length).toEqual(3);
+      it('extracts non-empty facets from results', function() {
+        expect(service.facets.length).toEqual(2);
         expect(firstFacet.name).toEqual('lang');
+        expect(secondFacet.name).toEqual('vendor_name');
         expect(firstFacet.data).
-          toEqual([['English', 27], ['Francais', 8], ['Non determinee', 4]]);
+          toEqual(lang);
       });
 
       it('sets french names for each facet', function() {
         expect(firstFacet.frenchName).toEqual('Langues');
       });
 
-      it('sets empty flag for each facet', function() {
-        var emptyFacet = service.facets[1];
-        expect(emptyFacet.empty).toBeTruthy();
-        expect(firstFacet.empty).toBeFalsy();
+      it("sets the 'more' flag for facets with more than 5 values", function() {
+        expect(firstFacet.more).toBeTruthy();
+        expect(secondFacet.more).toBeFalsy();
       });
 
       it('sets the initial limit to 5 values per facet', function() {
@@ -70,9 +73,8 @@ describe('surgir.search', function() {
 
       describe('on the vendor facet,', function() {
         it('orders vendors by descending number of total hits', function() {
-          var vendorFacet = service.facets[2];
-          expect(vendorFacet.name).toEqual('vendor_name');
-          expect(vendorFacet.data).toEqual([
+          expect(secondFacet.name).toEqual('vendor_name');
+          expect(secondFacet.data).toEqual([
             ['Rugbis', '5/55', 55],
             ['Odyssée', '18/20', 20]
           ]);
@@ -80,9 +82,8 @@ describe('surgir.search', function() {
 
         it('appends total hits to each vendor hits',
         function() {
-          var vendorFacet = service.facets[2];
-          expect(vendorFacet.data[0][1]).toEqual('5/55');
-          expect(vendorFacet.data[1][1]).toEqual('18/20');
+          expect(secondFacet.data[0][1]).toEqual('5/55');
+          expect(secondFacet.data[1][1]).toEqual('18/20');
         });
 
       });

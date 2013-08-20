@@ -19,13 +19,15 @@ angular.module('surgir.search').factory('Facets', [function() {
 
     extract: function(results) {
       this.reset();
-      this.facets.push.apply(this.facets, results.facette);
-      this.facets.forEach(function(facet) {
-        facet.frenchName = this.frenchNames[facet.name];
-        facet.empty = facet.data.length == 0;
-        facet.limit = 5;
-        if (facet.name == 'vendor_name') {
-          this._processVendorData(facet.data, results.totalhits);
+      results.facette.forEach(function(facet) {
+        if (facet.data.length > 0) {
+          this.facets.push(facet);
+          facet.frenchName = this.frenchNames[facet.name];
+          facet.limit = 5;
+          facet.more = facet.data.length > 5;
+          if (facet.name == 'vendor_name') {
+            this._processVendorData(facet.data, results.totalhits);
+          }
         }
       }.bind(this));
       return this.facets;

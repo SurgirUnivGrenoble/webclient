@@ -60,7 +60,7 @@ describe('Surgir Client', function() {
         it('should update results and facets with the selected facet value ',
         function() {
           element(".facet a:contains('Rugbis')").click();
-          expect(repeater('.facet').count()).toBe(6);
+          expect(repeater('.facet').count()).toBe(4);
           expect(element(".facet a:contains('Science Direct')").text()).
             toEqual('Science Direct');
         });

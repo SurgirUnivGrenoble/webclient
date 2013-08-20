@@ -49,8 +49,7 @@
               <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
             </li>
             <li>
-              <a href="" ng-click="moreFilterValues(facet)" ng-hide="facet.empty">+</a>
-              <a href="" ng-click="lessFilterValues(facet)" ng-hide="facet.empty">-</a>
+              <a href="" ng-click="moreFilterValues(facet)" ng-show="facet.more">+</a>
             </li>
           </ul>
         </accordion-group>
