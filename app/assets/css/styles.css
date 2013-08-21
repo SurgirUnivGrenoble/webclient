@@ -108,6 +108,7 @@ ul, li {
   color: #2ecc71;
 }
 
+/* Home */
 .home_banner {
   padding-top: 112px;
   margin-bottom: 20px;
@@ -138,6 +139,7 @@ ul, li {
   border-bottom: 1px solid #fff;
 }
 
+/* Footer */
 .bottom_banner {
   background-color: #2ecc71;
 }
@@ -238,4 +240,46 @@ button:hover, button:focus, .button:hover, .button:focus {
 button.small {
   width: 44%;
   margin-top: 16px;
+}
+
+/* Accordion menu */
+.accordion {
+  width: 95%;
+}
+.accordion-group {
+  background: #FFFFFF;
+  border-bottom: 2px solid #2c3e50;
+}
+.accordion-group:nth-last-child(1) {
+  border-bottom: none;
+}
+.accordion-heading {
+  background-color: #34495e;
+  padding: 8px 10px 6px;
+  line-height: 20px;
+  font-weight: 300;
+}
+.accordion-heading a {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.accordion-heading a:hover {
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+}
+.accordion-body ul {
+  margin: 0;
+}
+.accordion-body ul li {
+  padding: 8px 25px 6px;
+  border-bottom: 1px solid #DDD;
+  transition: all 0.15s;
+}
+.accordion-body ul li:hover {
+  background-color: #f4F4F4;
+}
+.accordion-body ul li:nth-last-child(2), .accordion-body ul li:nth-last-child(1) {
+  border: none;
+}
+.accordion-body ul li:hover:nth-last-child(1) {
+  background-color: #FFFFFF;
 }
