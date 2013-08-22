@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('surgir.search', ['surgir.config']);
+angular.module('surgir.search', ['surgir.config', 'surgir.notice']);
