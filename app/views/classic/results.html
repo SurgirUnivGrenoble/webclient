@@ -5,7 +5,7 @@
     <section class="results row">
       <div ng-show="hasResults()">
         <header>
-          <h4>Résultats {{ response.results.length }} sur {{ response.hits }}</h4>
+          <h4>Résultats 1 à {{ response.results.length }} sur {{ response.hits }}</h4>
         </header>
         <div class="results-list">
           <div ng-repeat="result in response.results" class="result row">
@@ -19,7 +19,7 @@
               <div class="result__author">{{ result.author | replace }}</div>
               <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
               <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
-              <div class="result__subject" ng-show="result.subject"><span class="field_label">Dans :</span> {{ result.subject | replace }}</div>
+              <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source | replace }}</div>
               <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
             </div>
           </div>

@@ -216,7 +216,7 @@ ul, li {
 .result__author {
   padding-bottom: 8px;
 }
-.field_label, .result__publisher, .result__date, .result__subject, .result__collection {
+.field_label, .result__publisher, .result__date, .result__source, .result__collection {
   padding-bottom: 4px;
   font-size: 13px;
 }
