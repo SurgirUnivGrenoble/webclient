@@ -9,8 +9,13 @@ describe('surgir.search', function() {
       reset: function() {}
     };
 
+    var mockNotice = {
+      filter: function(result) {}
+    }
+
     beforeEach(module(function($provide) {
       $provide.value('Facets', mockFacets);
+      $provide.value('NoticeProcessor', mockNotice);
     }));
 
     beforeEach(inject(function($injector) {
@@ -84,13 +89,13 @@ describe('surgir.search', function() {
       });
 
       it('is true when all results pages have been retrieved', function() {
-        results.store({page: [1, 2]});
+        results.store({page: [1, 2], results: [1, 2, 3]});
         results.concat({results: [4, 5, 6]});
         expect(results.noMoreResults()).toBeTruthy();
       });
 
       it('is false otherwise', function() {
-        results.store({page: [1, 2]});
+        results.store({page: [1, 2], results: [1, 2, 3]});
         expect(results.noMoreResults()).toBeFalsy();
       });
     });
