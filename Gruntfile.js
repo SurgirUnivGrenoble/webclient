@@ -37,17 +37,13 @@ module.exports = function(grunt) {
         base: 'app/',
         module: 'surgir.templates'
       },
-      surgir: {
-        src: ['app/views/**/*.html'],
-        dest: 'build/templates/templates.js'
-      },
       classic: {
         src: ['app/views/classic/*.html', 'app/views/partials/*.html'],
-        dest: 'build/templates/classic.js'
+        dest: 'build/js/classic_templates.js'
       },
       mobile: {
         src: ['app/views/mobile/*.html', 'app/views/partials/*.html'],
-        dest: 'build/templates/mobile.js'
+        dest: 'build/js/mobile_templates.js'
       },
     },
 
@@ -58,7 +54,9 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'dist/js/<%= pkg.name %>.min.js': ['app/lib/**/*.js', 'app/js/**/*.js', 'build/templates/templates.js']
+          'dist/js/<%= pkg.name %>.min.js': ['app/lib/**/*.js', 'app/js/**/*.js'],
+          'dist/js/classic_templates.min.js': ['build/js/classic_templates.js'],
+          'dist/js/mobile_templates.min.js': ['build/js/mobile_templates.js']
         }
       }
     }
