@@ -15,11 +15,11 @@
               </div>
             </div>
             <div class="large-10 columns">
-              <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle | replace }}</a></h3>
-              <div class="result__author">{{ result.author | replace }}</div>
+              <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
+              <div class="result__author">{{ result.author }}</div>
               <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
               <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
-              <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source | replace }}</div>
+              <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source }}</div>
               <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
             </div>
           </div>

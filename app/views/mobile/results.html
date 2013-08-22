@@ -7,7 +7,7 @@
   <ul class="results-list">
     <li ng-repeat="result in response.results" class="result">
       <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
-      <div class="result__author">{{ result.author | replace }}</div>
+      <div class="result__author">{{ result.author }}</div>
       <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
       <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
     </li>

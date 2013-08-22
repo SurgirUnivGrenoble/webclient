@@ -14,7 +14,7 @@
     <div class="row">
       <div class="large-10 push-2 columns">
         <h3 class="normal_title notice__title">{{ notice.ptitle }}</h3>
-        <div class="notice__author">{{ notice.author | replace }}</div>
+        <div class="notice__author">{{ notice.author }}</div>
       </div>
 
       <div class="large-2 pull-10 columns">
@@ -36,7 +36,7 @@
       </div>
       <div class="row" ng-show="notice.subject">
         <span class="large-2 columns">Dans</span>
-        <span class="large-10 columns">{{ notice.subject | replace }}</span>
+        <span class="large-10 columns">{{ notice.subject }}</span>
       </div>
 
       <div class="row" ng-show="notice.abstract">
@@ -49,7 +49,7 @@
       </div>
       <div class="row" ng-show="notice.source">
         <span class="large-2 columns">Source</span>
-        <span class="large-10 columns">{{ notice.source | replace }}</span>
+        <span class="large-10 columns">{{ notice.source }}</span>
       </div>
       <div class="row" ng-show="notice.direct_url">
         <span class="large-2 columns" ng-pluralize
