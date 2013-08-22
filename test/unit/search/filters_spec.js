@@ -15,11 +15,6 @@ describe('surgir.search#filters', function() {
     inject(function(lfYearFilter) {
       expect(lfYearFilter('19990000')).toEqual('1999');
     }));
-
-    it('should display a special value for unknown date 00000000',
-    inject(function(lfYearFilter) {
-      expect(lfYearFilter('00000000')).toEqual('date inconnue');
-    }));
   });
 
   describe('yearPublisher', function() {

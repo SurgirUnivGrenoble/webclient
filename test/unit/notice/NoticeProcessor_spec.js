@@ -10,6 +10,7 @@ describe('surgir.notice', function() {
     );
 
     notice = {
+      'date': '20130000',
       'direct_url': 'http://handle.net/35-_-http://handle.net/36'
     };
 
@@ -20,10 +21,16 @@ describe('surgir.notice', function() {
 
       it('splits direct_url field into direct_urls array field', function() {
         service.filter(notice);
-        expect(notice).toEqual({
-          'direct_url': 'http://handle.net/35-_-http://handle.net/36',
-          'direct_urls': ['http://handle.net/35', 'http://handle.net/36']
-        });
+        expect(notice.direct_urls).toEqual(
+          ['http://handle.net/35', 'http://handle.net/36']);
+      });
+
+      it('cancels 00000000 date', function() {
+        service.filter(notice);
+        expect(notice.date).toEqual('20130000');
+        notice.date = '00000000';
+        service.filter(notice);
+        expect(notice.date).toEqual('');
       });
     });
   });
