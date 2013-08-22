@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir.permalink').controller('NoticeController',
+angular.module('surgir.notice').controller('PermalinkController',
   ['$scope', '$routeParams', 'Permalink',
   function($scope, $routeParams, Permalink) {
     $scope.notice = Permalink.getNotice($routeParams.permalink).

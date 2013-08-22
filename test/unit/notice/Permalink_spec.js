@@ -1,5 +1,5 @@
-describe('surgir.permalink', function() {
-  beforeEach(module('surgir.permalink'));
+describe('surgir.notice', function() {
+  beforeEach(module('surgir.notice'));
 
   describe('Permalink', function() {
     var service, $httpBackend;

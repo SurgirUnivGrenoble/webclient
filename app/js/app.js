@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('surgir',
-  ['ui.event', 'ui.bootstrap', 'surgir.search', 'surgir.permalink']);
+  ['ui.event', 'ui.bootstrap', 'surgir.search', 'surgir.notice']);
 
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
@@ -15,7 +15,7 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
       when('/results/:resultId', {templateUrl: 'views/mobile/notice.html',
                                   controller: 'RecordController'}).
       when('/notice/:permalink', {templateUrl: 'views/mobile/notice.html',
-                                  controller: 'NoticeController'}).
+                                  controller: 'PermalinkController'}).
       otherwise({redirectTo: '/'});
   }]);
 } else {
@@ -28,7 +28,7 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
       when('/results/:resultId', {templateUrl: 'views/classic/notice.html',
                                   controller: 'RecordController'}).
       when('/notice/:permalink', {templateUrl: 'views/classic/notice.html',
-                                  controller: 'NoticeController'}).
+                                  controller: 'PermalinkController'}).
       otherwise({redirectTo: '/'});
   }]);
 }

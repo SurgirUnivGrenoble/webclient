@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir.permalink', []).factory('Permalink',
+angular.module('surgir.notice').factory('Permalink',
   ['$http', function($http) {
     return {
       getNotice: function(noticeId) {
