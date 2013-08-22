@@ -13,6 +13,9 @@ angular.module('surgir.search').
 
   filter('lfYear', function() {
     return function(timestamp) {
+      if (timestamp === '00000000') {
+        return 'date inconnue';
+      }
       if (timestamp) {
         return timestamp.slice(0, 4);
       } else {
