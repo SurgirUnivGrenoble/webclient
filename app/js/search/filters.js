@@ -4,7 +4,7 @@ angular.module('surgir.search').
   filter('replace', function() {
     return function(text) {
       if (text) {
-        return text.replace(/;/g, ' - ');
+        return text.replace(/&apos;/g, "'").replace(/;/g, ' - ');
       } else {
         return '';
       }

@@ -8,6 +8,11 @@ describe('surgir.search#filters', function() {
       inject(function(replaceFilter) {
         expect(replaceFilter('John;Paul;Smith')).toEqual('John - Paul - Smith');
     }));
+
+    it('should replace the "&apos;" special char by a true apostrophe',
+      inject(function(replaceFilter) {
+        expect(replaceFilter('l&apos;envie')).toEqual("l'envie");
+    }));
   });
 
   describe('lfYear', function() {
