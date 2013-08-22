@@ -150,9 +150,6 @@ ul, li {
   font-size: 13px;
   line-height: 20px;
 }
-.reset-filters i {
-  padding-right: 6px;
-}
 
 /* Home */
 .home_banner {
@@ -223,11 +220,16 @@ ul, li {
   padding-bottom: 4px;
   font-size: 13px;
 }
-.facets {
+
+/* Notice */
+.page-title_banner {
+  margin-top: -19px;
+  margin-bottom: 20px;
+  background-color: rgb(236, 240, 241);
+}
+.back {
   margin-left: 26px;
-  margin-right: 8px;
-  border-bottom: 1px #e5e5e5 solid;
-  border-right: 1px #e5e5e5 solid;
+  padding-top: 14px;
 }
 
 /* Form elements */
@@ -264,13 +266,15 @@ input.small-search-query {
 .button_wrapper {
   padding-left: 0;
 }
-button {
+button, .button {
   border: 1px solid #25a25a;
   cursor: pointer;
   font-family: inherit;
   font-weight: bold;
   background-color: #2ecc71;
   color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  font-weight: 400;
   position: relative;
   text-decoration: none;
   text-align: center;
@@ -283,7 +287,25 @@ button {
 button:hover, button:focus, .button:hover, .button:focus {
   background-color: #25a25a;
 }
-button.small {
+button.small, .button.small {
   width: 44%;
   margin-top: 16px;
+}
+.button.back {
+  display: inline-block;
+  padding-top: 0.5625em;
+  padding-right: 1.125em;
+  padding-bottom: 0.625em;
+  padding-left: 1.125em;
+  font-size: 0.8125em;
+  margin-top: 16px;
+  background-color: rgb(52, 73, 94);
+  border-color: rgb(30, 42, 90);
+}
+.button.back:hover {
+  background-color: rgb(30, 42, 90);
+}
+.back i {
+  font-size: 16px;
+  padding-right: 6px;
 }
