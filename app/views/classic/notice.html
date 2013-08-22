@@ -5,76 +5,77 @@
     <div class="row">
       <div class="large-12 columns">
         <nav class="left"><a class="button back" href="#/results"><span></span><i class="icon-angle-left"></i> Retour</a></nav>
-        <h3 class="text-center">Notice détaillée</h3>
+        <h3 class="text-center normal_title">Notice détaillée</h3>
       </div>
     </div>
   </header>
 
-  <article>
+  <article class="notice_content">
     <div class="row">
       <div class="large-10 push-2 columns">
-        <h1 class="notice__title">{{ notice.ptitle }}</h1>
+        <h3 class="normal_title notice__title">{{ notice.ptitle }}</h3>
         <div class="notice__author">{{ notice.author | replace }}</div>
       </div>
 
       <div class="large-2 pull-10 columns">
         <span class="notice__material-icon">
-          <img src="http://placekitten.com/g/128/128">
+          <img src="http://placekitten.com/g/96/96">
         </span>
       </div>
     </div>
 
     <hr>
-
-    <div class="row" ng-show="notice.publisher">
-      <span class="large-2 columns">Édition</span>
-      <span class="large-10 columns">{{ notice.publisher | yearPublisher: notice.date }}</span>
-    </div>
-    <div class="row" ng-show="notice.date && !notice.publisher">
-      <span class="large-2 columns">Date</span>
-      <span class="large-10 columns">{{ notice.date | lfYear }}</span>
-    </div>
-    <div class="row" ng-show="notice.subject">
-      <span class="large-2 columns">Dans</span>
-      <span class="large-10 columns">{{ notice.subject | replace }}</span>
-    </div>
-
-    <div class="row" ng-show="notice.abstract">
-      <span class="large-2 columns">Résumé</span>
-      <span class="large-10 columns">{{ notice.abstract }}</span>
-    </div>
-    <div class="row" ng-show="notice.lang">
-      <span class="large-2 columns">Langue</span>
-      <span class="large-10 columns">{{ notice.lang }}</span>
-    </div>
-    <div class="row" ng-show="notice.source">
-      <span class="large-2 columns">Source</span>
-      <span class="large-10 columns">{{ notice.source | replace }}</span>
-    </div>
-    <div class="row" ng-show="notice.direct_url">
-      <span class="large-2 columns" ng-pluralize
-                                    count="notice.direct_urls.length"
-                                    when="{'0': '',
-                                          'one': 'Lien externe',
-                                          'other': 'Liens externes'}"></span>
-      <div class="large-10 columns">
-        <span ng-repeat="url in notice.direct_urls">
-          <a href="{{url}}">{{ url }}</a>&nbsp;
-        </span>
+    <div class="notice_details">
+      <div class="row" ng-show="notice.publisher">
+        <span class="large-2 columns">Édition</span>
+        <span class="large-10 columns">{{ notice.publisher | yearPublisher: notice.date }}</span>
       </div>
-    </div>
-    <div class="row" ng-show="notice.availability">
-      <span class="large-2 columns">Disponibilité</span>
-      <span class="large-10 columns">{{ notice.availability }}</span>
-    </div>
+      <div class="row" ng-show="notice.date && !notice.publisher">
+        <span class="large-2 columns">Date</span>
+        <span class="large-10 columns">{{ notice.date | lfYear }}</span>
+      </div>
+      <div class="row" ng-show="notice.subject">
+        <span class="large-2 columns">Dans</span>
+        <span class="large-10 columns">{{ notice.subject | replace }}</span>
+      </div>
 
-    <div class="row">
-      <span class="large-2 columns">Résultat de</span>
-      <span class="large-10 columns">{{ notice.vendor_name }}</span>
-    </div>
-    <div class="row">
-      <span class="large-2 columns">Permalien</span>
-      <span class="large-10 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
+      <div class="row" ng-show="notice.abstract">
+        <span class="large-2 columns">Résumé</span>
+        <span class="large-10 columns">{{ notice.abstract }}</span>
+      </div>
+      <div class="row" ng-show="notice.lang">
+        <span class="large-2 columns">Langue</span>
+        <span class="large-10 columns">{{ notice.lang }}</span>
+      </div>
+      <div class="row" ng-show="notice.source">
+        <span class="large-2 columns">Source</span>
+        <span class="large-10 columns">{{ notice.source | replace }}</span>
+      </div>
+      <div class="row" ng-show="notice.direct_url">
+        <span class="large-2 columns" ng-pluralize
+                                      count="notice.direct_urls.length"
+                                      when="{'0': '',
+                                            'one': 'Lien externe',
+                                            'other': 'Liens externes'}"></span>
+        <div class="large-10 columns">
+          <span ng-repeat="url in notice.direct_urls">
+            <a href="{{url}}">{{ url }}</a>&nbsp;
+          </span>
+        </div>
+      </div>
+      <div class="row" ng-show="notice.availability">
+        <span class="large-2 columns">Disponibilité</span>
+        <span class="large-10 columns">{{ notice.availability }}</span>
+      </div>
+
+      <div class="row">
+        <span class="large-2 columns">Résultat de</span>
+        <span class="large-10 columns">{{ notice.vendor_name }}</span>
+      </div>
+      <div class="row">
+        <span class="large-2 columns">Permalien</span>
+        <span class="large-10 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
+      </div>
     </div>
   </article>
 </section>

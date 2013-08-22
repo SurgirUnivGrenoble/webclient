@@ -82,7 +82,7 @@ ul, li {
   font-size: 26px;
   font-weight: 500;
 }
-.normal-title {
+.normal_title {
   font-weight: 400;
   margin: 20px 0 10px;
   line-height: 1.2em;
@@ -227,9 +227,27 @@ ul, li {
   margin-bottom: 20px;
   background-color: rgb(236, 240, 241);
 }
+.page-title_banner h3 {
+  color: #b8bfc7;
+}
 .back {
   margin-left: 26px;
-  padding-top: 14px;
+}
+.notice_content {
+  margin-bottom: 40px;
+  line-height: 1.722169;
+}
+.notice__title {
+  margin: 0;
+}
+.notice__material-icon, .notice__title, .notice__author {
+  margin-left: 26px;
+}
+.notice_details {
+  margin-left: 49px;
+}
+.notice_details span {
+  margin-bottom: 8px;
 }
 
 /* Form elements */
@@ -274,7 +292,6 @@ button, .button {
   background-color: #2ecc71;
   color: white;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-  font-weight: 400;
   position: relative;
   text-decoration: none;
   text-align: center;
