@@ -3,13 +3,18 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     clean: {
-      assets: ['dist/assets/'],
-      all: ['dist/'],
+      assets: ['build/assets/', 'dist/assets/'],
+      all: ['build/', 'dist/'],
     },
 
     copy: {
       index: { src: 'app/index.prod.html', dest: 'dist/index.html' },
-      assets: {expand: true, cwd: 'app/', src: ['assets/**'], dest: 'dist/'}
+      assets: {
+        expand: true,
+        cwd: 'app/',
+        src: ['assets/font/**', 'assets/img/**'],
+        dest: 'dist/'
+      }
     },
 
     cssmin: {
@@ -18,11 +23,11 @@ module.exports = function(grunt) {
         expand: true,
         cwd: 'app/assets/css/',
         src: ['styles.css'],
-        dest: 'dist/assets/css/',
+        dest: 'build/assets/css/',
         ext: '.min.css'
       },
       concat: {
-        src: ['dist/assets/css/normalize-2.0.1.min.css', 'dist/assets/css/bootstrap.min.css', 'dist/assets/css/foundation.min.css', 'dist/assets/css/font-awesome.min.css', 'dist/assets/css/styles.min.css'],
+        src: ['app/assets/css/normalize-2.0.1.min.css', 'app/assets/css/bootstrap.min.css', 'app/assets/css/foundation.min.css', 'app/assets/css/font-awesome.min.css', 'build/assets/css/styles.min.css'],
         dest: 'dist/assets/css/<%= pkg.name %>.min.css'
       }
     },
@@ -34,15 +39,15 @@ module.exports = function(grunt) {
       },
       surgir: {
         src: ['app/views/**/*.html'],
-        dest: 'dist/templates/templates.js'
+        dest: 'build/templates/templates.js'
       },
       classic: {
         src: ['app/views/classic/*.html', 'app/views/partials/*.html'],
-        dest: 'dist/templates/classic.js'
+        dest: 'build/templates/classic.js'
       },
       mobile: {
         src: ['app/views/mobile/*.html', 'app/views/partials/*.html'],
-        dest: 'dist/templates/mobile.js'
+        dest: 'build/templates/mobile.js'
       },
     },
 
@@ -53,7 +58,7 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'dist/js/<%= pkg.name %>.min.js': ['app/lib/**/*.js', 'app/js/**/*.js', 'dist/templates/templates.js']
+          'dist/js/<%= pkg.name %>.min.js': ['app/lib/**/*.js', 'app/js/**/*.js', 'build/templates/templates.js']
         }
       }
     }
@@ -65,7 +70,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('default', ['copy', 'cssmin', 'html2js', 'uglify']);
-  grunt.registerTask('release', ['clean', 'copy', 'cssmin', 'html2js', 'uglify']);
+  grunt.registerTask('assets',  ['clean:assets', 'copy', 'cssmin']);
+  grunt.registerTask('default', ['cssmin', 'html2js', 'uglify']);
+  grunt.registerTask('build',   ['copy', 'default']);
+  grunt.registerTask('release', ['clean', 'build']);
 
 };
