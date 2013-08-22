@@ -623,13 +623,16 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position'])
       //bind keyboard events: arrows up(38) / down(40), enter(13) and tab(9), esc(27)
       element.bind('keydown', function (evt) {
 
-        //typeahead is open and an "interesting" key was pressed
-        if (scope.matches.length === 0 || HOT_KEYS.indexOf(evt.which) === -1) {
-          return;
+        // user directly validates input with enter or tab, not a suggestion selection
+        if (scope.activeIdx === -1 && (evt.which === 13 || evt.which === 9)) {
+          if (timeoutPromise) { // if he validates fast enough, cancel timeout for autocomplete
+            $timeout.cancel(timeoutPromise);
+          }
+          return; // proceed, dont override input with selection
         }
 
-        //dont override input, just proceed if user validates input without a selection
-        if (scope.activeIdx === -1 && (evt.which === 13 || evt.which === 9)) {
+        //typeahead is open and an "interesting" key was pressed
+        if (scope.matches.length === 0 || HOT_KEYS.indexOf(evt.which) === -1) {
           return;
         }
 
