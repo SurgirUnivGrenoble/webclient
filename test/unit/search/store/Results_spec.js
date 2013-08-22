@@ -11,7 +11,7 @@ describe('surgir.search', function() {
 
     var mockNotice = {
       filter: function(result) {}
-    }
+    };
 
     beforeEach(module(function($provide) {
       $provide.value('Facets', mockFacets);

@@ -44,7 +44,7 @@ describe('surgir.notice', function() {
         expect(notice.author).toEqual('A. Dumas - C. Dumas');
         expect(notice.source).toEqual('Le Monde - Mediapart - Figaro');
         expect(notice.subject).toEqual("industrie - révolution - l'etat");
-      })
+      });
     });
   });
 

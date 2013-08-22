@@ -32,7 +32,7 @@ function(Facets, Notice) {
     },
 
     _postFilter: function(results) {
-      if (results.results === null ) {
+      if (results.results === null) {
         results.results = [];
       }
       results.results.forEach(function(result) {

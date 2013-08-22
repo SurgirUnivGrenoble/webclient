@@ -8,7 +8,8 @@ function(replace) {
       if (notice.date === '00000000') {
         notice.date = '';
       }
-      ['ptitle', 'author', 'source', 'subject'].forEach(function(field) {
+      var fields = ['ptitle', 'author', 'source', 'subject'];
+      fields.forEach(function(field) {
         notice[field] = replace(notice[field]);
       });
       return notice;
