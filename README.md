@@ -5,8 +5,8 @@ Install/Deploy
 --------------
 
 Require Ruby 2 (or a Ruby manager), RubyGems, Bundler.
-
-```bundle install [--deployment]
+```
+bundle install [--deployment]
 ```
 
 This should install requirements for the basic Rack app, which serves the client application and works as a proxy to a LibraryFind instance.
@@ -17,16 +17,18 @@ Building the Client (for Production)
 ------------------------------------
 
 If necessary, one can rebuild application files for production using some [Grunt](http://gruntjs.com/) tasks (essentially resource minification).
-
-```npm install -g grunt-cli
+```
+npm install -g grunt-cli
 npm install
-grunt```
+grunt
+```
 
 Run `grunt --help` for a list of tasks.
 
 Run
 ---
-```bundle exec rackup
+```
+bundle exec rackup
 ```
 
 It launches the application on `http://localhost:9292`. Port can be configured with option `-p <port number>`.
