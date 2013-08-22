@@ -152,6 +152,18 @@ describe('surgir.search', function() {
         service.getRecordNotice(5);
         $httpBackend.flush();
       });
+
+      it('adds filters params to request if filters are set', function() {
+        spyOn(mockFilters, 'asParamString').
+          andReturn('&filter[]=date--2013');
+        $httpBackend.expectGET(
+          '/json/GetJobRecord?id[]=123&id[]=456&notice_display=1' +
+          '&page=5&filter[]=date--2013&stop_search=0&max=&page_size=1&' +
+          'with_facette=0&sort=relevance&log_action_txt=&log_cxt_txt=').
+          respond({results: {current: {}}});
+        service.getRecordNotice(5);
+        $httpBackend.flush();
+      });
     });
   });
 

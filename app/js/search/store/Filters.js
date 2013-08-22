@@ -26,14 +26,15 @@ angular.module('surgir.search').factory('Filters', ['Params', function(params) {
       }.bind(this));
     },
 
-    asParamString: function() {
+    asParamString: function(excludeLogAction) {
       if (this.hasSelection()) {
         var filterParams = [];
         this.filterKeys().forEach(function(filter) {
           filterParams.push(filter + '--' + escape(this.selection[filter]));
         }.bind(this));
-        return params.concat(filterParams, 'filter', true) +
-              '&log_action=facette';
+        var filterString = params.concat(filterParams, 'filter', true);
+        return excludeLogAction ? filterString :
+                                  filterString + '&log_action=facette';
       } else {
         return '';
       }

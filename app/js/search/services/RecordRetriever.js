@@ -56,6 +56,7 @@ angular.module('surgir.search').factory('RecordRetriever',
       getRecordNotice: function(pageIndex) {
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&notice_display=1&page=' + pageIndex +
+                      Filters.asParamString(true) +
                       '&stop_search=0&max=&page_size=1&with_facette=0' +
                       '&sort=relevance&log_action_txt=&log_cxt_txt=';
         return $http.get(request).then(function(answer) {

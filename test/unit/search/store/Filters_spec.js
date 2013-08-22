@@ -65,6 +65,11 @@ describe('surgir.search', function() {
       it('returns an empty string when no filters are set', function() {
         expect(service.asParamString()).toEqual('');
       });
+
+      it('optionally excludes "log_action" from answer', function() {
+        service.add('date', '2013');
+        expect(service.asParamString(true)).toEqual('&filter[]=date--2013');
+      });
     });
 
   });
