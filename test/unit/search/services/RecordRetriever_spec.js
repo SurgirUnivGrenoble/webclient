@@ -71,7 +71,7 @@ describe('surgir.search', function() {
     });
 
     describe('#fetchFinalResults', function() {
-      it('send a search request to the server', function() {
+      it('send a search request to the server with stop signal', function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
           '&max=25&page=1&page_size=10&with_facette=1&notice_display=0' +
@@ -88,7 +88,7 @@ describe('surgir.search', function() {
         spyOn(mockFilters, 'asParamString').
           andReturn('&filter[]=date--2013&log_action=facette');
         $httpBackend.expectGET(
-          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
           '&max=25&page=1&page_size=10&filter[]=date--2013&log_action=facette' +
           '&with_facette=1&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
@@ -106,7 +106,7 @@ describe('surgir.search', function() {
       it('sends a search request to fetch the next results by page index',
       function() {
         $httpBackend.expectGET(
-          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
           '&max=25&page=3&page_size=10&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
@@ -118,7 +118,7 @@ describe('surgir.search', function() {
       function() {
         spyOn(mockResults, 'concat');
         $httpBackend.whenGET(
-          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
           '&max=25&page=3&page_size=10&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({results: 'something'});
@@ -131,7 +131,7 @@ describe('surgir.search', function() {
         spyOn(mockFilters, 'asParamString').
           andReturn('&filter[]=date--2013&log_action=facette');
         $httpBackend.expectGET(
-          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
+          '/json/GetJobRecord?id[]=123&id[]=456&stop_search=1' +
           '&max=25&page=3&page_size=10&filter[]=date--2013&log_action=facette' +
           '&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
@@ -145,7 +145,7 @@ describe('surgir.search', function() {
       it('send a search request to the server', function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&notice_display=1' +
-          '&page=5&stop_search=0&max=&page_size=1&with_facette=0' +
+          '&page=5&stop_search=1&max=&page_size=1&with_facette=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=').
           respond({results: {current: {}}});
         service.getRecordNotice(5);
@@ -157,7 +157,7 @@ describe('surgir.search', function() {
           andReturn('&filter[]=date--2013');
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&notice_display=1' +
-          '&page=5&filter[]=date--2013&stop_search=0&max=&page_size=1&' +
+          '&page=5&filter[]=date--2013&stop_search=1&max=&page_size=1&' +
           'with_facette=0&sort=relevance&log_action_txt=&log_cxt_txt=').
           respond({results: {current: {}}});
         service.getRecordNotice(5);

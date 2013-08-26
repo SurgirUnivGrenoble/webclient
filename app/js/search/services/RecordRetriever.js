@@ -20,7 +20,7 @@ angular.module('surgir.search').factory('RecordRetriever',
 
       filterResults: function() {
         Results.reset();
-        this._fetchNewRecords(true, 0, Filters.asParamString());
+        this._fetchNewRecords(true, 1, Filters.asParamString());
       },
 
       _fetchNewRecords: function(done, stopSearch, filtersParam) {
@@ -32,7 +32,7 @@ angular.module('surgir.search').factory('RecordRetriever',
       },
 
       fetchMoreResults: function() {
-        this._fetchRecords(0,
+        this._fetchRecords(1,
                            Filters.asParamString(),
                            0,
                            Results.pageIndex + 1).
@@ -60,7 +60,7 @@ angular.module('surgir.search').factory('RecordRetriever',
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&notice_display=1&page=' + pageIndex +
                       Filters.asParamString(true) +
-                      '&stop_search=0&max=&page_size=1&with_facette=0' +
+                      '&stop_search=1&max=&page_size=1&with_facette=0' +
                       '&sort=relevance&log_action_txt=&log_cxt_txt=';
         return $http.get(request).then(function(answer) {
           return answer.data.results.current;
