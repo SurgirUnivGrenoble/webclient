@@ -9,6 +9,7 @@ angular.module('surgir.search').controller('FiltersController',
     $scope.filtered = Filters.hasSelection.bind(Filters);
 
     $scope.addFilterAndRefresh = function(facet, value) {
+      $scope.$emit('cancelPoll');
       Filters.add(facet, value);
       RecordRetriever.filterResults();
     };
@@ -23,6 +24,7 @@ angular.module('surgir.search').controller('FiltersController',
     };
 
     $scope.applyFilters = function() {
+      $scope.$emit('cancelPoll');
       RecordRetriever.filterResults();
       $location.path('/results');
     };

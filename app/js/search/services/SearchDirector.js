@@ -26,7 +26,7 @@ function($http, $timeout, search, Collections, Jobs, Records) {
     },
 
     _pollJobs: function(request, pollNb, delay) {
-      $timeout(function() {
+      this.timeoutPromise = $timeout(function() {
           $http.get(request).success(function(data) {
             var newlyDoneJobs = Jobs.checkDone(data.results || []);
             if (this._stopPolling(pollNb + 1)) {
@@ -44,6 +44,12 @@ function($http, $timeout, search, Collections, Jobs, Records) {
 
     _stopPolling: function(pollNb) {
       return pollNb == search.maxNbPolls || Jobs.allDone();
+    },
+
+    cancel: function() {
+      if (this.timeoutPromise) {
+        $timeout.cancel(this.timeoutPromise);
+      }
     }
   };
 }]);

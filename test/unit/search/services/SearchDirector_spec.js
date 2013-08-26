@@ -49,6 +49,13 @@ describe('surgir.search', function() {
       // In angular 1.1.*, use $timeout.verifyNoPendingTasks();
     });
 
+    var flushPolls = function(times) {
+      for (var i = 0; i < times; i++) {
+        $timeout.flush();
+        $httpBackend.flush();
+      }
+    };
+
     describe('#search', function() {
       it('send a search request to the server', function() {
         $httpBackend.expectGET(
@@ -73,13 +80,6 @@ describe('surgir.search', function() {
           $httpBackend.whenGET('/json/CheckJobStatus?id[]=123&id[]=456').
             respond({results: []});
         });
-
-        var flushPolls = function(times) {
-          for (var i = 0; i < times; i++) {
-            $timeout.flush();
-            $httpBackend.flush();
-          }
-        };
 
         it('poll the server for done jobs', function() {
           service.search('something');
@@ -135,6 +135,31 @@ describe('surgir.search', function() {
         });
       });
     });
-  });
 
+    describe('#cancel', function() {
+      beforeEach(function() {
+        $httpBackend.whenGET(
+          '/json/Search?query[string1]=something&cols[]=1&cols[]=31' +
+          '&query[max]=25&query[field_filter1]=keyword&query[start]=None' +
+          '&filter=&sort_value=None&query[mod]=new_search&tab_template=ALL' +
+          '&search_group=12&listCG_selected=None&log_cxt=search').
+        respond({results: {jobs_id: []}});
+
+        $httpBackend.whenGET('/json/CheckJobStatus?id[]=123&id[]=456').
+          respond({results: []});
+      });
+
+      it('cancels polling without any further request', function() {
+        spyOn(mockRecordRetriever, 'fetchFinalResults');
+
+        service.search('something');
+        $httpBackend.flush();
+        flushPolls(1);
+        service.cancel();
+
+        expect(mockRecordRetriever.fetchFinalResults).not.toHaveBeenCalled();
+      });
+    });
+
+  });
 });
