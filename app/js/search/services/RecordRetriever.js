@@ -23,8 +23,8 @@ angular.module('surgir.search').factory('RecordRetriever',
         this._fetchNewRecords(true, 0, Filters.asParamString());
       },
 
-      _fetchNewRecords: function(done, stopSearch, filtersParam, pageIndex) {
-        this._fetchRecords(stopSearch, filtersParam, pageIndex).
+      _fetchNewRecords: function(done, stopSearch, filtersParam) {
+        this._fetchRecords(stopSearch, filtersParam, 1).
           success(function(data) {
             if (done) { InProgress.done(); }
             Results.store(data.results);
@@ -32,14 +32,17 @@ angular.module('surgir.search').factory('RecordRetriever',
       },
 
       fetchMoreResults: function() {
-        this._fetchRecords(0, Filters.asParamString(), Results.pageIndex + 1).
+        this._fetchRecords(0,
+                           Filters.asParamString(),
+                           0,
+                           Results.pageIndex + 1).
           success(function(data) {
             InProgress.done();
             Results.concat(data.results);
           });
       },
 
-      _fetchRecords: function(stopSearch, filtersParam, pageIndex) {
+      _fetchRecords: function(stopSearch, filtersParam, withFacets, pageIndex) {
         InProgress.start();
         var request = '/json/GetJobRecord?' + Jobs.asParamString() +
                       '&stop_search=' + stopSearch +
@@ -47,7 +50,7 @@ angular.module('surgir.search').factory('RecordRetriever',
                       '&page=' + (pageIndex || 1) +
                       '&page_size=' + search.pageSize +
                       (filtersParam || '') +
-                      '&with_facette=' + search.retrieveFacettes +
+                      '&with_facette=' + withFacets +
                       '&notice_display=0&sort=relevance' +
                       '&log_action_txt=&log_cxt_txt=&log_cxt=search';
         return $http.get(request);

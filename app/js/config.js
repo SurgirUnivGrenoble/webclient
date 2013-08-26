@@ -11,7 +11,5 @@ angular.module('surgir.config', []).
     /* max results requested per collection */
     maxResults: 25,
     /* max results retrieved per page */
-    pageSize: 10,
-    /* retrieveFacettes 0/1 */
-    retrieveFacettes: 1
+    pageSize: 10
   });

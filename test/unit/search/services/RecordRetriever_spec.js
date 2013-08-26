@@ -6,8 +6,7 @@ describe('surgir.search', function() {
 
     mockParams = {
       maxResults: 25,
-      pageSize: 10,
-      retrieveFacettes: 1
+      pageSize: 10
     };
 
     mockResults = {
@@ -108,7 +107,7 @@ describe('surgir.search', function() {
       function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
-          '&max=25&page=3&page_size=10&with_facette=1&notice_display=0' +
+          '&max=25&page=3&page_size=10&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.fetchMoreResults();
@@ -120,7 +119,7 @@ describe('surgir.search', function() {
         spyOn(mockResults, 'concat');
         $httpBackend.whenGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
-          '&max=25&page=3&page_size=10&with_facette=1&notice_display=0' +
+          '&max=25&page=3&page_size=10&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({results: 'something'});
         service.fetchMoreResults();
@@ -134,7 +133,7 @@ describe('surgir.search', function() {
         $httpBackend.expectGET(
           '/json/GetJobRecord?id[]=123&id[]=456&stop_search=0' +
           '&max=25&page=3&page_size=10&filter[]=date--2013&log_action=facette' +
-          '&with_facette=1&notice_display=0' +
+          '&with_facette=0&notice_display=0' +
           '&sort=relevance&log_action_txt=&log_cxt_txt=&log_cxt=search').
           respond({});
         service.fetchMoreResults();
