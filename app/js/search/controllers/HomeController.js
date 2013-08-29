@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('surgir.search').controller('HomeController',
-  ['$scope', '$location', function($scope, $location) {
+['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
     $scope.goToSearch = function() {
+      $rootScope.autofocusSearch = true;
       $location.path('/results');
     };
 
