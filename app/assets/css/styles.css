@@ -240,14 +240,17 @@ ul, li {
 .notice__title {
   margin: 0;
 }
-.notice__material-icon, .notice__title, .notice__author {
+hr, .notice__material-icon, .notice__title, .notice__author, .notice_details {
   margin-left: 26px;
 }
 .notice_details {
-  margin-left: 49px;
+  font-size: 75%;
 }
 .notice_details span {
-  margin-bottom: 8px;
+  padding-bottom: 4px;
+}
+.notice_details hr {
+  margin-left: 0;
 }
 
 /* Form elements */
