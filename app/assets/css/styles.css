@@ -3,12 +3,28 @@ body {
   font-family: "Open sans", Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
 }
+html, body {
+  height: 100%;
+}
 .wrapper {
   width: auto;
   margin-right: auto;
   margin-left: auto;
   position: relative;
+  min-height: 100%;
 }
+.main {
+/*  overflow:auto;*/
+  padding-bottom: 84px;
+  min-height: 100%;
+}
+.sticky-banner {
+  position: relative;
+  margin-top: -84px;
+  height: 84px;
+  clear:both;
+}
+
 a {
   color: #2ecc71;
   text-decoration: none;
