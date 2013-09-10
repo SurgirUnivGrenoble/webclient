@@ -632,7 +632,8 @@
     }, {
       "name": "material_type",
       "data": [
-        ["Livre", 39]
+        ["Livre", 39],
+        ["Thèse / mémoire", 15]
       ],
       "default": 1
     }, {

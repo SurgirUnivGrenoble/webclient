@@ -30,7 +30,8 @@ angular.module('surgir.search').factory('Filters', ['Params', function(params) {
       if (this.hasSelection()) {
         var filterParams = [];
         this.filterKeys().forEach(function(filter) {
-          filterParams.push(filter + '--' + escape(this.selection[filter]));
+          filterParams.push(filter + '--' +
+                            encodeURIComponent(this.selection[filter]));
         }.bind(this));
         var filterString = params.concat(filterParams, 'filter', true);
         return excludeLogAction ? filterString :

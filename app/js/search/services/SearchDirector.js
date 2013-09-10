@@ -8,7 +8,7 @@ function($http, $timeout, search, Collections, Jobs, Records) {
 
     search: function(queryInput) {
       this.queryInput = queryInput;
-      var queryTerm = escape(queryInput);
+      var queryTerm = encodeURIComponent(queryInput);
       var request = '/json/Search?query[string1]=' +
                     queryTerm +
                     Collections.asParamString(true) +
