@@ -29,6 +29,9 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
                                   controller: 'RecordController'}).
       when('/notice/:permalink', {templateUrl: 'views/classic/notice.html',
                                   controller: 'PermalinkController'}).
+      when('/a-propos', {templateUrl: 'views/classic/apropos.html'}).
+      when('/mentions-legales',
+                        {templateUrl: 'views/classic/mentions-legales.html'}).
       otherwise({redirectTo: '/'});
   }]);
 }
