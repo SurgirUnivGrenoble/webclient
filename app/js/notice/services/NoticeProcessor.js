@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('surgir.notice').factory('NoticeProcessor', ['replaceFilter',
-function(replace) {
+angular.module('surgir.notice').factory('NoticeProcessor',
+['replaceFilter', 'iconizeFilter', function(replace, iconize) {
   return {
     filter: function(notice) {
       notice.direct_urls = notice.direct_url.split('-_-');
@@ -12,6 +12,7 @@ function(replace) {
       fields.forEach(function(field) {
         notice[field] = replace(notice[field]);
       });
+      notice.material_icon = iconize(notice.material_type);
       return notice;
     }
   };

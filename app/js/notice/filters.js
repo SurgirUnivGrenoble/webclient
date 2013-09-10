@@ -11,6 +11,21 @@ angular.module('surgir.notice').
     }
   }).
 
+  filter('iconize', function() {
+    return function(material_type) {
+      switch (material_type) {
+        case 'Article': return 'icon-article';
+        case 'Carte': return 'icon-map';
+        case 'Image': return 'icon-image';
+        case 'Livre': return 'icon-book';
+        case 'Multisupport': return 'icon-multi-support';
+        case 'Revue': return 'icon-article';
+        case 'Thèse / Mémoire': return 'icon-book';
+        default: return 'icon-article';
+      }
+    }
+  }).
+
   filter('lfYear', function() {
     return function(timestamp) {
       if (timestamp) {

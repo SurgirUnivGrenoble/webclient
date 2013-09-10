@@ -15,6 +15,7 @@ describe('surgir.notice', function() {
       'source': 'Le Monde;Mediapart;Figaro',
       'subject': 'industrie;révolution;l&apos;etat',
       'date': '20130000',
+      'material_type': 'Livre',
       'direct_url': 'http://handle.net/35-_-http://handle.net/36'
     };
 
@@ -44,6 +45,11 @@ describe('surgir.notice', function() {
         expect(notice.author).toEqual('A. Dumas - C. Dumas');
         expect(notice.source).toEqual('Le Monde - Mediapart - Figaro');
         expect(notice.subject).toEqual("industrie - révolution - l'etat");
+      });
+
+      it('adds a custom icon field depending on the material type', function() {
+        service.filter(notice);
+        expect(notice.material_icon).toEqual('icon-book');
       });
     });
   });

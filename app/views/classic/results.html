@@ -11,7 +11,7 @@
           <div ng-repeat="result in response.results" class="result row">
             <div class="large-2 columns">
               <div class="result__material-icon">
-                <img src="http://placekitten.com/g/190/190">
+                <img ng-src="assets/img/{{ result.material_icon }}.svg">
               </div>
             </div>
             <div class="large-10 columns">

@@ -15,6 +15,24 @@ describe('surgir.notice#filters', function() {
     }));
   });
 
+  describe('iconize', function() {
+    it('should return an icon name corresponding to the given material type',
+      inject(function(iconizeFilter) {
+        expect(iconizeFilter('Article')).toEqual('icon-article');
+        expect(iconizeFilter('Carte')).toEqual('icon-map');
+        expect(iconizeFilter('Image')).toEqual('icon-image');
+        expect(iconizeFilter('Livre')).toEqual('icon-book');
+        expect(iconizeFilter('Multisupport')).toEqual('icon-multi-support');
+        expect(iconizeFilter('Revue')).toEqual('icon-article');
+        expect(iconizeFilter('Thèse / Mémoire')).toEqual('icon-book');
+      }));
+
+    it('should return icon-article by default',
+      inject(function(iconizeFilter) {
+        expect(iconizeFilter('unknown')).toEqual('icon-article');
+      }));
+  });
+
   describe('lfYear', function() {
     it('should format the year from LibraryFind custom timestamp',
     inject(function(lfYearFilter) {
