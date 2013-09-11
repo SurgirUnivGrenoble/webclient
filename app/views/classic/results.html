@@ -5,7 +5,10 @@
     <section class="results row">
       <div ng-show="hasResults()">
         <header>
-          <h4>Résultats 1 à {{ response.results.length }} sur {{ response.hits }}</h4>
+          <h4 class="results-title">
+            <span>Résultats 1 à {{ response.results.length }} sur {{ response.hits }}</span>
+            <img src="assets/img/ajax-loader.gif" class="results-loading" ng-show="loading()">
+          </h4>
         </header>
         <div class="results-list">
           <div ng-repeat="result in response.results" class="result row">
@@ -32,8 +35,8 @@
       </div>
     </section>
     <div class="row">
-      <div class="large-1 large-offset-2 columns">
-        <img src="assets/img/ajax-loader.gif" ng-show="loading()" />
+      <div class="large-1 large-offset-3 columns">
+        <img src="assets/img/ajax-loader.gif" ng-show="loading()">
       </div>
     </div>
   </div>

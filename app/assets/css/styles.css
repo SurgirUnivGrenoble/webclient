@@ -210,6 +210,16 @@ ul, li {
 }
 
 /* Results */
+.results-title {
+  position: relative;
+  padding-bottom: 10px;
+}
+.results-loading {
+  position: absolute;
+  height: 25px;
+  padding-left: 10px;
+  top: -2px;
+}
 .results-list, .facets ul li {
   font-size: 85%;
   list-style: none;
