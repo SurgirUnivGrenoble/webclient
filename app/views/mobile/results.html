@@ -1,22 +1,39 @@
-<div ng-include="'views/partials/search_banner.html'"></div>
+<header class="results-title row">
+  <div class="small-4 columns">
+    <!-- <div class="small-logo"> -->
+      <a href="/">
+        Surgir
+        <!-- <h1 class="small-banner_title">Surgir</h1> -->
+      </a>
+    <!-- </div> -->
+  </div>
+  <div class="small-4 columns">
+    <span>1 - {{ response.results.length }} sur {{ response.hits }}</span>
+  </div>
+  <div class="small-1 columns">
+    <img src="assets/img/ajax-loader.gif" class="results-loading" ng-show="loading()">
+    <a href="" ng-click="showMoreResults()" class="ts_more_results" ng-hide="noMoreResults()"><i class="icon-plus"></i></a>
+  </div>
+</header>
 
-<section class="results">
-  <header>
-    <h2>Résultats {{ response.results.length }} / {{ response.hits }}</h2>
-  </header>
+<div ng-include="'views/mobile/partials/search_banner.html'"></div>
+
+<section>
   <ul class="results-list">
-    <li ng-repeat="result in response.results" class="result">
+    <li class="result" ng-repeat="result in response.results">
       <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
       <div class="result__author">{{ result.author }}</div>
-      <div class="result__publisher">Édition : {{ result.publisher }}{{ result.date | lfYear }}</div>
-      <div class="result__collection">Résultat de : {{ result.vendor_name }}</div>
+      <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
+      <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
+      <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source }}</div>
+      <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
     </li>
   </ul>
-  <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
-  <span ng-show="noMoreResults()">Plus de résultats</span>
 </section>
 
-<nav class="facets" ng-controller="FiltersController">
-  <a href="#/filters">Filtrer ces résultats</a>
-  <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
+<nav class="facets row" ng-controller="FiltersController">
+  <div class="small-10 small-centered columns">
+    <a href="#/filters" class="button">Filtrer ces résultats</a>
+    <a href="" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
+  </div>
 </nav>
