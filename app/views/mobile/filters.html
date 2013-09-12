@@ -1,6 +1,5 @@
 <nav class="facets">
   <h3>Filtrer les résultats</h3>
-  <a href="" ng-click="applyFilters()">Appliquer les filtres</a>
   <div ng-repeat="facet in facets" class="facet">
     <h4>
       {{ facet.frenchName }}
@@ -11,4 +10,5 @@
       <option value=""></option>
     </select>
   </div>
+  <a href="" class="button" ng-click="applyFilters()">Appliquer les filtres</a>
 </nav>
