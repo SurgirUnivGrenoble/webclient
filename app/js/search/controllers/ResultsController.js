@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('surgir.search').controller('ResultsController',
-  ['$scope', 'RecordRetriever', 'Results', 'InProgress',
-  function($scope, RecordRetriever, Results, InProgress) {
+  ['$scope', '$location', 'RecordRetriever', 'Results', 'InProgress',
+  function($scope, $location, RecordRetriever, Results, InProgress) {
     $scope.response = Results.response;
+
+    $scope.goToNotice = function(resultIndex) {
+      $location.path('/results/' + resultIndex);
+    }
 
     $scope.loading = function() {
       return InProgress.running;

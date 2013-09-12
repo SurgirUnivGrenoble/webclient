@@ -2,7 +2,7 @@ describe('surgir.search', function() {
   beforeEach(module('surgir.search'));
 
   describe('ResultsController', function() {
-    var scope, mockResults, mockRetriever;
+    var scope, mockResults, mockRetriever, mockLocation;
 
     var mockResponse = { hits: 100 };
 
@@ -15,10 +15,15 @@ describe('surgir.search', function() {
       fetchMoreResults: function() {}
     };
 
+    mockLocation = {
+      path: function() {}
+    }
+
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       $controller('ResultsController', {
         $scope: scope,
+        $location: mockLocation,
         Results: mockResults,
         RecordRetriever: mockRetriever
       });
@@ -26,6 +31,14 @@ describe('surgir.search', function() {
 
     it('should bind to Results content', function() {
       expect(scope.response).toBe(mockResponse);
+    });
+
+    describe('#goToNotice', function() {
+      it('should change the location to go the detailed result', function() {
+        spyOn(mockLocation, 'path');
+        scope.goToNotice(2);
+        expect(mockLocation.path).toHaveBeenCalledWith('/results/2');
+      });
     });
 
     describe('#hasResults', function() {
