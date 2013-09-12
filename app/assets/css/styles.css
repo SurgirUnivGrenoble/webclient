@@ -247,6 +247,12 @@ ul, li {
   font-size: 13px;
 }
 
+/* Document type Icons */
+.result__material-icon, .notice__material-icon {
+  max-width: 75%;
+  opacity: 0.3;
+}
+
 /* Notice */
 .page-title_banner {
   margin-top: -19px;
