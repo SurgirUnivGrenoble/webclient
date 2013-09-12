@@ -16,7 +16,20 @@
   </div>
 </header>
 
-<div ng-include="'views/mobile/partials/search_banner.html'"></div>
+<div class="search_banner" role="banner">
+    <div class="row">
+      <form ng-submit="submitSearch()" ng-controller="SearchController">
+        <div class="small-10 columns">
+          <input class="small-search-query" type="search" placeholder="Rechercher" oneoff-autofocus
+                ng-model="searchInput" typeahead="item for item in suggestions($viewValue)"
+                typeahead-min-length="3" typeahead-wait-ms="300" autocomplete="off">
+        </div>
+        <div class="small-2 columns button_wrapper">
+          <button class="small" type="submit"><i class="icon-search"></i></button>
+        </div>
+      </form>
+    </div>
+</div>
 
 <section>
   <ul class="results-list">
