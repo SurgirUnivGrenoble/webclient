@@ -38,11 +38,11 @@ module.exports = function(grunt) {
         module: 'surgir.templates'
       },
       classic: {
-        src: ['app/views/classic/*.html', 'app/views/partials/*.html'],
+        src: ['app/views/classic/**/*.html'],
         dest: 'build/js/classic_templates.js'
       },
       mobile: {
-        src: ['app/views/mobile/*.html', 'app/views/partials/*.html'],
+        src: ['app/views/mobile/**/*.html'],
         dest: 'build/js/mobile_templates.js'
       },
     },

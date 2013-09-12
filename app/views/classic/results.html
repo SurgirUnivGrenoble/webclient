@@ -1,36 +1,34 @@
-<div ng-include="'views/partials/search_banner.html'"></div>
+<div ng-include="'views/classic/partials/search_banner.html'"></div>
 
 <div class="row">
   <div class="large-8 push-4 columns">
-    <section class="results row">
-      <div ng-show="hasResults()">
-        <header>
-          <h4 class="results-title">
-            <span>Résultats 1 à {{ response.results.length }} sur {{ response.hits }}</span>
-            <img src="assets/img/ajax-loader.gif" class="results-loading" ng-show="loading()">
-          </h4>
-        </header>
-        <div class="results-list">
-          <div ng-repeat="result in response.results" class="result row">
-            <div class="large-2 columns">
-              <div class="result__material-icon">
-                <img ng-src="assets/img/{{ result.material_icon }}.svg">
-              </div>
+    <section ng-show="hasResults()">
+      <header>
+        <h4 class="results-title">
+          <span>Résultats 1 à {{ response.results.length }} sur {{ response.hits }}</span>
+          <img src="assets/img/ajax-loader.gif" class="results-loading" ng-show="loading()">
+        </h4>
+      </header>
+      <div class="results-list">
+        <div class="result row" ng-repeat="result in response.results">
+          <div class="large-2 columns">
+            <div class="result__material-icon">
+              <img ng-src="assets/img/{{ result.material_icon }}.svg">
             </div>
-            <div class="large-10 columns">
-              <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
-              <div class="result__author">{{ result.author }}</div>
-              <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
-              <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
-              <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source }}</div>
-              <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
-            </div>
+          </div>
+          <div class="large-10 columns">
+            <h3 class="result__title"><a href="#/results/{{$index + 1}}">{{ result.ptitle }}</a></h3>
+            <div class="result__author">{{ result.author }}</div>
+            <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
+            <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
+            <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source }}</div>
+            <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
           </div>
         </div>
-        <div class="more_results row">
-          <div class="small-3 large-centered columns">
-            <a href="" ng-click="showMoreResults()" class="more_results_action" ng-hide="noMoreResults()">Plus de résultats</a>
-          </div>
+      </div>
+      <div class="more_results row">
+        <div class="small-3 large-centered columns">
+          <a href="" ng-click="showMoreResults()" class="ts_more_results" ng-hide="noMoreResults()">Plus de résultats</a>
         </div>
       </div>
     </section>

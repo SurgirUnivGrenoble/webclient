@@ -51,7 +51,7 @@ describe('Surgir Client', function() {
       describe('when asking for more results', function() {
         it('should fetch and display more results after the previous ones',
         function() {
-          element('.more_results_action').click();
+          element('.ts_more_results').click();
           expect(repeater('.result').count()).toBe(20);
         });
       });
