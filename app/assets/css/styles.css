@@ -380,6 +380,9 @@ button.small, .button.small {
   .big-banner_subtitle {
     font-size: 16px;
   }
+  button {
+    width: 95%;
+  }
   .normal_title {
     font-size: 18px;
   }
