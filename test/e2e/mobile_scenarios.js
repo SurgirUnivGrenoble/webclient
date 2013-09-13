@@ -39,7 +39,7 @@ describe('Surgir Client', function() {
     describe('Results List', function() {
       describe('when selecting a result', function() {
         it('should go to the detailed notice', function() {
-          element(".result:first").click();
+          browserTap(element('.result:first'));
           expect(browser().location().url()).toBe('/results/1');
         });
       });
@@ -67,7 +67,7 @@ describe('Surgir Client', function() {
       describe('when selecting the permalink', function() {
         var uid = 'notice/oai:quod.lib.umich.edu:MIU01-010308521';
         it('should follow the permalink to the detailed notice', function() {
-          element(".result:first").click();
+          browserTap(element('.result:first'));
           element("[href$='" + uid + ";53;19453']").click();
           expect(browser().location().url()).toBe('/' + uid +
                                               encodeURIComponent(';53;19453'));
@@ -75,5 +75,19 @@ describe('Surgir Client', function() {
       });
     });
   });
+
+  var browserTrigger = function(element, eventName) {
+    element.query(function(el, done) {
+      var evt = document.createEvent('Event');
+      evt.initEvent(eventName, false, true);
+      el[0].dispatchEvent(evt);
+      done();
+    });
+  };
+
+  var browserTap = function(element) {
+    browserTrigger(element, 'touchstart');
+    browserTrigger(element, 'touchend');
+  };
 
 });

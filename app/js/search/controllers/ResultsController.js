@@ -5,9 +5,9 @@ angular.module('surgir.search').controller('ResultsController',
   function($scope, $location, RecordRetriever, Results, InProgress) {
     $scope.response = Results.response;
 
-    $scope.goToNotice = function(resultIndex) {
+    $scope.goToResult = function(resultIndex) {
       $location.path('/results/' + resultIndex);
-    }
+    };
 
     $scope.loading = function() {
       return InProgress.running;

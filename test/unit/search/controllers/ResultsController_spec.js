@@ -17,7 +17,7 @@ describe('surgir.search', function() {
 
     mockLocation = {
       path: function() {}
-    }
+    };
 
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
@@ -33,10 +33,10 @@ describe('surgir.search', function() {
       expect(scope.response).toBe(mockResponse);
     });
 
-    describe('#goToNotice', function() {
+    describe('#goToResult', function() {
       it('should change the location to go the detailed result', function() {
         spyOn(mockLocation, 'path');
-        scope.goToNotice(2);
+        scope.goToResult(2);
         expect(mockLocation.path).toHaveBeenCalledWith('/results/2');
       });
     });

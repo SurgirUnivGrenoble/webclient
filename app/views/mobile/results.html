@@ -41,7 +41,7 @@
 
 <section>
   <ul class="results-list">
-    <li class="result" ng-repeat="result in response.results" ng-click="goToNotice($index + 1)">
+    <li class="result" ng-repeat="result in response.results" ng-tap="goToResult($index + 1)">
       <h3 class="result__title">{{ result.ptitle }}</h3>
       <div class="result__author">{{ result.author }}</div>
       <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
