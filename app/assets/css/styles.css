@@ -386,6 +386,18 @@ button.small, .button.small {
   .home_partners {
     margin-top: 64px;
   }
+  .small-logo {
+    margin-left: 0;
+  }
+  .results-list {
+    width: 95%;
+  }
+  .ts_more_results {
+    font-size: 16px;
+  }
+  button.small {
+    width: 54%;
+  }
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1280px) and (max-width: 1390px) {
