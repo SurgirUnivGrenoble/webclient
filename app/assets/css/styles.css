@@ -64,7 +64,7 @@ ul, li {
 
 /* Titles */
 .big-logo {
-  background-image: url('../img/logo.png');
+  background-image: url('../img/logo/logo-59.png');
   background-repeat: no-repeat;
   background-position: left center;
   padding-top: 15px;
@@ -90,7 +90,7 @@ ul, li {
   margin-left: 26px;
 }
 .small-logo {
-  background-image: url('../img/small-logo.png');
+  background-image: url('../img/logo/logo-16.png');
   background-repeat: no-repeat;
   background-position: left center;
 }
@@ -365,4 +365,49 @@ button.small, .button.small {
 .back i {
   font-size: 16px;
   padding-right: 6px;
+}
+
+/* Media queries */
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation : portrait) {
+  .big-logo {
+    background-image: url('../img/logo/logo-48.png');
+    padding-top: 25px;
+  }
+  .big-banner_title {
+    font-size: 74px;
+  }
+  .big-banner_subtitle {
+    font-size: 16px;
+  }
+  .normal_title {
+    font-size: 18px;
+  }
+  .home_partners {
+    margin-top: 64px;
+  }
+}
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1280px) and (max-width: 1390px) {
+  .home_intro {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+/* Large screens ----------- */
+@media only screen and (min-width : 1390px) and (max-width: 1824px) {
+  .home_intro {
+    padding-left: 14%;
+    padding-right: 14%;
+  }
+}
+/* Über Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+  .home_intro {
+    padding-left: 23%;
+    padding-right: 23%;
+  }
+  .home_partners {
+    margin-top: 124px;
+  }
 }
