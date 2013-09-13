@@ -220,6 +220,11 @@ ul, li {
   padding-left: 10px;
   top: -2px;
 }
+.results-loading-mobile {
+  position: absolute;
+  height: 15px;
+  margin-left: -20px;
+}
 .results-list, .facets ul li {
   font-size: 85%;
   list-style: none;
