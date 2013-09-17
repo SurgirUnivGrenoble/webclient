@@ -181,8 +181,7 @@ ul, li {
   background-color: rgb(236, 240, 241);
 }
 .home_partners-logos {
-  margin-top: 20px;
-  padding: 10px;
+  padding-top: 20px;
 }
 .home_partners-logos ul li {
   text-align: center;
@@ -421,8 +420,5 @@ button.small, .button.small {
   .home_intro {
     padding-left: 23%;
     padding-right: 23%;
-  }
-  .home_partners {
-    margin-top: 124px;
   }
 }
