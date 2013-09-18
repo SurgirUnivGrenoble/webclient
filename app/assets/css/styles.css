@@ -125,8 +125,11 @@ ul, li {
 }
 
 /* Accordion menu */
+.facets {
+  margin-left: 26px;
+}
 .accordion {
-  width: 75%;
+  width: 85%;
 }
 .accordion-group {
   background: #FFFFFF;
@@ -400,6 +403,10 @@ button.small, .button.small {
   }
   button.small {
     width: 54%;
+  }
+  
+  .facets {
+    margin-left: 0;
   }
   .accordion {
     width: 95%;
