@@ -130,10 +130,11 @@ ul, li {
 }
 .accordion-group {
   background: #FFFFFF;
-  border-bottom: 2px solid #3E3E3E;
+  border-bottom: 2px solid #4D525C;
 }
 .accordion-heading {
-  background-color: #3E3E3E;
+  background-color: #4D525C;
+  opacity: 0.6;
   padding: 8px 10px 6px;
   line-height: 20px;
   font-weight: 300;
