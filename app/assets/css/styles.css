@@ -126,7 +126,7 @@ ul, li {
 
 /* Accordion menu */
 .accordion {
-  width: 95%;
+  width: 75%;
 }
 .accordion-group {
   background: #FFFFFF;
@@ -399,6 +399,9 @@ button.small, .button.small {
   }
   button.small {
     width: 54%;
+  }
+  .accordion {
+    width: 95%;
   }
 }
 /* Desktops and laptops ----------- */
