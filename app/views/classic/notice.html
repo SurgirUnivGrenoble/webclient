@@ -51,7 +51,7 @@
                                                 'other': 'Liens externes'}"></span>
             <div class="large-10 columns">
               <span ng-repeat="url in notice.direct_urls">
-                <a href="{{url}}">{{ url }}</a>&nbsp;
+                <a href="{{url}}" target="_blank">{{ url }}</a>&nbsp;
               </span>
             </div>
           </div>
@@ -60,7 +60,7 @@
             <span class="large-10 columns">{{ notice.vendor_name }}</span>
           </div>
           <div class="row">
-            <span class="large-2 columns">Permalien</span>
+            <span class="large-2 columns">URL pérenne</span>
             <span class="large-10 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
           </div>
         </div>

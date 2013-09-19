@@ -43,8 +43,8 @@
     <nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
       <h4>Filtrer les résultats</h4>
       <a href="" class="reset-filters" ng-click="resetFilters()" ng-show="filtered()"><i class="icon-remove"></i> Enlever tous les filtres</a>
-      <accordion close-others="false">
-        <accordion-group heading="{{ facet.frenchName }} ({{ facet.data.length }})" ng-repeat="facet in facets" class="facet">
+      <accordion close-others="true">
+        <accordion-group heading="{{ facet.frenchName }} - {{ facet.data.length | option }}" ng-repeat="facet in facets" class="facet">
           <ul>
             <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
               <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
