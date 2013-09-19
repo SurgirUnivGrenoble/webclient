@@ -42,7 +42,15 @@
   <div class="large-4 pull-8 columns">
     <nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
       <h4>Filtrer les résultats</h4>
-      <a href="" class="reset-filters" ng-click="resetFilters()" ng-show="filtered()"><i class="icon-remove"></i> Enlever tous les filtres</a>
+      <div ng-show="filtered()">
+        Filtres:
+        <span ng-repeat="filter in selectedFilters">
+          {{filter}}<span ng-hide="$last">, </span>
+        </span>
+        <div>
+          <a href="" class="reset-filters" ng-click="resetFilters()"><i class="icon-remove"></i> Enlever tous les filtres</a>
+        </div>
+      </div>
       <accordion close-others="true">
         <accordion-group heading="{{ facet.frenchName }} - {{ facet.data.length | option }}" ng-repeat="facet in facets" class="facet">
           <ul>
