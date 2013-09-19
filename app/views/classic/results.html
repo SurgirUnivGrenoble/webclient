@@ -13,7 +13,7 @@
         <div class="result row" ng-repeat="result in response.results" ng-tap="goToResult($index)">
           <div class="large-2 columns">
             <div class="result__material-icon">
-              <img ng-src="assets/img/{{ result.material_icon }}.svg">
+              <img ng-src="{{ result.material_icon }}">
             </div>
           </div>
           <div class="large-10 columns">

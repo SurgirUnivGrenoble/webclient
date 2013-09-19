@@ -47,9 +47,9 @@ describe('surgir.notice', function() {
         expect(notice.subject).toEqual("industrie - révolution - l'etat");
       });
 
-      it('adds a custom icon field depending on the material type', function() {
+      it('adds a custom icon image depending on the material type', function() {
         service.filter(notice);
-        expect(notice.material_icon).toEqual('icon-book');
+        expect(notice.material_icon).toEqual('assets/img/icon-book.svg');
       });
     });
   });

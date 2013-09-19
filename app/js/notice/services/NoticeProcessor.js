@@ -12,7 +12,9 @@ angular.module('surgir.notice').factory('NoticeProcessor',
       fields.forEach(function(field) {
         notice[field] = replace(notice[field]);
       });
-      notice.material_icon = iconize(notice.material_type);
+      notice.material_icon = 'assets/img/' +
+                             iconize(notice.material_type) +
+                             '.svg';
       return notice;
     }
   };
