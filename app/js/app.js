@@ -39,6 +39,6 @@ if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
 angular.module('surgir').run(['Collections', 'CollectionGroupConfig',
 function(Collections, CollectionGroup) {
   var queryParams = window.location.search.slice(1).split('=');
-  var group = ( queryParams[0] === 'group' ) ? queryParams[1] : CollectionGroup;
+  var group = (queryParams[0] === 'group') ? queryParams[1] : CollectionGroup;
   Collections.fetch(group);
 }]);
