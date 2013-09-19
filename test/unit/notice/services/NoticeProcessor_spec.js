@@ -16,7 +16,8 @@ describe('surgir.notice', function() {
       'subject': 'industrie;révolution;l&apos;etat',
       'date': '20130000',
       'material_type': 'Livre',
-      'direct_url': 'http://handle.net/35-_-http://handle.net/36'
+      'direct_url': 'http://handle.net/35-_-http://handle.net/36',
+      'id': '10.1016/j.motcer.2012.03.002;43;21568'
     };
 
     describe('#filter', function() {
@@ -50,6 +51,10 @@ describe('surgir.notice', function() {
       it('adds a custom icon image depending on the material type', function() {
         service.filter(notice);
         expect(notice.material_icon).toEqual('assets/img/icon-book.svg');
+      });
+
+      it("encodes special char '/' in permalink", function() {
+        expect(notice.id).toEqual('10.1016|||j.motcer.2012.03.002;43;21568');
       });
     });
   });

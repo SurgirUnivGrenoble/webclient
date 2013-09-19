@@ -15,6 +15,7 @@ angular.module('surgir.notice').factory('NoticeProcessor',
       notice.material_icon = 'assets/img/' +
                              iconize(notice.material_type) +
                              '.svg';
+      notice.id = notice.id.replace('/', '|||');
       return notice;
     }
   };
