@@ -178,7 +178,6 @@ ul, li {
   width: 100%;
 }
 .home_intro {
-  margin-bottom: 20px;
   overflow: hidden;
 }
 .home_partners {
@@ -393,10 +392,9 @@ button.small, .button.small {
   .normal_title {
     font-size: 18px;
   }
-  .home_partners {
-    margin-top: 64px;
+  .home_intro {
+    margin-bottom: 20px;
   }
-  
   .small-logo {
     margin-left: 0;
   }
@@ -413,26 +411,12 @@ button.small, .button.small {
     width: 95%;
   }
 }
-@media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation : landscape) {
+@media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation: landscape) {
 }
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1280px) and (max-width: 1390px) {
-  .home_intro {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-}
-/* Large screens ----------- */
-@media only screen and (min-width : 1390px) and (max-width: 1824px) {
-  .home_intro {
-    padding-left: 14%;
-    padding-right: 14%;
-  }
+@media only screen and (min-width: 1280px) and (max-width: 1680px) {
+
 }
 /* Über Large screens ----------- */
-@media only screen and (min-width : 1824px) {
-  .home_intro {
-    padding-left: 23%;
-    padding-right: 23%;
-  }
+@media only screen and (min-width: 1680px) {
 }
