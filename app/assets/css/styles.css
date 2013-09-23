@@ -112,6 +112,11 @@ ul, li {
   color: #2ecc71;
 }
 
+.back {
+  padding-top: 29px;
+  font-size: 17.5px;
+}
+
 /* Accordion menu */
 .accordion {
   width: 85%;
@@ -191,7 +196,7 @@ ul, li {
   margin-bottom: 20px;
 }
 
-/* Partial */
+/* Search_banner */
 .search_banner {
   margin-bottom: 20px;
   background: -webkit-linear-gradient(rgba(255,255,255,0.95) 0px,rgba(255,255,255,0.85) 95px);
@@ -341,24 +346,6 @@ button:hover, button:focus, .button:hover, .button:focus {
 button.small, .button.small {
   width: 54%;
   margin-top: 16px;
-}
-.button.back {
-  display: inline-block;
-  padding-top: 0.5625em;
-  padding-right: 1.125em;
-  padding-bottom: 0.625em;
-  padding-left: 1.125em;
-  font-size: 0.8125em;
-  margin-top: 16px;
-  background-color: rgb(52, 73, 94);
-  border-color: rgb(30, 42, 90);
-}
-.button.back:hover {
-  background-color: rgb(30, 42, 90);
-}
-.back i {
-  font-size: 16px;
-  padding-right: 6px;
 }
 
 /* Media queries */
