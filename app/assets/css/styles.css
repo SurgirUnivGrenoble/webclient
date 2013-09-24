@@ -169,6 +169,7 @@ ul, li {
 }
 .home_intro {
   overflow: hidden;
+  margin-bottom: 20px;
 }
 .home_partners {
   background-color: rgb(236, 240, 241);
@@ -294,7 +295,7 @@ ul, li {
   color: #5e6d81;
 }
 
-input[type="search"] {
+input[type=search] {
   background-color: rgb(236, 240, 241);
   font-family: inherit;
   border: none;
@@ -305,9 +306,7 @@ input[type="search"] {
   padding: 0.5em;
   height: 44px;
   width: 100%;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-bottom-left-radius: 0px !important;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -335,8 +334,6 @@ button, .button {
   text-decoration: none;
   text-align: center;
   display: inline-block;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
   width: 85%;
 }
@@ -364,14 +361,16 @@ button.small, .button.small {
   .normal_title {
     font-size: 18px;
   }
-  .home_intro {
-    margin-bottom: 20px;
+  
+  input[type=search] {
+    width: 120%
   }
+  button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
+  
   .results-list {
     width: 95%;
-  }
-  button.small {
-    width: 54%;
   }
   .facets {
     margin-left: 0;
@@ -381,6 +380,12 @@ button.small, .button.small {
   }
 }
 @media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation: landscape) {
+  input[type=search] {
+    width: 120%
+  }
+  button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1280px) and (max-width: 1680px) {
