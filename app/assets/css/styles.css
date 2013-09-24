@@ -347,7 +347,7 @@ button.small, .button.small {
 
 /* Media queries */
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
   .big-logo {
     background-image: url('../img/logo/logo-48.png');
     padding-top: 25px;
@@ -363,9 +363,9 @@ button.small, .button.small {
   }
   
   input[type=search] {
-    width: 120%
+    width: 120%;
   }
-  button, .button, button.small, .button.small {
+  .button_wrapper, button, .button, button.small, .button.small {
     visibility: hidden;
   }
   
@@ -379,18 +379,31 @@ button.small, .button.small {
     width: 95%;
   }
 }
-@media only screen and (min-device-width : 768px) and (max-width: 1280px) and (orientation: landscape) {
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
   input[type=search] {
-    width: 120%
+    width: 120%;
   }
-  button, .button, button.small, .button.small {
+  .button_wrapper, button, .button, button.small, .button.small {
     visibility: hidden;
   }
 }
-/* Desktops and laptops ----------- */
-@media only screen and (min-width: 1280px) and (max-width: 1680px) {
 
+/* Mobile (portrait) ----------- */
+@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: portrait) {
+  input[type=search] {
+    width: 100%;
+  }
+  .button_wrapper, button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
 }
-/* Über Large screens ----------- */
-@media only screen and (min-width: 1680px) {
+/* Mobile (landscape) ----------- */
+@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: landscape) {
+  input[type=search] {
+    width: 100%;
+  }
+  .button_wrapper, button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
 }
