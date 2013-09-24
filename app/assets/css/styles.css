@@ -346,8 +346,40 @@ button.small, .button.small {
 }
 
 /* Media queries */
+/* Mobile (portrait) ----------- */
+@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: portrait) {
+  .main {
+    padding-bottom: 230px;
+  }
+  .sticky-banner {
+    margin-top: -230px;
+    height: 230px;
+  }
+
+  .button_wrapper, button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
+}
+/* Mobile (landscape) ----------- */
+@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: landscape) {
+  .main {
+    padding-bottom: 230px;
+  }
+  .sticky-banner {
+    margin-top: -230px;
+    height: 230px;
+  }
+
+  input[type=search] {
+    width: 100%;
+  }
+  .button_wrapper, button, .button, button.small, .button.small {
+    visibility: hidden;
+  }
+}
+
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
+@media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: portrait)  {
   .big-logo {
     background-image: url('../img/logo/logo-48.png');
     padding-top: 25px;
@@ -361,7 +393,6 @@ button.small, .button.small {
   .normal_title {
     font-size: 18px;
   }
-  
   input[type=search] {
     width: 120%;
   }
@@ -383,39 +414,6 @@ button.small, .button.small {
 @media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
   input[type=search] {
     width: 120%;
-  }
-  .button_wrapper, button, .button, button.small, .button.small {
-    visibility: hidden;
-  }
-}
-
-/* Mobile (portrait) ----------- */
-@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: portrait) {
-  .main {
-    padding-bottom: 230px;
-  }
-  .sticky-banner {
-    margin-top: -230px;
-    height: 230px;
-  }
-  input[type=search] {
-    width: 100%;
-  }
-  .button_wrapper, button, .button, button.small, .button.small {
-    visibility: hidden;
-  }
-}
-/* Mobile (landscape) ----------- */
-@media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-  .main {
-    padding-bottom: 230px;
-  }
-  .sticky-banner {
-    margin-top: -230px;
-    height: 230px;
-  }
-  input[type=search] {
-    width: 100%;
   }
   .button_wrapper, button, .button, button.small, .button.small {
     visibility: hidden;
