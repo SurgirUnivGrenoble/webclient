@@ -367,6 +367,10 @@ button.small, .button.small {
     margin-left: 26px;
     width: 100%;
   }
+  .result__material-icon, .notice__material-icon {
+    visibility: hidden;
+  }
+
 }
 
 /* iPads (portrait) ----------- */
