@@ -1,9 +1,9 @@
 <header class="search_banner" role="banner">
   <div class="row">
-    <div class="small-12 large-centered columns">
+    <div class="small-12 large-12 large-centered small-centered columns">
       <div class="row">
       
-        <div class="small-2 large-2 columns left">
+        <div class="small-3 large-2 columns left">
           <div class="small-logo">
             <a href="/">
               <h1 class="small-banner_title">Surgir</h1>
@@ -11,15 +11,15 @@
           </div>
         </div>
 
-        <div class="small-10 large-10 columns left">
+        <div class="small-9 large-10 columns left">
           <form ng-submit="submitSearch()" ng-controller="SearchController">
             <div class="row">
-              <div class="small-6 large-8 columns">
+              <div class="small-10 large-8 columns">
                 <input class="small-search-query" type="search" placeholder="Rechercher" oneoff-autofocus
                         ng-model="searchInput" typeahead="item for item in suggestions($viewValue)"
                         typeahead-min-length="3" typeahead-wait-ms="300" autocomplete="off">
               </div>
-              <div class="small-2 large-2 columns button_wrapper left">
+              <div class="small-2 large-2 columns button_wrapper left hide-for-small">
                 <button class="small" type="submit"><i class="icon-search"></i></button>
               </div>
             </div>

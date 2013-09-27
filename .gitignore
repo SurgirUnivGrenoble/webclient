@@ -22,3 +22,5 @@ logs/*.log
 .yardoc
 _yardoc
 doc/
+
+app/assets/img/pinscher.ai
