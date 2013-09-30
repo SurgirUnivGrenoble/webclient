@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Surgir</title>
-  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
   <link rel="stylesheet" href="assets/css/surgir-client.min.css" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
@@ -13,9 +13,27 @@
     <div class="main" ng-view></div>
   </div>
 
-  <footer class="bottom_banner sticky-banner">
+  <footer class="bottom_banner sticky-banner"
+          ng-controller="FooterController"
+          ng-class="{true: 'sticky-banner--home', false: 'sticky-banner--default'}[onHome]">
+    <section class="home_partners" ng-show="onHome">
+      <div class="row home_partners-logos">
+        <div class="small-11 large-10 small-centered columns">
+          <ul class="small-block-grid-4 large-block-grid-8">
+            <li><img src="assets/img/partners/region-rhone-alpes-48.png"></li>
+            <li><img src="assets/img/partners/SICD1-48.png"></li>
+            <li><img src="assets/img/partners/SICD2-48.png"></li>
+            <li><img src="assets/img/partners/ujf-48.png"></li>
+            <li><img src="assets/img/partners/grenoble-inp-48.png"></li>
+            <li><img src="assets/img/partners/upmf-48.png"></li>
+            <li><img src="assets/img/partners/univ-stendhal-48.png"></li>
+            <li><img src="assets/img/partners/univ-grenoble-48.png"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
     <div class="row">
-      <div class="large-5 large-offset-7 columns">
+      <div class="small-12 large-5 large-offset-7 columns">
         <ul class="bottom-links">
           <li><a href="#/a-propos">A propos</a></li>
           <li><a href="mailto:surgir@grenet.fr">Contact</a></li>
@@ -24,14 +42,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="small-11 small-centered columns">
+      <div class="small-12 large-11 small-centered columns">
         <div class="row bottom_inner-banner">
-          <div class="large-9 columns">
+          <div class="small-9 columns">
             <ul class="bottom-links">
               <li><small>©Surgir 2013 - <a href="#/mentions-legales">Mentions légales</a></small></li>
             </ul>
           </div>
-          <div class="large-3 columns">
+          <div class="small-3 columns hide-for-small">
             <ul class="bottom-links">
               <li><a href="#fakelink"><i class="icon-twitter"></i></a></li>
               <li><a href="#fakelink"><i class="icon-facebook"></i></a></li>
