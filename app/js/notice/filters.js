@@ -21,7 +21,7 @@ angular.module('surgir.notice').
         case 'Multisupport': return 'icon-multi-support';
         case 'Revue': return 'icon-article';
         case 'Thèse / Mémoire': return 'icon-book';
-        default: return 'icon-article';
+        default: return 'icon-default';
       }
     }
   }).

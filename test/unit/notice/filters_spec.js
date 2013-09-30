@@ -27,9 +27,9 @@ describe('surgir.notice#filters', function() {
         expect(iconizeFilter('Thèse / Mémoire')).toEqual('icon-book');
       }));
 
-    it('should return icon-article by default',
+    it('should return icon-default by default',
       inject(function(iconizeFilter) {
-        expect(iconizeFilter('unknown')).toEqual('icon-article');
+        expect(iconizeFilter('unknown')).toEqual('icon-default');
       }));
   });
 
