@@ -42,3 +42,14 @@ function(Collections, CollectionGroup) {
   var group = (queryParams[0] === 'group') ? queryParams[1] : CollectionGroup;
   Collections.fetch(group);
 }]);
+
+angular.module('surgir').controller('FooterController',
+['$scope', '$location', function($scope, $location) {
+  $scope.$on('$locationChangeSuccess', function() {
+    if ($location.path() === '/') {
+      $scope.onHome = true;
+    } else {
+      $scope.onHome = false;
+    }
+  });
+}]);

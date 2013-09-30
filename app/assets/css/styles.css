@@ -20,9 +20,15 @@ html, body {
 }
 .sticky-banner {
   position: relative;
+  clear:both;
+}
+.sticky-banner--default {
+  margin-top: -84px;
+  height: 84px;
+}
+.sticky-banner--home {
   margin-top: -172px;
   height: 172px;
-  clear:both;
 }
 
 a {
