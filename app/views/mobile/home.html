@@ -9,7 +9,7 @@
 <div class="row">
   <form ng-submit="goToSearch()">
     <div class="small-12 columns">
-      <input type="search" ui-event="{ focus: 'goToSearch()' }" placeholder="Rechercher">
+      <input type="search" placeholder="Rechercher" ng-model="searchInput" autofocus>
     </div>
     <!-- <div class="small-3 columns button_wrapper">
       <button type="submit"><i class="icon-search"></i></button>

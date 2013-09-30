@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('surgir', ['ui.event', 'ui.bootstrap',
+angular.module('surgir', ['ui.bootstrap',
   'surgir.search', 'surgir.notice', 'surgir.templates']);
 
 if (window.matchMedia('only screen and (max-device-width:480px)').matches) {

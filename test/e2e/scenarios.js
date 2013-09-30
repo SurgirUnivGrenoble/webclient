@@ -15,9 +15,9 @@ describe('Surgir Client', function() {
       });
     });
 
-    describe('when focusing on the search function', function() {
-      it('should redirect to the search-ready/results page', function() {
-        element('[type=submit]').click();
+    describe('when starting to type some search input', function() {
+      it('should redirect to the results page', function() {
+        input('searchInput').enter('something');
         expect(browser().location().url()).toBe('/results');
       });
     });
