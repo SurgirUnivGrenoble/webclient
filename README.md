@@ -4,37 +4,44 @@ Surgir Project - UPMF
 Install/Deploy
 --------------
 
-Require Ruby 2 (or a Ruby manager), RubyGems, Bundler.
+Require Ruby (or a Ruby manager), RubyGems, Bundler.
+
 ```
-bundle install [--deployment]
+bundle install --deployment
 ```
 
 This should install requirements for the basic Rack app, which serves the client application and works as a proxy to a LibraryFind instance.
 
 The file `config.ru` defines the Rack server. It also defines the address to the LibraryFind host. Client application files reside in `dist/` (after build).
 
-Building the Client (for Production)
-------------------------------------
-
-If necessary, one can rebuild application files for production using some [Grunt](http://gruntjs.com/) tasks (essentially resource minification).
-```
-npm install -g grunt-cli
-npm install
-grunt
-```
-
-Run `grunt --help` for a list of tasks.
-
 Run
 ---
+
 ```
 bundle exec rackup
 ```
 
 It launches the application on `http://localhost:9292`. Port can be configured with option `-p <port number>`.
 
-Test
-----
+Building the Client (for Production)
+------------------------------------
+
+If necessary, one can rebuild application files for production from source files by running [Grunt tasks](http://gruntjs.com/) (essentially resource minification).
+
+```
+npm install -g grunt-cli
+npm install
+grunt release
+```
+
+To build the package for distribution and deployment, one can run `grunt deploy-package`, which creates a tar.gz archive.
+
+Run `grunt --help` for a list of tasks.
+
+Development/Test
+----------------
+
+Run `bundle install` to install development/test dependencies.
 
 Require [Karma](http://karma-runner.github.io/0.8/index.html) (install with npm, see `test/config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
 

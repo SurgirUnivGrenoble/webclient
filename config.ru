@@ -14,7 +14,7 @@ class LibraryFindProxy < Rack::Proxy
   end
 end
 
-use Rack::CommonLogger, File.new('logs/app.log', 'w')
+use Rack::CommonLogger, File.new('logs/app.log', 'a')
 use Rack::Deflater
 
 map '/json' do

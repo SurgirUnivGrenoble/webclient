@@ -59,6 +59,21 @@ module.exports = function(grunt) {
           'dist/js/mobile_templates.min.js': ['build/js/mobile_templates.js']
         }
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'surgir-deploy-<%= pkg.version %>.tar.gz'
+        },
+        files: [
+          {src: ['config.ru'], dest: 'surgir-client/'},
+          {src: ['dist/**'], dest: 'surgir-client/'},
+          {src: ['Gemfile*'], dest: 'surgir-client/'},
+          {src: ['logs/app.log'], dest: 'surgir-client/'},
+          {src: ['README.md'], dest: 'surgir-client/'}
+        ]
+      }
     }
   });
 
@@ -67,10 +82,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.registerTask('assets',  ['clean:assets', 'copy', 'cssmin']);
   grunt.registerTask('default', ['cssmin', 'html2js', 'uglify']);
-  grunt.registerTask('build',   ['copy', 'default']);
-  grunt.registerTask('release', ['clean', 'build']);
+  grunt.registerTask('build', ['clean', 'copy', 'default']);
+  grunt.registerTask('deploy-package', ['build', 'compress']);
 
 };
