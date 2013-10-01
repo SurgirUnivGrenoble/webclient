@@ -40,6 +40,14 @@ describe('Surgir Client', function() {
       });
     });
 
+    describe('when deleting the search query', function() {
+      it('should reset results and filters', function() {
+        input('searchInput').enter('');
+        expect(repeater('.result').count()).toBe(0);
+        expect(repeater('.facet').count()).toBe(0);
+      });
+    });
+
     describe('Results List', function() {
       describe('when selecting a result', function() {
         it('should go to the detailed notice', function() {

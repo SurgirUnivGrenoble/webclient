@@ -6,6 +6,10 @@ angular.module('surgir.search').factory('RecordRetriever',
     return {
       startNewSearch: function() {
         InProgress.start();
+        this.reset();
+      },
+
+      reset: function() {
         Results.reset();
         Filters.reset();
       },

@@ -5,6 +5,12 @@ angular.module('surgir.search').controller('SearchController', ['$scope',
 function($scope, $rootScope, $location, Search, AutoComplete, limitToFilter) {
   $scope.searchInput = Search.queryInput;
 
+  $scope.$watch('searchInput', function() {
+    if ($scope.searchInput.length === 0) {
+      Search.reset();
+    }
+  });
+
   $scope.submitSearch = function() {
     if ($scope.searchInput) {
       Search.search($scope.searchInput);

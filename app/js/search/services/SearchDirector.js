@@ -46,6 +46,11 @@ function($http, $timeout, search, Collections, Jobs, Records) {
       return pollNb == search.maxNbPolls || Jobs.allDone();
     },
 
+    reset: function() {
+      this.queryInput = '';
+      Records.reset();
+    },
+
     cancel: function() {
       if (this.timeoutPromise) {
         $timeout.cancel(this.timeoutPromise);
