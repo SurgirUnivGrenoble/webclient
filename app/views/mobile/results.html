@@ -22,7 +22,8 @@
         <div class="small-10 columns">
           <input class="small-search-query" type="search" placeholder="Rechercher" oneoff-autofocus
                 ng-model="searchInput" typeahead="item for item in suggestions($viewValue)"
-                typeahead-min-length="3" typeahead-wait-ms="300" autocomplete="off">
+                typeahead-min-length="3" typeahead-wait-ms="300" typeahead-on-select="submitSearch()"
+                autocomplete="off">
         </div>
         <!-- <div class="small-2 columns button_wrapper">
           <button class="small" type="submit"><i class="icon-search"></i></button>
