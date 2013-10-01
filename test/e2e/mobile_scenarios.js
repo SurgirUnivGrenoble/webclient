@@ -27,7 +27,10 @@ describe('Surgir Client', function() {
     beforeEach(function() {
       browser().navigateTo('/#/results');
       input('searchInput').enter('some terms');
-      element('[type=submit]').click();
+      element('form').query(function(elem, done) {
+        elem[0].dispatchEvent(new Event('submit'));
+        done();
+      });
     });
 
     describe('after querying some terms', function() {
