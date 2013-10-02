@@ -2,6 +2,7 @@
 
 <div class="row">
   <div class="large-8 push-4 columns">
+    <div ng-show="hasNoResults()">Aucun résultat pour cette requête.</div>
     <section ng-show="hasResults()">
       <header>
         <h4 class="results-title">

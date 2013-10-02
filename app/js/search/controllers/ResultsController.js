@@ -17,6 +17,10 @@ angular.module('surgir.search').controller('ResultsController',
       return $scope.response.hits > 0;
     };
 
+    $scope.hasNoResults = function() {
+      return $scope.response.hits === 0;
+    };
+
     $scope.showMoreResults = function() {
       $scope.$emit('cancelPoll');
       RecordRetriever.fetchMoreResults();

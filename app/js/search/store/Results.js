@@ -7,7 +7,7 @@ function(Facets, Notice) {
     pageIndex: 1,
 
     reset: function() {
-      this.response.hits = 0;
+      this.response.hits = -1;
       this.response.results = [];
       this.response.page = [];
       Facets.reset();

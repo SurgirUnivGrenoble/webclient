@@ -70,7 +70,7 @@ describe('surgir.search', function() {
         results.store({results: [1, 2, 3]});
         results.reset();
         expect(results.response).toEqual({
-          hits: 0,
+          hits: -1,
           results: [],
           page: []
         });
