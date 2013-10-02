@@ -7,9 +7,9 @@
 </header>
 
 <div class="row">
-  <form ng-submit="goToSearch()">
+  <form ng-submit="submitSearch()" ng-controller="SearchController">
     <div class="small-12 columns">
-      <input type="search" placeholder="Rechercher" ng-model="searchInput" autofocus>
+      <input type="search" placeholder="Rechercher" ng-model="search.input" ng-controller="HomeSearchController" autofocus>
     </div>
     <!-- <div class="small-3 columns button_wrapper">
       <button type="submit"><i class="icon-search"></i></button>

@@ -17,7 +17,7 @@ describe('Surgir Client', function() {
 
     describe('when starting to type some search input', function() {
       it('should redirect to the results page', function() {
-        input('searchInput').enter('something');
+        input('search.input').enter('something');
         expect(browser().location().url()).toBe('/results');
       });
     });
@@ -26,7 +26,7 @@ describe('Surgir Client', function() {
   describe('Results Workflow', function() {
     beforeEach(function() {
       browser().navigateTo('/#/results');
-      input('searchInput').enter('some terms');
+      input('search.input').enter('some terms');
       element('form').query(function(elem, done) {
         elem[0].dispatchEvent(new Event('submit'));
         done();

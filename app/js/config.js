@@ -11,4 +11,7 @@ angular.module('surgir.config', []).
     maxResults: 25,
     /* max results retrieved per page */
     pageSize: 10
+  }).
+  factory('iOSMobile', function() {
+    return /(iPad|iPhone|iPod)/i.test(navigator.userAgent);
   });

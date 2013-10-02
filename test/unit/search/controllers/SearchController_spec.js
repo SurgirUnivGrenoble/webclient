@@ -24,7 +24,7 @@ describe('surgir.search', function() {
     }));
 
     it('should bind to SearchDirector input', function() {
-      expect(scope.searchInput).toBe('sample input');
+      expect(scope.search.input).toBe('sample input');
     });
 
     it('should react to "cancelPoll" event', function() {
@@ -36,7 +36,7 @@ describe('surgir.search', function() {
     describe('#submitSearch', function() {
       it('should call the Search service with search input', function() {
         spyOn(mockSearch, 'search');
-        scope.searchInput = 'test test';
+        scope.search.input = 'test test';
         scope.submitSearch();
         expect(mockSearch.search).toHaveBeenCalledWith('test test');
       });

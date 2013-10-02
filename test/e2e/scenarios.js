@@ -17,7 +17,7 @@ describe('Surgir Client', function() {
 
     describe('when starting to type some search input', function() {
       it('should redirect to the results page', function() {
-        input('searchInput').enter('something');
+        input('search.input').enter('something');
         expect(browser().location().url()).toBe('/results');
       });
     });
@@ -26,7 +26,7 @@ describe('Surgir Client', function() {
   describe('Results Workflow', function() {
     beforeEach(function() {
       browser().navigateTo('/#/results');
-      input('searchInput').enter('some terms');
+      input('search.input').enter('some terms');
       element('[type=submit]').click();
     });
 
@@ -42,7 +42,7 @@ describe('Surgir Client', function() {
 
     describe('when deleting the search query', function() {
       it('should reset results and filters', function() {
-        input('searchInput').enter('');
+        input('search.input').enter('');
         expect(repeater('.result').count()).toBe(0);
         expect(repeater('.facet').count()).toBe(0);
       });
