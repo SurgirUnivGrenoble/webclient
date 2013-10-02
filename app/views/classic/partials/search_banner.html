@@ -15,10 +15,7 @@
           <form ng-submit="submitSearch()" ng-controller="SearchController">
             <div class="row">
               <div class="small-10 large-8 columns">
-                <input class="small-search-query" type="search" placeholder="Rechercher" oneoff-autofocus
-                        ng-model="search.input" typeahead="item for item in suggestions($viewValue)"
-                        typeahead-min-length="3" typeahead-wait-ms="300" typeahead-on-select="submitSearch()"
-                        autocomplete="off">
+                <input search-box class="small-search-query" oneoff-autofocus>
               </div>
               <div class="small-2 large-2 columns button_wrapper left hide-for-small">
                 <button class="small" type="submit"><i class="icon-search"></i></button>
