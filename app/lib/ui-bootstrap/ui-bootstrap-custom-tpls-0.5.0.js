@@ -628,6 +628,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position'])
           if (timeoutPromise) { // if he validates fast enough, cancel timeout for autocomplete
             $timeout.cancel(timeoutPromise);
           }
+          resetMatches();
           return; // proceed, dont override input with selection
         }
 
