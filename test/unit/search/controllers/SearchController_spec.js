@@ -7,6 +7,7 @@ describe('surgir.search', function() {
     mockSearch = {
       queryInput: 'sample input',
       search: function(input) {},
+      reset: function(input) {},
       cancel: function() {}
     };
 
@@ -31,6 +32,18 @@ describe('surgir.search', function() {
       spyOn(mockSearch, 'cancel');
       scope.$emit('cancelPoll');
       expect(mockSearch.cancel).toHaveBeenCalled();
+    });
+
+    it('should reset Search data when input is emptied', function() {
+      spyOn(mockSearch, 'reset');
+
+      scope.search.input = 'test';
+      scope.$digest();
+      expect(mockSearch.reset).not.toHaveBeenCalled();
+
+      scope.search.input = '';
+      scope.$digest();
+      expect(mockSearch.reset).toHaveBeenCalled();
     });
 
     describe('#submitSearch', function() {
