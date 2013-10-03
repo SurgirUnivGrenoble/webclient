@@ -37,7 +37,8 @@ describe('surgir.search', function() {
           expect(rootScope.autofocusSearch).toBe(true);
         });
 
-        it('should call the $location service to redirect to results view', function() {
+        it('should call the $location service to redirect to results view',
+        function() {
           spyOn(mockLocation, 'path');
           scope.search.input = 'test input';
           scope.$digest();
