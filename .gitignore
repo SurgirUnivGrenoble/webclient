@@ -17,6 +17,7 @@ test/tmp
 test/version_tmp
 tmp
 logs/*.log
+/lib
 
 # YARD artifacts
 .yardoc
