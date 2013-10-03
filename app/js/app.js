@@ -3,7 +3,11 @@
 angular.module('surgir', ['ui.bootstrap',
   'surgir.search', 'surgir.notice', 'surgir.templates']);
 
-if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
+var testMobileDevice = function() {
+  return window.matchMedia('only screen and (max-device-width:480px)').matches;
+};
+
+if (testMobileDevice()) {
   angular.module('surgir').config(['$routeProvider', function($routeProvider) {
     $routeProvider.
       when('/', {templateUrl: 'views/mobile/home.html',

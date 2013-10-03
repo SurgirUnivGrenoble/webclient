@@ -14,7 +14,7 @@ function runAngular() {
   });
 }
 
-if (window.matchMedia('only screen and (max-device-width:480px)').matches) {
+if (testMobileDevice()) {
   loadScript('js/mobile_templates.min.js');
 } else {
   loadScript('js/classic_templates.min.js');
