@@ -352,33 +352,6 @@ button.small, .button.small {
 }
 
 /* Media queries */
-/* Small screen ----------- */
-@media only screen and (min-device-width: 480px) and (max-width: 768px) {
-  .main {
-    padding-bottom: 64px;
-  }
-  .sticky-banner {
-    margin-top: -64px;
-    height: 64px;
-  }
-
-  input[type=search] {
-    width: 100%;
-  }
-  .button_wrapper, button, .button, button.small, .button.small {
-    visibility: hidden;
-  }
-  
-  .search_banner input[type=search] {
-    margin-left: 26px;
-    width: 100%;
-  }
-  .result__material-icon, .notice__material-icon {
-    visibility: hidden;
-  }
-
-}
-
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: portrait)  {
   .big-logo {
@@ -424,6 +397,35 @@ button.small, .button.small {
   }
 }
 
+/* Small screen ----------- */
+@media only screen and (min-device-width: 480px) and (max-width: 768px) {
+  .main {
+    padding-bottom: 64px;
+  }
+  .sticky-banner {
+    margin-top: -64px;
+    height: 64px;
+  }
+  
+  .big-logo {
+    background-image: url('../img/logo/logo-36.png');
+  }
+  .big-banner_title {
+    font-size: 62px;
+  }
+  .big-banner_subtitle {
+    font-size: 14px;
+  }
+  
+  .search_banner input[type=search] {
+    margin-left: 26px;
+    width: 100%;
+  }
+  .result__material-icon, .notice__material-icon {
+    visibility: hidden;
+  }
+}
+
 /* Mobile ----------- */
 @media only screen and (min-device-width: 320px) and (max-width: 480px) {
   .main {
@@ -435,30 +437,21 @@ button.small, .button.small {
     height: 58px;
   }
   
-  .home_banner, .medium-logo {
+  .home_banner, .big-logo {
     padding-top: 18px;
   }
-  .medium-logo {
+  .big-logo {
     background-image: url('../img/logo/logo-24.png');
-    background-repeat: no-repeat;
-    background-position: left center;
   }
-  .medium-banner_title {
-    padding-left: 20px;
+  .big-banner_title {
     font-size: 48px;
     font-weight: 500;
-    text-align: center;
-    text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
+    padding-left: 7px;
   }
-  .medium-banner_subtitle {
-    color: rgb(94, 109, 129);
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
+  .big-banner_subtitle {
+    font-size: 13px;
     line-height: 2;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: center;
-    text-shadow: 1px 1px #fff, 0 0 0 #000, 1px 1px #fff;
+    text-align: left;
   }
 
   .bottom_banner {
