@@ -429,7 +429,6 @@ button.small, .button.small {
 /* Mobile ----------- */
 @media only screen and (min-device-width: 320px) and (max-width: 480px) {
   .main {
-    padding-top: 40px;
     padding-bottom: 58px;
   }
   .sticky-banner {
@@ -437,8 +436,8 @@ button.small, .button.small {
     height: 58px;
   }
   
-  .home_banner, .big-logo {
-    padding-top: 18px;
+  .home_banner {
+    padding-top: 40px;
   }
   .big-logo {
     background-image: url('../img/logo/logo-24.png');
@@ -460,5 +459,10 @@ button.small, .button.small {
   .bottom-links li {
     padding: 10px 9px 0 9px;
     font-size: 12px;
+  }
+  
+  .results-title {
+    background-color: rgb(236, 240, 241);
+    padding: 20px 0 0;
   }
 }
