@@ -465,7 +465,12 @@ button.small, .button.small {
     margin: 0 15px 10px 20px;
   }
   .button {
-    width: 98%;
+    width: 100%;
+  }
+  
+  .back {
+    font-size: 14px;
+    padding-top: 23px;
   }
 }
 

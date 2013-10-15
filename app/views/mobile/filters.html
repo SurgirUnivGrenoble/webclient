@@ -1,14 +1,23 @@
-<nav class="facets">
-  <h3>Filtrer les résultats</h3>
-  <div ng-repeat="facet in facets" class="facet">
-    <h4>
-      {{ facet.frenchName }}
-    </h4>
-    <select ng-model="selectedFilters[facet.name]"
-            ng-options="filter[0] as (filter | facetLabel) for filter in facet.data"
-            ng-change="setFilter(facet.name)">
-      <option value=""></option>
-    </select>
+<nav class="facets row">
+  <div class="small-11 small-centered columns">
+    <header class="row">
+      <div class="small-4 columns">
+        <nav class="left back"><a href="#results"><i class="icon-angle-left"></i> Retour</a></nav>
+      </div>
+      <div class="small-8 columns">
+        <h3>Filtrer</h3>
+      </div>
+    </header>
+    <div ng-repeat="facet in facets" class="facet">
+      <h4>
+        {{ facet.frenchName }}
+      </h4>
+      <select ng-model="selectedFilters[facet.name]"
+              ng-options="filter[0] as (filter | facetLabel) for filter in facet.data"
+              ng-change="setFilter(facet.name)">
+        <option value=""></option>
+      </select>
+    </div>
+    <a href="" class="button" ng-click="applyFilters()">Appliquer les filtres</a>
   </div>
-  <a href="" class="button" ng-click="applyFilters()">Appliquer les filtres</a>
 </nav>
