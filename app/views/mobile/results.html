@@ -7,12 +7,12 @@
       </a>
     <!-- </div> -->
   </div>
-  <div class="small-7 columns">
+  <div class="small-6 columns">
     <span>1 - {{ response.results.length }} sur {{ response.hits }}</span>
   </div>
-  <div class="small-1 columns">
+  <div class="small-2 columns">
     <img src="assets/img/ajax-loader.gif" class="results-loading-mobile" ng-show="loading()">
-    <a href="" ng-click="showMoreResults()" class="ts_more_results" ng-hide="noMoreResults()"><i class="icon-plus"></i></a>
+    <a href="" ng-click="showMoreResults()" class="ts_more_results" ng-hide="noMoreResults()"><i class="icon-plus right"></i></a>
   </div>
 </header>
 
@@ -48,7 +48,7 @@
 </section>
 
 <nav class="facets row" ng-controller="FiltersController" ng-show="hasResults()">
-  <div class="small-10 small-centered columns">
+  <div class="small-11 small-centered columns">
     <a href="#/filters" class="button">Filtrer ces résultats</a>
     <a href="" class="button" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
   </div>
