@@ -1,66 +1,72 @@
 <section class="notice">
-  <header class="page-title_banner" role="banner">
-    <div class="row">
-      <div class="small-12 columns">
-        <nav class="left"><a class="button back" href="#/results"><span></span><i class="icon-angle-left"></i> Retour</a></nav>
-        <h3 class="text-center normal_title">Notice détaillée</h3>
+  <header class="page-title_banner row" role="banner">
+    <div class="small-11 small-centered columns">
+      <div class="row">
+        <div class="small-4 columns">
+          <nav class="left back"><a href="#results"><i class="icon-angle-left"></i> Retour</a></nav>
+        </div>
+        <div class="small-8 columns">
+          <h3>Notice</h3>
+        </div>
       </div>
     </div>
   </header>
 
-  <article class="notice_content">
-    <div class="row">
-      <div class="small-10 push-2 columns">
-        <h3 class="normal_title notice__title">{{ notice.ptitle }}</h3>
-        <div class="notice__author">par {{ notice.author }}</div>
-        <hr>
-        <div class="notice_details">
-          <div class="row" ng-show="notice.publisher">
-            <span class="small-2 columns">Édition</span>
-            <span class="small-10 columns">{{ notice.publisher | yearPublisher: notice.date }}</span>
-          </div>
-          <div class="row" ng-show="notice.date && !notice.publisher">
-            <span class="small-2 columns">Date</span>
-            <span class="small-10 columns">{{ notice.date | lfYear }}</span>
-          </div>
-          <div class="row" ng-show="notice.subject">
-            <span class="small-2 columns">Dans</span>
-            <span class="small-10 columns">{{ notice.subject }}</span>
-          </div>
+  <article class="notice_content row">
+    <div class="small-11 small-centered columns">
+      <h3 class="normal_title notice__title">{{ notice.ptitle }}</h3>
+      <div class="notice__author">par {{ notice.author }}</div>
+      <hr>
+      <div class="notice_details">
+        <div class="row" ng-show="notice.publisher">
+          <span class="small-3 columns">Édition</span>
+          <span class="small-9 columns">{{ notice.publisher | yearPublisher: notice.date }}</span>
+        </div>
+        <div class="row" ng-show="notice.date && !notice.publisher">
+          <span class="small-3 columns">Date</span>
+          <span class="small-9 columns">{{ notice.date | lfYear }}</span>
+        </div>
+        <div class="row" ng-show="notice.subject">
+          <span class="small-3 columns">Dans</span>
+          <span class="small-9 columns">{{ notice.subject }}</span>
+        </div>
 
-          <div class="row" ng-show="notice.abstract">
-            <span class="small-2 columns">Résumé</span>
-            <span class="small-10 columns">{{ notice.abstract }}</span>
-          </div>
-          <div class="row" ng-show="notice.lang">
-            <span class="small-2 columns">Langue</span>
-            <span class="small-10 columns">{{ notice.lang }}</span>
-          </div>
-          <div class="row" ng-show="notice.source">
-            <span class="small-2 columns">Source</span>
-            <span class="small-10 columns">{{ notice.source }}</span>
-          </div>
-          <hr>
-          <div class="row" ng-show="notice.direct_url">
-            <span class="small-2 columns" ng-pluralize
-                                          count="notice.direct_urls.length"
-                                          when="{'0': '',
-                                                'one': 'Lien externe',
-                                                'other': 'Liens externes'}"></span>
-            <div class="small-10 columns">
-              <span ng-repeat="url in notice.direct_urls">
-                <a href="{{url}}">{{ url }}</a>&nbsp;
-              </span>
-            </div>
-          </div>
-          <div class="row">
-            <span class="small-2 columns">Résultat de</span>
-            <span class="small-10 columns">{{ notice.vendor_name }}</span>
-          </div>
-          <div class="row">
-            <span class="small-2 columns">URL pérenne</span>
-            <span class="small-10 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
-          </div>
+        <div class="row" ng-show="notice.abstract">
+          <span class="small-3 columns">Résumé</span>
+          <span class="small-9 columns">{{ notice.abstract }}</span>
+        </div>
+        <div class="row" ng-show="notice.lang">
+          <span class="small-3 columns">Langue</span>
+          <span class="small-9 columns">{{ notice.lang }}</span>
+        </div>
+        <hr />
+        <div ng-show="notice.source">
+          <h4>Source</h4>
+          <span>{{ notice.source }}</span>
+        </div>
+        
+        <hr />
+        
+        <div ng-show="notice.direct_url">
+          <h4 ng-pluralize
+                                        count="notice.direct_urls.length"
+                                        when="{'0': '',
+                                              'one': 'Lien externe',
+                                              'other': 'Liens externes'}"></h4>
+          <span ng-repeat="url in notice.direct_urls">
+            <a href="{{url}}">{{ url }}</a>&nbsp;
+          </span>
+        </div>
+        
+        <hr />
+        
+        <div class="row">
+          <span class="small-4 columns">Résultat de</span>
+          <span class="small-8 columns">{{ notice.vendor_name }}</span>
+        </div>
+        <div class="row">
+          <span class="small-4 columns">URL pérenne</span>
+          <span class="small-8 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
         </div>
       </div>
 

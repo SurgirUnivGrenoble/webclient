@@ -475,6 +475,12 @@ button.small, .button.small {
     padding: 0 4px 10px 7px;
     border-bottom: 1px #e5e5e5 solid;
   }
+  .page-title_banner {
+    margin-top: 0;
+  }
+  .page-title_banner h3 {
+    color: rgb(30, 42, 90);
+  }
 }
 
 @media only screen and (min-device-width: 320px) and (max-width: 768px) and (orientation: landscape) {
