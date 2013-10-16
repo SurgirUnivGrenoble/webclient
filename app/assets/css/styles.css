@@ -431,7 +431,6 @@ button.small, .button.small {
   .main {
     padding-bottom: 0;
   }
-  
   .home_banner {
     padding-top: 40px;
   }
@@ -456,21 +455,25 @@ button.small, .button.small {
     background-color: rgb(236, 240, 241);
     padding-top: 20px;
   }
-  
   input.small-search-query {
     width: 123%;
   }
-  
   .results-list {
     margin: 0 15px 10px 20px;
   }
   .button {
     width: 100%;
   }
-  
   .back {
     font-size: 14px;
     padding-top: 23px;
+  }
+  .filters-selected {
+    color: #b8bfc7;
+    font-size: 85%;
+    line-height: 1.3;
+    padding: 0 4px 10px 7px;
+    border-bottom: 1px #e5e5e5 solid;
   }
 }
 

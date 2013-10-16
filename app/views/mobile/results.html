@@ -26,12 +26,16 @@
     </div>
 </div>
 
-<div ng-controller="FiltersController" ng-show="filtered()">
-  Filtres:
-  <span ng-repeat="filter in selectedFilters">
-    {{filter}}<span ng-hide="$last">, </span>
-  </span>
-  <hr />
+<div class="filters-selected row" ng-controller="FiltersController" ng-show="filtered()">
+  <div class="small-11 columns">
+    <strong>Filtres :</strong>
+    <span ng-repeat="filter in selectedFilters">
+      {{filter}}<span ng-hide="$last">, </span>
+    </span>
+  </div>
+  <div class="small-1 columns">
+    <a href="" ng-click="resetFilters()" ng-show="filtered()"><i class="icon-trash right"></i></a>
+  </div>
 </div>
 
 <section>
@@ -50,6 +54,5 @@
 <nav class="facets row" ng-controller="FiltersController" ng-show="hasResults()">
   <div class="small-11 small-centered columns">
     <a href="#/filters" class="button">Filtrer ces résultats</a>
-    <a href="" class="button" ng-click="resetFilters()" ng-show="filtered()">Enlever les filtres</a>
   </div>
 </nav>
