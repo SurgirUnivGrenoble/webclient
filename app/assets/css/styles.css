@@ -481,7 +481,8 @@ button.small, .button.small {
     margin-left: 14px;
   }
   input.small-search-query {
-    width: 115%;
+    width: 121%;
+    margin-left: 0;
   }
   
   .results-title {
