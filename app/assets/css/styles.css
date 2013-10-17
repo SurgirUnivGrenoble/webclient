@@ -480,8 +480,35 @@ button.small, .button.small {
     width: 95%;
     margin-left: 14px;
   }
+  input.small-search-query {
+    width: 115%;
+  }
   
   .results-title {
-    padding: 20px 0 0;
+    background-color: rgb(236, 240, 241);
+    padding-top: 20px;
+  }
+  .results-list {
+    margin: 0 15px 10px 20px;
+  }
+  .button {
+    width: 100%;
+  }
+  .back {
+    font-size: 14px;
+    padding-top: 23px;
+  }
+  .filters-selected {
+    color: #b8bfc7;
+    font-size: 85%;
+    line-height: 1.3;
+    padding: 0 4px 10px 7px;
+    border-bottom: 1px #e5e5e5 solid;
+  }
+  .page-title_banner {
+    margin-top: 0;
+  }
+  .page-title_banner h3 {
+    color: rgb(30, 42, 90);
   }
 }
