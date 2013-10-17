@@ -367,6 +367,8 @@ button.small, .button.small {
   .normal_title {
     font-size: 18px;
   }
+
+  
   input[type=search] {
     width: 120%;
   }
@@ -383,9 +385,6 @@ button.small, .button.small {
   .accordion {
     width: 95%;
   }
-  .result__material-icon, .notice__material-icon {
-    visibility: visible;
-  }
 }
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
@@ -397,36 +396,7 @@ button.small, .button.small {
   }
 }
 
-/* Small screen ----------- */
-@media only screen and (min-device-width: 568px) and (max-width: 768px) {
-  .main {
-    padding-bottom: 64px;
-  }
-  .sticky-banner {
-    margin-top: -64px;
-    height: 64px;
-  }
-  
-  .big-logo {
-    background-image: url('../img/logo/logo-36.png');
-  }
-  .big-banner_title {
-    font-size: 62px;
-  }
-  .big-banner_subtitle {
-    font-size: 14px;
-  }
-  
-  .search_banner input[type=search] {
-    margin-left: 26px;
-    width: 100%;
-  }
-  .result__material-icon, .notice__material-icon {
-    visibility: hidden;
-  }
-}
-
-/* Mobile ----------- */
+/* Mobile  (portrait) ----------- */
 @media only screen and (min-device-width: 320px) and (max-width: 480px) and (orientation: portrait) {
   .main {
     padding-bottom: 0;
@@ -448,15 +418,16 @@ button.small, .button.small {
     text-align: left;
   }
   .bottom_banner {
-    visibility: hidden;
+    display: none !important;
+  }
+  
+  input.small-search-query {
+    width: 123%;
   }
   
   .results-title {
     background-color: rgb(236, 240, 241);
     padding-top: 20px;
-  }
-  input.small-search-query {
-    width: 123%;
   }
   .results-list {
     margin: 0 15px 10px 20px;
@@ -483,6 +454,7 @@ button.small, .button.small {
   }
 }
 
+/* Mobile  (landscape) ----------- */
 @media only screen and (min-device-width: 480px) and (max-width: 768px) and (orientation: landscape) {
   .main {
     padding-bottom: 0;
@@ -491,20 +463,25 @@ button.small, .button.small {
     padding-top: 20px;
   }
   .big-logo {
-    padding-top: 30px;
+    background-image: url('../img/logo/logo-48.png');
+    padding-top: 25px;
+  }
+  .big-banner_title {
+    font-size: 74px;
+  }
+  .big-banner_subtitle {
+    font-size: 16px;
+  }
+  .bottom_banner {
+    display: none !important;
   }
 
   input[type=search] {
-    width: 115%;
-    margin-left: 15px;
-  }
-  
-  .bottom_banner {
-    visibility: hidden;
+    width: 95%;
+    margin-left: 14px;
   }
   
   .results-title {
-    background-color: white;
     padding: 20px 0 0;
   }
 }
