@@ -397,7 +397,7 @@ button.small, .button.small {
 }
 
 /* Mobile  (portrait) ----------- */
-@media only screen and (min-device-width: 320px) and (max-width: 480px) and (orientation: portrait) {
+@media only screen and (min-device-width: 320px) and (max-width: 568px) and (orientation: portrait) {
   .main {
     padding-bottom: 0;
   }
@@ -513,3 +513,30 @@ button.small, .button.small {
     color: rgb(30, 42, 90);
   }
 }
+
+/* Iphone  (portrait) ----------- */
+@media only screen and (min-device-width: 568px) and (max-width: 768px) and (orientation: portrait) {
+  .home_banner {
+    padding-top: 20px;
+  }
+  .big-logo {
+    background-image: url('../img/logo/logo-48.png');
+    padding-top: 25px;
+  }
+  .big-banner_title {
+    font-size: 74px;
+  }
+  .big-banner_subtitle {
+    font-size: 16px;
+  }
+  .bottom_banner {
+    display: none !important;
+  }
+  
+  input[type=search] {
+    width: 120%;
+  }
+  
+  .result__material-icon, .notice__material-icon {
+    display: none;
+  }
