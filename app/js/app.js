@@ -4,7 +4,8 @@ angular.module('surgir', ['ui.bootstrap',
   'surgir.search', 'surgir.notice', 'surgir.templates']);
 
 var testMobileDevice = function() {
-  return window.matchMedia('only screen and (max-device-width:568px)').matches;
+  return /(Android.+Mobile)|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.
+    test(navigator.userAgent);
 };
 
 if (testMobileDevice()) {
