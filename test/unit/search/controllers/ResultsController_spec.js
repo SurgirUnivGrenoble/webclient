@@ -4,7 +4,7 @@ describe('surgir.search', function() {
   describe('ResultsController', function() {
     var scope, mockResults, mockRetriever, mockLocation;
 
-    var mockResponse = { hits: 100 };
+    var mockResponse = {};
 
     mockResults = {
       response: mockResponse,
@@ -20,6 +20,7 @@ describe('surgir.search', function() {
     };
 
     beforeEach(inject(function($rootScope, $controller) {
+      mockResponse.hits = 100;
       scope = $rootScope.$new();
       $controller('ResultsController', {
         $scope: scope,
@@ -49,6 +50,25 @@ describe('surgir.search', function() {
       it('should be false otherwise', function() {
         mockResponse.hits = 0;
         expect(scope.hasResults()).toBeFalsy();
+      });
+    });
+
+    describe('#hasNoResults', function() {
+      it('should be false while the search is running',
+      inject(function(InProgress) {
+        InProgress.start();
+        mockResponse.hits = 0;
+        expect(scope.hasNoResults()).toBeFalsy();
+        InProgress.done();
+      }));
+
+      it('should be false when there are some results', function() {
+        expect(scope.hasNoResults()).toBeFalsy();
+      });
+
+      it('should be true otherwise', function() {
+        mockResponse.hits = 0;
+        expect(scope.hasNoResults()).toBeTruthy();
       });
     });
 
