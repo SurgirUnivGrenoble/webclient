@@ -1,8 +1,10 @@
 Surgir Project - UPMF
 =====================
 
-Production Install
-------------------
+Production
+----------
+
+### Install
 
 Require Ruby (or a Ruby manager), RubyGems, Bundler (`gem install bundler`).
 
@@ -17,8 +19,8 @@ This should install requirements for the basic Rack app, which serves the client
 
 The file `config.ru` defines the Rack server. It also defines the address to the LibraryFind host. Client files reside in `dist/` folder.
 
-Production Run
---------------
+
+### Run
 
 ```
 cd surgir-client
@@ -33,8 +35,12 @@ By default the collection group *Partout* is requested. It can be changed at run
 http://localhost:9292/?group=Bibliotheques_de_Grenoble
 ```
 
-Production Update (Ruby Server Dependencies)
---------------------------------------------
+### Update Application Files
+
+1. replace application files with files from the new deployment package
+1. restart the server
+
+### Update (Security Fixes for Ruby + Dependencies)
 
 Update Ruby/Rubygems/Bundler according to their respective update guides.
 
@@ -47,21 +53,18 @@ To update server dependencies with Bundler:
 1. copy/unzip the package in production environment
 1. run `bundle install --deployment` to update dependencies in production environment
 
-Production Update (Application)
--------------------------------
 
-1. replace application files with files from the new deployment package
-1. restart the server
+Development
+-----------
 
-Version
--------
+### Version
 
 - The version number is defined in `package.json`
 - It is written in the header of `dist/js/surgir-client.min.js`
 - As a good practice, the corresponding commit should be tagged with  `git tag -a vX.Y.Z` for version `X.Y.Z`
 
-Project Organization
---------------------
+
+### Project Organization
 
 - `app`: source files used to build the client (assets, html, javascript)
 - `build`: temporary folder for building the client
@@ -87,8 +90,41 @@ Details of `app` folder:
 - `vendor`: angularjs library for development only
 - `views`: templates for classic (desktop/tablet) and mobile views
 
-Building the Client (for Production)
-------------------------------------
+
+### Environment for Development
+
+Create a new project with all source files by cloning the Git repository. Run `bundle install` to install dependencies for development/test.
+
+```
+git clone https://github.com/SurgirUnivGrenoble/webclient
+cd webclient
+bundle install
+```
+
+Launch a development server:
+
+```
+cd test/mockserver && bundle exec rackup
+```
+
+This development server serves files in `app` by default (at `http://localhost:9293/app/index.html`). It can also serves files from `http://localhost:9293/dist/index.html` to test the production client. It uses static data from fixtures defined in `test/mockserver/data/*.json`.
+
+The development server does not require a VPN connection to the LibraryFind instance (it only serves static data). It runs on `http://localhost:9293` (and not 9292 as for production).
+
+
+### Automated Tests
+
+Automated tests are run with [Karma](http://karma-runner.github.io/0.8/index.html) test runner, to be installed through npm (see `test/config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
+
+Unit tests: run `scripts/test.sh` (require Chrome or another navigator)
+
+End2end tests:
+
+- `cd test/mockserver && rackup`
+- run `scripts/e2e-test.sh` or open a browser at `http://localhost:9293/test`
+
+
+### Building the Client (minifying javascripts and css for production)
 
 Dependencies for the build tasks are managed with node.js, npm, and [Grunt](http://gruntjs.com/). Install [node.js/npm](http://nodejs.org/), then install Grunt dependencies with:
 
@@ -104,30 +140,6 @@ To build the client for production, run :
 
 Run `grunt --help` for a list of available tasks.
 
-Development
------------
-
-Run `bundle install` to install dependencies for development/test.
-
-```
-cd test/mockserver && bundle exec rackup
-```
-
-This development server serves files in `app` by default (at `http://localhost:9293/app/index.html`). It can also serves files from `http://localhost:9293/dist/index.html` to test the production client. It uses static data from fixtures defined in `test/mockserver/data/*.json`.
-
-The development server does not require a VPN connection to the LibraryFind instance (it only serves static data). It runs on `http://localhost:9293` (and not 9292 as for production).
-
-Automated Tests
----------------
-
-Automated tests are run with [Karma](http://karma-runner.github.io/0.8/index.html) test runner, to be installed through npm (see `test/config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
-
-Unit tests: run `scripts/test.sh` (require Chrome or another navigator)
-
-End2end tests:
-
-- `cd test/mockserver && rackup`
-- run `scripts/e2e-test.sh` or open a browser at `http://localhost:9293/test`
 
 Technical Notes
 ---------------
@@ -136,8 +148,8 @@ The source for the client resides in the `app` directory. It uses the AngularJS 
 
 Due to the _Same origin policy_, the client can not request directly the LibraryFind instance. Instead, it requests directly its host server, which acts as a proxy to the LibraryFind server.
 
-Architectural Notes
--------------------
+
+### Architectural Notes
 
 Basically the client is divided between controllers, which handle interactions with views, and services, which handle requests with LibraryFind.
 
