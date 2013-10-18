@@ -36,5 +36,6 @@ angular.module('surgir.search').controller('FiltersController',
 
     $scope.moreFilterValues = function(facet) {
       facet.limit = Math.min(facet.limit + 5, facet.data.length);
+      facet.more = facet.limit < facet.data.length;
     };
   }]);
