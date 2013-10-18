@@ -367,6 +367,9 @@ button.small, .button.small {
   .normal_title {
     font-size: 18px;
   }
+  .bottom_banner {
+    display: inline !important;
+  }
 
   
   input[type=search] {
