@@ -13,6 +13,18 @@ directive('searchBox', function() {
   };
 }).
 
+directive('linkable', function() {
+  return {
+    scope: {
+      link: '=linkable'
+    },
+    template:
+      '<a href="{{link}}" target="_blank" ng-transclude ng-show="link">' +
+      '</a><span ng-transclude ng-hide="link"></span>',
+    transclude: true
+  };
+}).
+
 directive('oneoffAutofocus', ['$rootScope', function($rootScope) {
   return {
     link: function(scope, elem, attrs, ctrl) {
