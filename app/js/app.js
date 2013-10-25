@@ -38,6 +38,8 @@ if (testMobileDevice()) {
       when('/aide', {templateUrl: 'views/classic/aide.html'}).
       when('/mentions-legales',
                         {templateUrl: 'views/classic/mentions-legales.html'}).
+      when('/bases-surgir', {templateUrl: 'views/classic/bases-surgir.html'}).
+      when('/bases-exclues', {templateUrl: 'views/classic/bases-exclues.html'}).
       otherwise({redirectTo: '/'});
   }]);
 }
