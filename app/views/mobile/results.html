@@ -8,7 +8,7 @@
     <!-- </div> -->
   </div>
   <div class="small-6 columns">
-    <span>1 - {{ response.results.length }} sur {{ response.hits }}</span>
+    <span ng-show="hasResults()">1 - {{ response.results.length }} sur {{ response.hits }}</span>
   </div>
   <div class="small-2 columns">
     <img src="assets/img/ajax-loader.gif" class="results-loading-mobile" ng-show="loading()">
