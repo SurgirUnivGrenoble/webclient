@@ -46,6 +46,7 @@
       <div class="result__publisher" ng-show="result.publisher"><span class="field_label">Édition :</span> {{ result.publisher | yearPublisher: result.date }}</div>
       <div class="result__date" ng-show="result.date && !result.publisher"><span class="field_label">Date :</span> {{ result.date | lfYear }}</div>
       <div class="result__source" ng-show="result.source"><span class="field_label">Source :</span> {{ result.source }}</div>
+      <div class="result__url" ng-show="result.direct_url" ng-init="first_url = result.direct_urls[0]"><span class="field_label">Lien externe :</span> <a href="{{first_url}}">{{ first_url }}</a></div>
       <div class="result__collection"><span class="field_label">Résultat de :</span> {{ result.vendor_name }}</div>
     </li>
   </ul>
