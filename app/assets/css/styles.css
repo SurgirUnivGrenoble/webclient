@@ -479,9 +479,7 @@ button.small, .button.small {
   }
   .page-title_banner {
     margin-top: 0;
-  }
-  .page-title_banner h3 {
-    color: rgb(30, 42, 90);
+    padding: 20px 0 10px 0;
   }
 }
 
@@ -539,9 +537,6 @@ button.small, .button.small {
   }
   .page-title_banner {
     margin-top: 0;
-  }
-  .page-title_banner h3 {
-    color: rgb(30, 42, 90);
   }
 }
 
