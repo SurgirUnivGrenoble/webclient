@@ -54,7 +54,18 @@ describe('surgir.notice', function() {
       });
 
       it("encodes special char '/' in permalink", function() {
+        service.filter(notice);
         expect(notice.id).toEqual('10.1016|||j.motcer.2012.03.002;43;21568');
+      });
+
+      it('replaces a wrong encoding in Acte de conférences', function() {
+        var notice = {
+          'material_type': 'Acte de conf\u00c3\u00a9rences',
+          'direct_url': '',
+          'id': ''
+        };
+        service.filter(notice);
+        expect(notice.material_type).toEqual('Acte de conférences');
       });
     });
   });

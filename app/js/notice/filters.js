@@ -4,7 +4,9 @@ angular.module('surgir.notice').
   filter('replace', function() {
     return function(text) {
       if (text) {
-        return text.replace(/&apos;/g, "'").replace(/;/g, ' - ');
+        return text.replace(/&apos;/g, "'")
+                   .replace(/;/g, ' - ')
+                   .replace(/Ã©/g, 'é');
       } else {
         return '';
       }

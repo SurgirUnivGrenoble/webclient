@@ -8,7 +8,7 @@ angular.module('surgir.notice').factory('NoticeProcessor',
       if (notice.date === '00000000') {
         notice.date = '';
       }
-      var fields = ['ptitle', 'author', 'source', 'subject'];
+      var fields = ['ptitle', 'author', 'source', 'subject', 'material_type'];
       fields.forEach(function(field) {
         notice[field] = replace(notice[field]);
       });

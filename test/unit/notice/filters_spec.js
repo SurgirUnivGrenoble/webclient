@@ -13,6 +13,11 @@ describe('surgir.notice#filters', function() {
       inject(function(replaceFilter) {
         expect(replaceFilter('l&apos;envie')).toEqual("l'envie");
     }));
+
+    it('should replace the wrongly encoded "\u00c3\u00a9" by é',
+      inject(function(replaceFilter) {
+        expect(replaceFilter('conf\u00c3\u00a9rences')).toEqual('conférences');
+    }));
   });
 
   describe('iconize', function() {
