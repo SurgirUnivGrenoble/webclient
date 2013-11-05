@@ -19,12 +19,15 @@ describe('surgir.notice#filters', function() {
     it('should return an icon name corresponding to the given material type',
       inject(function(iconizeFilter) {
         expect(iconizeFilter('Article')).toEqual('icon-article');
-        expect(iconizeFilter('Carte')).toEqual('icon-map');
-        expect(iconizeFilter('Image')).toEqual('icon-image');
-        expect(iconizeFilter('Livre')).toEqual('icon-book');
-        expect(iconizeFilter('Multisupport')).toEqual('icon-multi-support');
         expect(iconizeFilter('Revue')).toEqual('icon-article');
-        expect(iconizeFilter('Thèse / Mémoire')).toEqual('icon-book');
+        expect(iconizeFilter('Livre')).toEqual('icon-book');
+        expect(iconizeFilter('Thèse / Mémoire')).toEqual('icon-essay');
+        expect(iconizeFilter('Acte de conférences')).toEqual('icon-speaker');
+        expect(iconizeFilter('Site Web')).toEqual('icon-website');
+        expect(iconizeFilter('Image')).toEqual('icon-image');
+        expect(iconizeFilter('Carte')).toEqual('icon-map');
+        expect(iconizeFilter('Multisupport')).toEqual('icon-multi-support');
+        expect(iconizeFilter('Partition')).toEqual('icon-sheet-music');
       }));
 
     it('should return icon-default by default',

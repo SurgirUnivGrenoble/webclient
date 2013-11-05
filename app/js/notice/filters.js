@@ -15,12 +15,15 @@ angular.module('surgir.notice').
     return function(material_type) {
       switch (material_type) {
         case 'Article': return 'icon-article';
-        case 'Carte': return 'icon-map';
-        case 'Image': return 'icon-image';
-        case 'Livre': return 'icon-book';
-        case 'Multisupport': return 'icon-multi-support';
         case 'Revue': return 'icon-article';
-        case 'Thèse / Mémoire': return 'icon-book';
+        case 'Livre': return 'icon-book';
+        case 'Thèse / Mémoire': return 'icon-essay';
+        case 'Acte de conférences': return 'icon-speaker';
+        case 'Site Web': return 'icon-website';
+        case 'Image': return 'icon-image';
+        case 'Carte': return 'icon-map';
+        case 'Multisupport': return 'icon-multi-support';
+        case 'Partition': return 'icon-sheet-music';
         default: return 'icon-default';
       }
     }
