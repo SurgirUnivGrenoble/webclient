@@ -17,7 +17,6 @@ test/tmp
 test/version_tmp
 tmp
 logs/*.log
-/lib
 *.tar.gz
 
 # YARD artifacts
