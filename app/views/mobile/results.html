@@ -54,6 +54,14 @@
 
 <nav class="facets row" ng-controller="FiltersController" ng-show="hasResults()">
   <div class="small-11 small-centered columns">
-    <a href="#/filters" class="button">Filtrer ces résultats</a>
+    <a href="#/filters" class="button">Filtrer ces résultats</a><br />
   </div>
 </nav>
+<div class="row">
+  <div class="small-11 small-centered columns">
+    <img src="assets/img/ajax-loader.gif" class="results-loading-mobile" ng-show="loading()">
+    <a href="" ng-click="showMoreResults()" class="ts_more_results" ng-hide="noMoreResults()">
+      ou <span class="text-underline">voir plus de résultats</span>
+    </a>
+  </div>
+</div>

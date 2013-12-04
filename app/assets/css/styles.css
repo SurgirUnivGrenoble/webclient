@@ -72,6 +72,10 @@ ul, li {
   line-height: 1.72em;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 /*------------------------------------*\
     $Titles
 \*------------------------------------*/
