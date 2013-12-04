@@ -6,12 +6,12 @@
             <nav class="left back"><a href="#results"><i class="icon-angle-left"></i> Retour</a></nav>
           </div>
           <div class="small-8 columns">
-            <h3>Filtrer</h3>
+            <a href="" class="button small right" ng-click="applyFilters()">Appliquer</a>
           </div>
         </div>
       </div>
     </header>
-    
+
     <div class="small-11 small-centered columns">
       <div class="row">
         <div ng-repeat="facet in facets" class="facet">
@@ -23,7 +23,7 @@
                   ng-change="setFilter(facet.name)">
             <option value=""></option>
           </select>
-          
+
           <hr />
         </div>
         <a href="" class="button" ng-click="applyFilters()">Appliquer les filtres</a>
