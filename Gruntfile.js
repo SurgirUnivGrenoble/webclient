@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         ext: '.min.css'
       },
       concat: {
-        src: ['app/assets/css/normalize-2.0.1.min.css', 'app/assets/css/bootstrap.min.css', 'app/assets/css/foundation.min.css', 'app/assets/css/font-awesome.min.css', 'build/assets/css/styles.min.css'],
+        src: ['app/assets/css/normalize-2.0.1.min.css', 'app/assets/css/bootstrap.min.css', 'app/assets/css/foundation.min.css', 'build/assets/css/styles.min.css'],
         dest: 'dist/assets/css/<%= pkg.name %>.min.css'
       }
     },
