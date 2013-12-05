@@ -27,14 +27,14 @@
 </div>
 
 <div class="filters-selected row" ng-controller="FiltersController" ng-show="filtered()">
-  <div class="small-11 columns">
+  <div class="small-10 columns">
     <strong>Filtres :</strong>
     <span ng-repeat="filter in selectedFilters">
       {{filter}}<span ng-hide="$last">, </span>
     </span>
   </div>
-  <div class="small-1 columns">
-    <a href="" ng-click="resetFilters()" ng-show="filtered()"><i class="icon-trash right">Supprimer</i></a>
+  <div class="small-2 columns">
+    <a href="" href="home.html" title="home" ng-click="resetFilters()" ng-show="filtered()"><i class="icon-medium fa fa-times-circle fa-2 right"></i></a>
   </div>
 </div>
 
