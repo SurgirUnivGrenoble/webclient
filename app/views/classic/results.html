@@ -45,14 +45,14 @@
     <nav class="facets" ng-controller="FiltersController" ng-show="hasResults()">
       <h4>Filtrer les résultats</h4>
       <div class="row selected-filters" ng-show="filtered()">
-        <div class="small-10 columns">
+        <div class="small-9 columns">
           <strong>Filtres :</strong>
           <span ng-repeat="filter in selectedFilters">
             {{filter}}<span ng-hide="$last">, </span>
           </span>
         </div>
-        <div class="small-2 columns">
-          <a href="" ng-click="resetFilters()"><i class="icon-medium fa fa-times-circle fa-2 right"></i></a></a>
+        <div class="small-3 columns">
+          <a href="" ng-click="resetFilters()"><i class="icon-medium fa fa-times-circle fa-2 left"></i></a></a>
         </div>
       </div>
       <accordion close-others="true">
