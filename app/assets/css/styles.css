@@ -84,6 +84,8 @@ ul, li {
   font-size: 2em;
   line-height: 0.813em;
   color: #b8bfc7;
+  padding: 0 20px 10px 0;
+  margin-left: -20px;
   opacity: .6;
   -webkit-transition: 300ms ease-out;
   -moz-transition: 300ms ease-out;
@@ -528,6 +530,9 @@ button.small, .button.small {
   input[type="file"], input[type="checkbox"], input[type="radio"], select {
     margin-bottom: 0;
   }
+  .icon-medium {
+    padding: 0 0 10px 0;
+  }
 }
 
 /* Mobile  (landscape) ----------- */
@@ -585,5 +590,8 @@ button.small, .button.small {
   /* filters.html ----------- */
   input[type="file"], input[type="checkbox"], input[type="radio"], select {
     margin-bottom: 0;
+  }
+  .icon-medium {
+    padding: 0 0 10px 0;
   }
 }
