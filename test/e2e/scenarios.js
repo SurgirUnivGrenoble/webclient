@@ -41,10 +41,9 @@ describe('Surgir Client', function() {
     });
 
     describe('when deleting the search query', function() {
-      it('should reset results and filters', function() {
+      it('should reset results', function() {
         input('search.input').enter('');
         expect(repeater('.result').count()).toBe(0);
-        expect(repeater('.facet').count()).toBe(0);
       });
     });
 
@@ -68,7 +67,6 @@ describe('Surgir Client', function() {
         it('should update results and facets with the selected facet value ',
         function() {
           element(".facet a:contains('Rugbis')").click();
-          expect(repeater('.facet').count()).toBe(4);
           expect(element(".facet a:contains('Science Direct')").text()).
             toEqual('Science Direct');
         });

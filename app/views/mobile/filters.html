@@ -14,7 +14,7 @@
 
     <div class="small-11 small-centered columns">
       <div class="row">
-        <div ng-repeat="facet in facets" class="facet">
+        <div ng-repeat="facet in facets" ng-show="facet.data.length > 0" class="facet">
           <h4>
             {{ facet.frenchName }}
           </h4>

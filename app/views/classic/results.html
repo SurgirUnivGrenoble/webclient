@@ -56,16 +56,18 @@
         </div>
       </div>
       <accordion close-others="true">
-        <accordion-group heading="{{ facet.frenchName }} - {{ facet.data.length | option }}" ng-repeat="facet in facets" class="facet">
-          <ul>
-            <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
-              <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
-            </li>
-            <li>
-              <a href="" ng-click="moreFilterValues(facet)" ng-show="facet.more">+ Voir plus...</a>
-            </li>
-          </ul>
-        </accordion-group>
+        <div ng-repeat="facet in facets" ng-show="facet.data.length > 0">
+          <accordion-group heading="{{ facet.frenchName }} - {{ facet.data.length | option }}" class="facet">
+            <ul>
+              <li ng-repeat="filter in facet.data | limitTo: facet.limit" class="facet__value">
+                <a href="" ng-click="addFilterAndRefresh(facet.name, filter[0])">{{ filter[0] }}</a> ({{ filter[1] }})
+              </li>
+              <li>
+                <a href="" ng-click="moreFilterValues(facet)" ng-show="facet.more">+ Voir plus...</a>
+              </li>
+            </ul>
+          </accordion-group>
+        </div>
       </accordion>
     </nav>
   </div>
