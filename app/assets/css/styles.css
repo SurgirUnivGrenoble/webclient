@@ -18,7 +18,6 @@ html, body {
   min-height: 100%;
 }
 .main {
-/*  overflow:auto;*/
   padding-bottom: 172px;
   min-height: 100%;
 }
@@ -278,7 +277,7 @@ ul, li {
   padding-bottom: 2px;
   font-size: 1.125em;
   line-height: 1.375em;
-  text-shadow: none;r
+  text-shadow: none;
 }
 .result__author {
   padding-bottom: 8px;
@@ -345,19 +344,6 @@ ul, li {
   font-weight: 500;
 }
 
-/* input[type="search"]::-webkit-search-cancel-button {
-  position: relative;
-}
-input[type="search"]::-webkit-search-cancel-button:before {
-
-  content: "\f00d";
-  color: #CCC;
-  font-size: 2em;
-  position: absolute;
-  top: -20px;
-  right: 0;
-} -- Trying to replace the default search cancel icon with a fa icon */
-
 /*------------------------------------*\
     $Form elements
 \*------------------------------------*/
@@ -378,9 +364,6 @@ input[type=search] {
   -moz-box-sizing:border-box;
   -webkit-box-sizing:border-box;
   box-sizing:border-box;
-  -webkit-transition:0 .45s border-color .45s ease-in-out;
-  -moz-transition:0 .45s border-color .45s ease-in-out;
-  transition:box-shadow .45s border-color .45s ease-in-out;
   margin:0 0 1em;
   padding:.5em;
 }
