@@ -22,6 +22,9 @@ angular.module('surgir.search').factory('Facets', [function() {
       results.facette.forEach(function(facet) {
         if (facet.data.length > 0) {
           this.facets.push(facet);
+          facet.data = facet.data.filter(function(val) {
+            return ! (/^\s*$/).test(val[0]);
+          });
           facet.frenchName = this.frenchNames[facet.name];
           facet.limit = 5;
           facet.more = facet.data.length > 5;

@@ -618,7 +618,8 @@
       "name": "vendor_name",
       "data": [
         ["Odyssée - bibliothèques UPMF-Stendhal", 14],
-        ["Rugbis - bibliothèques UJF-INP", 25]
+        ["Rugbis - bibliothèques UJF-INP", 25],
+        [" ", 25]
       ],
       "default": 1
     }, {
