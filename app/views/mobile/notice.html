@@ -1,15 +1,10 @@
 <section class="notice">
   <header class="page-title_banner row" role="banner">
     <div class="small-4 columns">
-      <!-- <div class="small-logo"> -->
-        <a href="/">
-          Surgir
-          <!-- <h1 class="small-banner_title">Surgir</h1> -->
-        </a>
-      <!-- </div> -->
+      <a href="/">Surgir</a>
     </div>
     <div class="small-8 columns">
-      <span>Notice<span>
+      <span ng-hide="loading">Notice</span><span ng-show="loading">Chargement...</span>
     </div>
   </header>
 
@@ -70,12 +65,6 @@
           <span class="small-8 columns"><a href="#/notice/{{ notice.id }}">http://surgir.grenet.fr/#/notice/{{ notice.id }}</a></span>
         </div>
       </div>
-
-      <!-- <div class="small-2 pull-10 columns">
-        <span class="notice__material-icon">
-          <img ng-src="{{ notice.material_icon }}" title="{{ notice.material_type }}">
-        </span>
-      </div> -->
     </div>
 
   </article>
