@@ -14,4 +14,7 @@ angular.module('surgir.config', []).
   }).
   factory('iOSMobile', function() {
     return /(iPad|iPhone|iPod)/i.test(navigator.userAgent);
+  }).
+  factory('IEMobile', function() {
+    return /IEMobile/i.test(navigator.userAgent);
   });

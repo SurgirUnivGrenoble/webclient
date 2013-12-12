@@ -36,13 +36,17 @@ directive('oneoffAutofocus', ['$rootScope', function($rootScope) {
   };
 }]).
 
-directive('ngTap', [function() {
+directive('ngTap', ['IEMobile', function(ie) {
   return function(scope, element, attrs) {
-    var tapping = false;
-    element.bind('touchstart', function() { tapping = true });
-    element.bind('touchmove', function() { tapping = false });
-    element.bind('touchend', function() {
-      if (tapping) { scope.$apply(attrs['ngTap']); }
-    });
+    if (!ie) {
+      var tapping = false;
+      element.bind('touchstart', function() { tapping = true });
+      element.bind('touchmove', function() { tapping = false });
+      element.bind('touchend', function() {
+        if (tapping) { scope.$apply(attrs['ngTap']); }
+      });
+    } else {
+      element.bind('click', function() { scope.$apply(attrs['ngTap']); });
+    }
   };
 }]);
