@@ -8,7 +8,7 @@ angular.module('surgir.config', []).
     /* delay in milliseconds between two polls */
     pollingInterval: 2000,
     /* max results requested per collection */
-    maxResults: 25,
+    maxResults: 500,
     /* max results retrieved per page */
     pageSize: 10
   }).
