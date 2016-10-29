@@ -114,7 +114,7 @@ The development server does not require a VPN connection to the LibraryFind inst
 
 ### Automated Tests
 
-Automated tests are run with [Karma](http://karma-runner.github.io/0.8/index.html) test runner, to be installed through npm (see `test/config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://pivotal.github.io/jasmine/).
+Automated tests are run with [Karma](http://karma-runner.github.io/0.8/index.html) test runner, to be installed through npm (see `test/config/` for other options). Tests are defined in the `test` folder with [Jasmine](http://jasmine.github.io/).
 
 Unit tests: run `scripts/test.sh` (require Chrome or another navigator)
 
